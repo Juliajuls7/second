@@ -49,6 +49,10 @@
                         <li><a href="/questions">Вопросы</a></li>
                         <li><a href="/categories">Категории</a></li>
                         <li><a href="/cities">Города</a></li>
+                        <li><a>Услуги</a></li>
+                        <li><a>Статьи</a></li>
+                        <li><a href="/users">Пользователи</a></li>
+                        
                     </ul>
 
                     <!-- Right Side Of Navbar -->

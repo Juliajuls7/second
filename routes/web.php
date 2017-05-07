@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 //--------------ГОРОДА--------------------------------------------------
 
@@ -48,15 +48,15 @@ Route::delete('/categories/{id}', 'CategoryController@destroy');
 //----------ПОДКАТЕГОРИИ---------------------------------------------------
 
 // добавление
-Route::get('/subcategories/create', 'SubcategoryController@create');
-Route::post('/subcategories', 'SubcategoryController@store');
+Route::get('/categories/subcategories/create/{id}', 'SubcategoryController@create');
+Route::post('/categories/subcategories/{id}', 'SubcategoryController@store');
 //// просмотр
-Route::get('/subcategories', 'SubcategoryController@index');
+Route::get('/categories/subcategories/{id}', 'SubcategoryController@index');
 // редактирование
-Route::get('/subcategories/edit/{id}', 'SubcategoryController@edit');
-Route::put('/subcategories/edit/{id}', 'SubcategoryController@save');
+Route::get('/categories/subcategories/edit/{id}', 'SubcategoryController@edit');
+Route::put('/categories/subcategories/edit/{id}', 'SubcategoryController@save');
 // удаление 
-Route::delete('/subcategories/{id}', 'SubcategoryController@destroy');
+Route::delete('/categories/subcategories/{id}', 'SubcategoryController@destroy');
 
 //----------ВОПРОСЫ---------------------------------------------------
 
@@ -71,3 +71,17 @@ Route::get('/questions/edit/{id}', 'QuestionController@edit');
 Route::put('/questions/edit/{id}', 'QuestionController@save');
 // удаление 
 Route::delete('/questions/{id}', 'QuestionController@destroy');
+
+//----------ПОЛЬЗОВАТЕИ---------------------------------------------------
+
+// добавление
+Route::get('/users/create', 'UserController@create');
+Route::post('/users', 'UserController@store');
+//// просмотр
+Route::get('/users', 'UserController@index');
+Route::get('/users/{id}', 'UserController@show'); //показать 1 
+// редактирование
+Route::get('/users/edit/{id}', 'UserController@edit');
+Route::put('/users/edit/{id}', 'UserController@save');
+// удаление 
+Route::delete('/users/{id}', 'UserController@destroy');

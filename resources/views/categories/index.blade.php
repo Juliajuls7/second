@@ -12,19 +12,16 @@
                    @foreach ($categories as $category)
                     <ul>
                        <li>{{ $category->name }}
-                       <a class="btn btn-info btn-sm" href="/categories/edit/{{ $category->id }}">Редактирование</a>
-                 
-                  <a class="btn btn-danger btn-sm" href="/categories/{{ $category->id }}"
-                      onclick="event.preventDefault();
-                               document.getElementById('destroy-form{{ $category->id }}').submit();">
-                     Удалить
-                  </a>
+                           <a class="btn btn-info btn-sm" href="/categories/edit/{{ $category->id}}">Редактирование</a>
 
-                  <form id="destroy-form{{ $category->id }}" action="/categories/{{ $category->id }}" method="POST" style="display: none;">
-                      {{ csrf_field() }}
-                      {{ method_field('DELETE') }}
-                  </form>
-                <a href="/subcategories/" class="btn btn-warning btn-sm">Подкатегории</a>
+                           <a class="btn btn-danger btn-sm" href="/categories/{{ $category->id }}"                        onclick="event.preventDefault();
+                              document.getElementById('destroy-form{{ $category->id }}').submit();">Удалить</a>
+
+                          <form id="destroy-form{{ $category->id }}" action="/categories/{{ $category->id }}"               method="POST" style="display: none;">
+                              {{ csrf_field() }}
+                              {{ method_field('DELETE') }}
+                          </form>
+                           <a href="/categories/subcategories/{{ $category->id }}" class="btn btn-warning btn-sm">Подкатегории</a>
                        </li> 
                    </ul>
                    @endforeach

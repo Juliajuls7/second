@@ -1,19 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Subcategory;
-use App\Question;
+use App\User;
 use Illuminate\Http\Request;
 
-class QuestionController extends Controller
+class UserController extends Controller
 {
-    public function __construct() {
+     public function __construct() {
         $this->middleware('auth');
     }
     
     public function index()
     {
-          return view('questions.index', ['questions' => Question::orderByDesc('created_at')->get()]);
+          return view('users.index', ['users' => User::orderByDesc('created_at')->get()]);
     }
 
   
@@ -37,7 +36,9 @@ class QuestionController extends Controller
   
     public function show($id)
     {
-        return view ('questions.show', [ 'question' => Question::findOrFail($id)]);
+        return view ('questions.show', [
+            'question' => Question::findOrFail($id)
+        ]);
     }
 
     /**
@@ -48,7 +49,9 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
-        return view('questions.edit',['question'=>Question::findOrFail($id),'subcategories'=> Subcategory::all(),
+        return view('questions.edit',[
+            'question'=>Question::findOrFail($id),
+            'subcategories'=> Subcategory::all(),
            
         ]);
     }
@@ -64,10 +67,10 @@ class QuestionController extends Controller
     {
         $question = Question::findOrFail($id);
         $question->subcategory_id = $request->subcategory;
-        //$question->user_id = $request->user;
         $question->head = $request->head;
         $question->text = $request->text;
-        $request->user->questions()->save($question);
+        $question->save();
+        
         return redirect('/questions');
     }
 

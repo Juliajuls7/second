@@ -10,21 +10,26 @@ class SubcategoryController extends Controller
     public function __construct() {
         $this->middleware('auth');
     }
-    public function index()
-    {
-        return view ('subcategories.index', [
-            'subcategories' => subcategories()
-        ]);
+    
+    public function index($id)
+    {   
+   // return dd(Category::findOrFail($id)->subcategories);
+       return view('categories.subcategories.index', [
+        'category'=>$id,
+          'subcategories'=> Category::findOrFail($id)->subcategories
+       ]);
     }
 
  
-    public function create()
+    public function create($id)
     {
-        return view ('subcategories.create');
+        return view ('categories.subcategories.create',[
+            'category'=>$id
+        ]);
     }
 
     
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
          $this->validate($request,[
             'name' => 'unique:subcategories|required|min:2|max:255'
@@ -32,53 +37,34 @@ class SubcategoryController extends Controller
         
         $subcategory = new Subcategory();
         $subcategory->name = $request->name;
-        $subcategory->save();
+        $category=Category::findOrFail($id);
+        $category->subcategories()->save($subcategory);
         
-        return redirect('/categories');
+        return redirect('/categories/subcategories/'.$id);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function save(Request $request, $id)
     {
-        //
+        $subcategory = Subcategory::findOrFail($id);
+        $subcategory->category_id = $request->category;
+        $subcategory->name = $request->name;
+        $subcategory->save();
+        return redirect('/categories/subcategories/'.$request->category);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        return view('categories.subcategories.edit',[
+            'subcategory'=> Subcategory::findOrFail($id),
+            'categories' => Category::all()
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+   
+    public function destroy(Request $request, $id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+       Subcategory::findOrFail($id)->delete();
+        
+        return redirect('/categories/subcategories/'.$request->category_id);
     }
 }
