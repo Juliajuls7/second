@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class CommentQuestion extends Model
 {
     public function user(){
-        return $this->belognsTo('App\User');
+        return $this->belongsTo('App\User');
     }
-   
+
     public function question(){
-        return $this->belognsTo('App\Question');
+        return $this->belongsTo('App\Question');
     }
 }

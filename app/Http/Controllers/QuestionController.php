@@ -10,19 +10,19 @@ class QuestionController extends Controller
     public function __construct() {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
           return view('questions.index', ['questions' => Question::orderByDesc('created_at')->get()]);
     }
 
-  
+
     public function create()
     {
         return view('questions.create',['subcategories'=> Subcategory::all()]);
     }
 
-    
+
     public function store(Request $request)
     {
         $question = new Question();
@@ -30,14 +30,19 @@ class QuestionController extends Controller
         $question->head = $request->head;
         $question->text = $request->text;
         $request->user()->questions()->save($question);
-        
+
         return redirect('/questions');
     }
 
-  
+
     public function show($id)
     {
-        return view ('questions.show', [ 'question' => Question::findOrFail($id)]);
+        $question = Question::findOrFail($id);
+
+        return view ('questions.show', [
+          'question' => $question,
+          'comments' => $question->comments
+        ]);
     }
 
     /**
@@ -49,7 +54,7 @@ class QuestionController extends Controller
     public function edit($id)
     {
         return view('questions.edit',['question'=>Question::findOrFail($id),'subcategories'=> Subcategory::all(),
-           
+
         ]);
     }
 

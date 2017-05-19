@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class CommentService extends Model
 {
    public function user(){
-        return $this->belognsTo('App\User');
+        return $this->belongsTo('App\User');
     }
     
     
     public function service(){
-        return $this->belognsTo('App\Service');
+        return $this->belongsTo('App\Service');
     }
 }

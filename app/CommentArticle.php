@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class CommentArticle extends Model
 {
     public function user(){
-        return $this->belognsTo('App\User');
+        return $this->belongsTo('App\User');
     }
     public function article(){
-        return $this->belognsTo('App\Article');
+        return $this->belongsTo('App\Article');
     }
 }

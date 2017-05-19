@@ -29,20 +29,20 @@ Route::get('/cities', 'CityController@index');
 // редактирование
 Route::get('/cities/edit/{id}', 'CityController@edit');
 Route::put('/cities/edit/{id}', 'CityController@save');
-// удаление 
+// удаление
 Route::delete('/cities/{id}', 'CityController@destroy');
 
 //----------КАТЕГОРИИ---------------------------------------------------
 
-// добавление 
+// добавление
 Route::get('/categories/create', 'CategoryController@create');
 Route::post('/categories', 'CategoryController@store');
 //// просмотр
 Route::get('/categories', 'CategoryController@index');
-// редактирование 
+// редактирование
 Route::get('/categories/edit/{id}', 'CategoryController@edit');
 Route::put('/categories/edit/{id}', 'CategoryController@save');
-// удаление 
+// удаление
 Route::delete('/categories/{id}', 'CategoryController@destroy');
 
 //----------ПОДКАТЕГОРИИ---------------------------------------------------
@@ -55,7 +55,7 @@ Route::get('/categories/subcategories/{id}', 'SubcategoryController@index');
 // редактирование
 Route::get('/categories/subcategories/edit/{id}', 'SubcategoryController@edit');
 Route::put('/categories/subcategories/edit/{id}', 'SubcategoryController@save');
-// удаление 
+// удаление
 Route::delete('/categories/subcategories/{id}', 'SubcategoryController@destroy');
 
 //----------ВОПРОСЫ---------------------------------------------------
@@ -65,12 +65,17 @@ Route::get('/questions/create', 'QuestionController@create');
 Route::post('/questions', 'QuestionController@store');
 //// просмотр
 Route::get('/questions', 'QuestionController@index');
-Route::get('/questions/{id}', 'QuestionController@show'); //показать 1 
+Route::get('/questions/{id}', 'QuestionController@show'); //показать 1
 // редактирование
 Route::get('/questions/edit/{id}', 'QuestionController@edit');
 Route::put('/questions/edit/{id}', 'QuestionController@save');
-// удаление 
+// удаление
 Route::delete('/questions/{id}', 'QuestionController@destroy');
+
+//----------КОММЕНТАРИИ К ВОПРОСАМ---------------------------------------------------
+
+Route::post('/questions/{question}/comment', 'CommentQuestionController@store'); // добавить новый комментарий к вопросу
+
 
 //----------ПОЛЬЗОВАТЕИ---------------------------------------------------
 
@@ -79,9 +84,9 @@ Route::get('/users/create', 'UserController@create');
 Route::post('/users', 'UserController@store');
 //// просмотр
 Route::get('/users', 'UserController@index');
-Route::get('/users/{id}', 'UserController@show'); //показать 1 
+Route::get('/users/{id}', 'UserController@show'); //показать 1
 // редактирование
 Route::get('/users/edit/{id}', 'UserController@edit');
 Route::put('/users/edit/{id}', 'UserController@save');
-// удаление 
+// удаление
 Route::delete('/users/{id}', 'UserController@destroy');

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Service extends Model
 {
    public function author(){
-        return $this->belognsTo('App\User','id','author_id');
+        return $this->belongsTo('App\User','id','author_id');
     }
     public function commentservices(){
         return $this->hasMany('App\CommentService');
