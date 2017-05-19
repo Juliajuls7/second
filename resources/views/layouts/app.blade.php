@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
 <head>
-   
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -50,9 +50,9 @@
                         <li><a href="/categories">Категории</a></li>
                         <li><a href="/cities">Города</a></li>
                         <li><a>Услуги</a></li>
-                        <li><a>Статьи</a></li>
+                        <li><a href="/articles">Статьи</a></li>
                         <li><a href="/users">Пользователи</a></li>
-                        
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -90,6 +90,6 @@
         @yield('content')
     </div>
 
-   
+
 </body>
 </html>
