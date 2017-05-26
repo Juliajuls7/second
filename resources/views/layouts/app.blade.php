@@ -7,23 +7,24 @@
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Secondhelp') }}</title>
+
+  <title>{{ config('app.name', 'Secondhelp') }}</title>
   <meta name="keywords" content="">
 
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
 
+
   <!-- Bootstrap and Font Awesome css -->
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
   <!-- Css animations  -->
-  <link href="css/animate.css" rel="stylesheet">
+  <link href="/css/animate.css" rel="stylesheet">
 
   <!-- Theme stylesheet, if possible do not edit this stylesheet -->
-  <link href="css/style.default.css" rel="stylesheet" id="theme-stylesheet">
+  <link href="/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
 
   <!-- Custom stylesheet - for your changes -->
-  <link href="css/custom.css" rel="stylesheet">
+  <link href="/css/custom.css" rel="stylesheet">
 
 
   <!-- Favicon and apple touch icons-->
@@ -36,7 +37,13 @@
   <link rel="apple-touch-icon" sizes="120x120" href="img/apple-touch-icon-120x120.png" />
   <link rel="apple-touch-icon" sizes="144x144" href="img/apple-touch-icon-144x144.png" />
   <link rel="apple-touch-icon" sizes="152x152" href="img/apple-touch-icon-152x152.png" />
-
+  <script>
+      window.Laravel = {!! json_encode([
+          'csrfToken' => csrf_token(),
+      ]) !!};
+  </script>
+   <!-- Scripts -->
+  <script src="{{ asset('js/app.js') }}"></script>
 </head>
 
 <body>
@@ -69,27 +76,26 @@ _________________________________________________________ -->
                               <a href="{{ route('register') }}"><i class="fa fa-user"></i> <span class="hidden-xs text-uppercase">Sign up</span></a>
 
                                   @else
-                                      <div >
-                                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                      <ul class="nav navbar-nav navbar-right">
+                                          <a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                               {{ Auth::user()->name }} <span class="caret"></span>
                                           </a>
+                                              <ul class="dropdown-menu">
+                                                  <li>
+                                                      <a href="{{ route('logout') }}"
+                                                        onclick="event.preventDefault();
+                                                                 document.getElementById('logout-form').submit();">
+                                                        Logout
+                                                      </a>
+                                                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                          {{ csrf_field() }}
+                                                      </form>
+                                                  </li>
 
-                                          <ul class="dropdown-menu" role="menu">
-                                              <li>
-                                                  <a href="{{ route('logout') }}"
-                                                      onclick="event.preventDefault();
-                                                               document.getElementById('logout-form').submit();">
-                                                      Logout
-                                                  </a>
-
-                                                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                      {{ csrf_field() }}
-                                                  </form>
-                                              </li>
-                                          </ul>
-                                      </div>
+                                              </ul>
+                                      </ul>
                                   @endif
-                              </ul>
+
 
                             </div>
 
@@ -110,9 +116,9 @@ _________________________________________________________ -->
                     <div class="container">
                         <div class="navbar-header">
 
-                            <a class="navbar-brand home" href="index.html">
-                                <img src="img/logo.png" alt="Universal logo" class="hidden-xs hidden-sm">
-                                <img src="img/logo-small.png" alt="Universal logo" class="visible-xs visible-sm"><span class="sr-only">Universal - go to homepage</span>
+                            <a class="navbar-brand home" href="/home">
+                                <img src="/img/logo.png" alt="Universal logo" class="hidden-xs hidden-sm">
+                                <img src="/img/logo-small.png" alt="Universal logo" class="visible-xs visible-sm"><span class="sr-only">Universal - go to homepage</span>
                             </a>
                             <div class="navbar-buttons">
                                 <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -126,119 +132,17 @@ _________________________________________________________ -->
                         <div class="navbar-collapse collapse" id="navigation">
 
                             <ul class="nav navbar-nav navbar-right">
-                                <li class="dropdown active">
-                                    <a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown">Home <b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="index.html">Option 1: Default Page</a>
-                                        </li>
-                                        <li><a href="index2.html">Option 2: Application</a>
-                                        </li>
-                                        <li><a href="index3.html">Option 3: Startup</a>
-                                        </li>
-                                        <li><a href="index4.html">Option 4: Agency</a>
-                                        </li>
-                                        <li><a href="index5.html">Option 5: Portfolio</a>
-                                        </li>
-                                    </ul>
+                                <li class="active">
+                                    <a href="/home" class="home">Home</a>
+
                                 </li>
-                                <li class="dropdown use-yamm yamm-fw">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features<b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <div class="yamm-content">
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <img src="img/template-easy-customize.png" class="img-responsive hidden-xs" alt="">
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        <h5>Shortcodes</h5>
-                                                        <ul>
-                                                            <li><a href="template-accordions.html">Accordions</a>
-                                                            </li>
-                                                            <li><a href="template-alerts.html">Alerts</a>
-                                                            </li>
-                                                            <li><a href="template-buttons.html">Buttons</a>
-                                                            </li>
-                                                            <li><a href="template-content-boxes.html">Content boxes</a>
-                                                            </li>
-                                                            <li><a href="template-blocks.html">Horizontal blocks</a>
-                                                            </li>
-                                                            <li><a href="template-pagination.html">Pagination</a>
-                                                            </li>
-                                                            <li><a href="template-tabs.html">Tabs</a>
-                                                            </li>
-                                                            <li><a href="template-typography.html">Typography</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        <h5>Header variations</h5>
-                                                        <ul>
-                                                            <li><a href="template-header-default.html">Default sticky header</a>
-                                                            </li>
-                                                            <li><a href="template-header-nosticky.html">No sticky header</a>
-                                                            </li>
-                                                            <li><a href="template-header-light.html">Light header</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                <li class="menu">
+                                    <a href="/questions" class="question" >Questions</a>
+
                                 </li>
-                                <li class="dropdown use-yamm yamm-fw">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <div class="yamm-content">
-                                                <div class="row">
-                                                    <div class="col-sm-6">
-                                                        <img src="img/template-homepage.png" class="img-responsive hidden-xs" alt="">
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        <h5>Portfolio</h5>
-                                                        <ul>
-                                                            <li><a href="portfolio-2.html">2 columns</a>
-                                                            </li>
-                                                            <li><a href="portfolio-no-space-2.html">2 columns with negative space</a>
-                                                            </li>
-                                                            <li><a href="portfolio-3.html">3 columns</a>
-                                                            </li>
-                                                            <li><a href="portfolio-no-space-3.html">3 columns with negative space</a>
-                                                            </li>
-                                                            <li><a href="portfolio-4.html">4 columns</a>
-                                                            </li>
-                                                            <li><a href="portfolio-no-space-4.html">4 columns with negative space</a>
-                                                            </li>
-                                                            <li><a href="portfolio-detail.html">Portfolio - detail</a>
-                                                            </li>
-                                                            <li><a href="portfolio-detail-2.html">Portfolio - detail 2</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="col-sm-3">
-                                                        <h5>About</h5>
-                                                        <ul>
-                                                            <li><a href="about.html">About us</a>
-                                                            </li>
-                                                            <li><a href="team.html">Our team</a>
-                                                            </li>
-                                                            <li><a href="team-member.html">Team member</a>
-                                                            </li>
-                                                            <li><a href="services.html">Services</a>
-                                                            </li>
-                                                        </ul>
-                                                        <h5>Marketing</h5>
-                                                        <ul>
-                                                            <li><a href="packages.html">Packages</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                <li class="menu">
+                                    <a href="/categories" class="categories">Categories</a>
+
                                 </li>
                                 <!-- ========== FULL WIDTH MEGAMENU ================== -->
                                 <li class="dropdown use-yamm yamm-fw">
@@ -485,9 +389,6 @@ _________________________________________________________ -->
 
         <!-- *** LOGIN MODAL END *** -->
 
-
-
-
 @yield('content')
 
 
@@ -670,11 +571,11 @@ _________________________________________________________ -->
         </script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-        <script src="js/jquery.cookie.js"></script>
-        <script src="js/waypoints.min.js"></script>
-        <script src="js/jquery.counterup.min.js"></script>
-        <script src="js/jquery.parallax-1.1.3.js"></script>
-        <script src="js/front.js"></script>
+        <script src="/js/jquery.cookie.js"></script>
+        <script src="/js/waypoints.min.js"></script>
+        <script src="/js/jquery.counterup.min.js"></script>
+        <script src="/js/jquery.parallax-1.1.3.js"></script>
+        <script src="/js/front.js"></script>
 
 
 

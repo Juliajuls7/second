@@ -13,7 +13,7 @@
                     <ul>
                        <li>{{ $subcategory->name }}
                        <a class="btn btn-info btn-sm" href="/categories/subcategories/edit/{{ $subcategory->id }}">Редактирование</a>
-                 
+
                   <a class="btn btn-danger btn-sm" href="/categories/subcategories/{{ $subcategory->id }}"
                       onclick="event.preventDefault();
                                document.getElementById('destroy-form{{ $subcategory->id }}').submit();">
@@ -25,8 +25,8 @@
                       {{ csrf_field() }}
                       {{ method_field('DELETE') }}
                   </form>
-                
-                       </li> 
+
+                       </li>
                    </ul>
                    @endforeach
                 </div>
@@ -39,7 +39,7 @@
 $(function() {
     $('#deleteBtn').click(function(event) {
         if (confirm("Действительно хотите удалить этот город?")) {
-            event.preventDefault(); 
+            event.preventDefault();
             document.getElementById('destroy-form').submit();
         }
     });
