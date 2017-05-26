@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//--------------ГОРОДА--------------------------------------------------
+//----------ГОРОДА--------------------------------------------------
 
 // добавление
 Route::get('/cities/create', 'CityController@create');
@@ -45,7 +45,7 @@ Route::put('/categories/edit/{id}', 'CategoryController@save');
 // удаление
 Route::delete('/categories/{id}', 'CategoryController@destroy');
 
-//----------ПОДКАТЕГОРИИ---------------------------------------------------
+//----------ПОДКАТЕГОРИИ-------------------------------------------------
 
 // добавление
 Route::get('/categories/subcategories/create/{id}', 'SubcategoryController@create');
@@ -72,12 +72,12 @@ Route::put('/questions/edit/{id}', 'QuestionController@save');
 // удаление
 Route::delete('/questions/{id}', 'QuestionController@destroy');
 
-//----------КОММЕНТАРИИ К ВОПРОСАМ---------------------------------------------------
+//----------КОММЕНТАРИИ К ВОПРОСАМ-----------------------------------
 
 Route::post('/questions/{question}/comment', 'CommentQuestionController@store'); // добавить новый комментарий к вопросу
 
 
-//----------ПОЛЬЗОВАТЕИ---------------------------------------------------
+//----------ПОЛЬЗОВАТЕИ----------------------------------------------
 
 // добавление
 Route::get('/users/create', 'UserController@create');
@@ -105,5 +105,5 @@ Route::put('/articles/edit/{article}', 'ArticleController@save');
 // удаление
 Route::delete('/articles/{article}', 'ArticleController@destroy');
 
-//----------КОММЕНТАРИИ К СТАТЬЯМ---------------------------------------------------
+//----------КОММЕНТАРИИ К СТАТЬЯМ---------------------------------------
 Route::post('/articles/{article}/comment', 'CommentArticleController@store'); // добавить новый комментарий к вопросу
