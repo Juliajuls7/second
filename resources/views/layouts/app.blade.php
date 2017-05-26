@@ -62,8 +62,35 @@ _________________________________________________________ -->
                             </div>
 
                             <div class="login">
-                                <a href="#" data-toggle="modal" data-target="#login-modal"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Sign in</span></a>
-                                <a href="customer-register.html"><i class="fa fa-user"></i> <span class="hidden-xs text-uppercase">Sign up</span></a>
+
+
+                                  @if (Auth::guest())
+                              <a href="#" data-toggle="modal" data-target="#login-modal"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Sign in</span></a>
+                              <a href="{{ route('register') }}"><i class="fa fa-user"></i> <span class="hidden-xs text-uppercase">Sign up</span></a>
+
+                                  @else
+                                      <div >
+                                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                              {{ Auth::user()->name }} <span class="caret"></span>
+                                          </a>
+
+                                          <ul class="dropdown-menu" role="menu">
+                                              <li>
+                                                  <a href="{{ route('logout') }}"
+                                                      onclick="event.preventDefault();
+                                                               document.getElementById('logout-form').submit();">
+                                                      Logout
+                                                  </a>
+
+                                                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                      {{ csrf_field() }}
+                                                  </form>
+                                              </li>
+                                          </ul>
+                                      </div>
+                                  @endif
+                              </ul>
+
                             </div>
 
                         </div>
@@ -407,98 +434,61 @@ _________________________________________________________ -->
         <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
             <div class="modal-dialog modal-sm">
 
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="Login">Customer login</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form action="customer-orders.html" method="post">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="email_modal" placeholder="email">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" class="form-control" id="password_modal" placeholder="password">
-                            </div>
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title" id="Login">User login</h4>
+                  </div>
+                  <div class="modal-body">
+                      <form role="form" method="POST" action="{{ route('login') }}">
+                            {{ csrf_field() }}
+                          <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                              <input id="email" type="email" class="form-control" name="email" placeholder="email" value="{{ old('email') }}" required>
 
-                            <p class="text-center">
-                                <button class="btn btn-template-main"><i class="fa fa-sign-in"></i> Log in</button>
-                            </p>
+                              @if ($errors->has('email'))
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('email') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                          <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                              <input id="password" type="password" class="form-control" name="password" placeholder="password" required>
 
-                        </form>
+                              @if ($errors->has('password'))
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('password') }}</strong>
+                                  </span>
+                              @endif
+                          </div>
+                          <div class="form-group">
 
-                        <p class="text-center text-muted">Not registered yet?</p>
-                        <p class="text-center text-muted"><a href="customer-register.html"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
+                                  <div class="checkbox">
+                                      <label>
+                                          <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                                      </label>
+                                  </div>
 
-                    </div>
-                </div>
+                          </div>
+                          <p class="text-center">
+                              <button class="btn btn-template-main"><i class="fa fa-sign-in"></i> Log in</button>
+                          </p>
+
+                      </form>
+
+                      <p class="text-center text-muted">Not registered yet?</p>
+                      <p class="text-center text-muted"><a href="{{ route('register') }}"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
+
+                  </div>
+              </div>
             </div>
         </div>
 
         <!-- *** LOGIN MODAL END *** -->
 
-        <div id="heading-breadcrumbs">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-7">
-                        <h1>Accordions</h1>
-                    </div>
-                    <div class="col-md-5">
-                        <ul class="breadcrumb">
-                            <li><a href="index.html">Home</a>
-                            </li>
-                            <li>Accordions</li>
-                        </ul>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <section>
-            <div class="container">
-
-                <div class="row">
-                    <div class="col-md-3">
-                        <!-- *** MENUS AND WIDGETS ***
- _________________________________________________________ -->
-
-                        <div class="panel panel-default sidebar-menu with-icons">
-
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Categories</h3>
-                            </div>
-
-                            <div class="panel-body">
-                                <ul class="nav nav-pills nav-stacked">
-                                    <li class="active"><a href="template-accordions.html">Accordions</a>
-                                    </li>
-                                    <li><a href="template-alerts.html">Alerts</a>
-                                    </li>
-                                    <li><a href="template-buttons.html">Buttons</a>
-                                    </li>
-                                    <li><a href="template-content-boxes.html">Content boxes</a>
-                                    </li>
-                                    <li><a href="template-blocks.html">Horizontal blocks</a>
-                                    </li>
-                                    <li><a href="template-pagination.html">Pagination</a>
-                                    </li>
-                                    <li><a href="template-tabs.html">Tabs</a>
-                                    </li>
-                                    <li><a href="template-typography.html">Typography</a>
-                                    </li>
-                            </div>
-                        </div>
-                      </div>
-                    </div>
-                        <!-- *** MENUS AND FILTERS END *** -->
-                        <!-- /.container -->
-                    </div>
 
 
 
-        </section>
-
+@yield('content')
 
 
         <!-- *** FOOTER ***
@@ -668,7 +658,7 @@ _________________________________________________________ -->
 
 
 
-  @yield('content')
+
     </div>
         <!-- /#all -->
 
