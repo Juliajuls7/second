@@ -74,16 +74,28 @@ _________________________________________________________ -->
                             </div>
 
                             <div class="login">
-                              @if (Route::has('login'))
-                                   <div class="top-right links">
-                                       @if (Auth::check())
-                                           <a href="{{ url('/home') }}">Home</a>
-                                       @else
-                                       <a href="#" data-toggle="modal" data-target="#login-modal"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Sign in</span></a>
-                                       <a href="{{ url('/register') }}"><i class="fa fa-user"></i> <span class="hidden-xs text-uppercase">Sign up</span></a>
-                                      @endif
-                                  </div>
-                               @endif
+                              @if (Auth::guest())
+                          <a href="#" data-toggle="modal" data-target="#login-modal"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Sign in</span></a>
+                          <a href="{{ route('register') }}"><i class="fa fa-user"></i> <span class="hidden-xs text-uppercase">Sign up</span></a>
+
+                              @else
+
+                                      <a href="javascript: void(0)"   aria-expanded="false">
+                                          {{ Auth::user()->name }}
+                                      </a>
+                                      <div class="Sigh_out">
+                                      <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" data-toggle="modal" data-target="#login-modal"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Sign out</span></a>
+
+
+
+                                                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                      {{ csrf_field() }}
+                                                  </form>
+                                      </div>
+
+
+
+                              @endif
 
                             </div>
 

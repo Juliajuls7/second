@@ -9,4 +9,8 @@ class Category extends Model
      public function subcategories(){
         return $this->hasMany('App\Subcategory');
     }
+
+    public static function getCategories(){
+      return static::all();
+    }
 }

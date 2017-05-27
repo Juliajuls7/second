@@ -43,7 +43,7 @@
       ]) !!};
   </script>
    <!-- Scripts -->
-  <script src="{{ asset('js/app.js') }}"></script>
+
 </head>
 
 <body>
@@ -69,36 +69,20 @@ _________________________________________________________ -->
                             </div>
 
                             <div class="login">
-
-
                                   @if (Auth::guest())
                               <a href="#" data-toggle="modal" data-target="#login-modal"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Sign in</span></a>
                               <a href="{{ route('register') }}"><i class="fa fa-user"></i> <span class="hidden-xs text-uppercase">Sign up</span></a>
 
                                   @else
-                                      <ul class="nav navbar-nav navbar-right">
-                                          <a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                              {{ Auth::user()->name }} <span class="caret"></span>
-                                          </a>
-                                              <ul class="dropdown-menu">
-                                                  <li>
-                                                      <a href="{{ route('logout') }}"
-                                                        onclick="event.preventDefault();
-                                                                 document.getElementById('logout-form').submit();">
-                                                        Logout
-                                                      </a>
-                                                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                          {{ csrf_field() }}
-                                                      </form>
-                                                  </li>
-
-                                              </ul>
-                                      </ul>
+                                  <a href="javascript: void(0)"   aria-expanded="false">
+                                      {{ Auth::user()->name }}
+                                  </a>
+                                  <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Sign out</span></a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
                                   @endif
-
-
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -566,17 +550,17 @@ _________________________________________________________ -->
         <!-- #### JAVASCRIPT FILES ### -->
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script>
-            window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')
-        </script>
-        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <!-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
+        <script src="{{ asset('js/app.js') }}"></script>
+        <!-- <script>
+            window.jQuery || document.write('<script src="/js/jquery-1.11.0.min.js"><\/script>')
+        </script> -->
 
         <script src="/js/jquery.cookie.js"></script>
         <script src="/js/waypoints.min.js"></script>
         <script src="/js/jquery.counterup.min.js"></script>
         <script src="/js/jquery.parallax-1.1.3.js"></script>
         <script src="/js/front.js"></script>
-
 
 
 
