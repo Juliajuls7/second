@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Subcategory;
+use App\Category;
 use App\Question;
 use Illuminate\Http\Request;
 
@@ -19,13 +21,16 @@ class QuestionController extends Controller
 
     public function create()
     {
-        return view('questions.create',['subcategories'=> Subcategory::all()]);
+      return view ('questions.create', [
+        'categories' => Category::all()
+      ]);
     }
 
 
     public function store(Request $request)
     {
         $question = new Question();
+        $question->category_id = $request->category;
         $question->subcategory_id = $request->subcategory;
         $question->head = $request->head;
         $question->text = $request->text;
@@ -45,34 +50,23 @@ class QuestionController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
-        return view('questions.edit',['question'=>Question::findOrFail($id),'subcategories'=> Subcategory::all(),
 
-        ]);
+        return view('questions.edit',['question'=>Question::findOrFail($id),'categories'=> Category::all()]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function save(Request $request, $id)
     {
         $question = Question::findOrFail($id);
+        $question->category_id = $request->category;
         $question->subcategory_id = $request->subcategory;
         //$question->user_id = $request->user;
         $question->head = $request->head;
         $question->text = $request->text;
-        $request->user->questions()->save($question);
+        $question->save();
         return redirect('/questions');
     }
 

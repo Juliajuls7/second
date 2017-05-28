@@ -5,20 +5,72 @@
           <div class="container">
               <div class="row">
                   <div class="col-md-7">
-                      <h1>Просмотр вопроса</h1>
+                      <h1>Webdesign now</h1>
                   </div>
                   <div class="col-md-5">
                       <ul class="breadcrumb">
-                          <li><a href="/home">Home</a>
+                          <li><a href="index.html">Home</a>
                           </li>
-                          <li><a href="/questions">Questions</a>
+                          <li><a href="blog.html">Blog</a>
                           </li>
-                          <li>Просмотр вопроса</li>
+                          <li>Blog post</li>
                       </ul>
+
                   </div>
               </div>
           </div>
       </div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Просмотр вопроса <a href="/questions/" class="btn btn-warning">Все вопросы</a></div>
+
+                <div class="panel-body">
+
+                  <div class="form-group">
+                           <h3>
+                                <a href="/question/">{{ $question->head }}</a>
+                            </h3>
+                                <p><i class="fa fa-bullhorn" aria-hidden="true"></i> Опубликовано {{ $question->created_at->format('d.m.Y') }}</p>
+                                <p>{!! $question->text !!}</p>
+                  </div>
+
+                  <hr>
+
+                  <form action="/questions/{{ $question->id }}/comment" method="POST">
+                    {{ csrf_field() }}
+
+                    <div class="form-group">
+                      <label for="text">Ваш комментарий</label>
+                      <textarea name="text" id="text" rows="4" cols="80" class="form-control"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                  </form>
+
+                  <hr>
+
+                  <div class="list-group">
+                    @foreach ($comments as $comment)
+                    <div class="list-group-item list-group-item-action flex-column align-items-start">
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ $comment->user->name }}</h5>
+                        <small>{{ $comment->created_at->diffForHumans() }}</small>
+                      </div>
+                      <p class="mb-1">{{ $comment->text }}</p>
+                    </div>
+                    @endforeach
+                  </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 <div id="content">
@@ -35,9 +87,14 @@
                     <p class="text-muted text-uppercase mb-small text-right">By <a href="/users">{{ $question->user->name }}</a> {{ $question->created_at->format('D, d M Y H:i:s') }}</p>
                         <div id="post-content">
 
+
+                        <p>
+                            <img src="/img/blog2.jpg" class="img-responsive" alt="Example blog post alt">
+                        </p>
+
                         <h2>{{ $question->head }}</h2>
                         <p>{!! $question->text !!}</p>
-
+                        
 
 
                     </div>
@@ -139,8 +196,25 @@ _________________________________________________________ -->
                         </div>
                     </div>
 
-                    @includeIf('questions.partials.categories')
+                    <div class="panel panel-default sidebar-menu">
 
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Categories</h3>
+                        </div>
+
+                        <div class="panel-body">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="blog.html">Webdesign</a>
+                                </li>
+                                <li class="active"><a href="blog.html">Tutorials</a>
+                                </li>
+                                <li><a href="blog.html">Print</a>
+                                </li>
+                                <li><a href="blog.html">Our tips</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
 
                     <div class="panel sidebar-menu">
                         <div class="panel-heading">

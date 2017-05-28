@@ -28,6 +28,8 @@
                               <div class="row">
                                 <div class="form-group">
 
+                                  <a type="button"  href="/questions/create" class="btn btn-lg btn-template-primary">Задать вопрос</a>
+                                <hr>
                                          @foreach ($questions as $question)
                                          <div class="col-md-4">
                                              <div class="image">
