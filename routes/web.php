@@ -92,6 +92,8 @@ Route::put('/users/edit/{id}', 'UserController@save');
 Route::delete('/users/{id}', 'UserController@destroy');
 
 
+
+
 //----------СТАТЬИ---------------------------------------------------
 // добавление
 Route::get('/articles/create', 'ArticleController@create');
@@ -107,3 +109,5 @@ Route::delete('/articles/{article}', 'ArticleController@destroy');
 
 //----------КОММЕНТАРИИ К СТАТЬЯМ---------------------------------------
 Route::post('/articles/{article}/comment', 'CommentArticleController@store'); // добавить новый комментарий к вопросу
+
+

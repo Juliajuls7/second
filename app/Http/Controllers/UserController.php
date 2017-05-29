@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use App\City;
+use App\Education;
+
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -9,80 +12,75 @@ class UserController extends Controller
      public function __construct() {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
           return view('users.index', ['users' => User::orderByDesc('created_at')->get()]);
     }
 
-  
+
     public function create()
     {
-        return view('questions.create',['subcategories'=> Subcategory::all()]);
+  //      return view('users.create',['subcategories'=> Subcategory::all()]);
     }
 
-    
+
     public function store(Request $request)
     {
-        $question = new Question();
-        $question->subcategory_id = $request->subcategory;
-        $question->head = $request->head;
-        $question->text = $request->text;
-        $request->user()->questions()->save($question);
-        
-        return redirect('/questions');
+    //     $question = new Question();
+    //     $question->subcategory_id = $request->subcategory;
+    //     $question->head = $request->head;
+    //     $question->text = $request->text;
+    //     $request->user()->questions()->save($question);
+
+    //    return redirect('/questions');
     }
 
-  
+
     public function show($id)
     {
-        return view ('questions.show', [
-            'question' => Question::findOrFail($id)
+      //return 1;
+        return view ('users.show', [
+            'user' => User::findOrFail($id)
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
-        return view('questions.edit',[
-            'question'=>Question::findOrFail($id),
-            'subcategories'=> Subcategory::all(),
-           
+        return view('users.edit',[
+          'user'=>User::findOrFail($id),
+          'city'=> City::all(),
+          'education'=> Education::all()
+
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function save(Request $request, $id)
     {
-        $question = Question::findOrFail($id);
-        $question->subcategory_id = $request->subcategory;
-        $question->head = $request->head;
-        $question->text = $request->text;
-        $question->save();
-        
-        return redirect('/questions');
+        $user = User::findOrFail($id);
+        $user->city_id = $request->city;
+        $user->education_id = $request->education;
+        $user->name = $request->name;
+        $user->surname = $request->surname;
+        $user->email = $request->email;
+        $user->sex = $request->sex;
+        $user->DOB = $request->DOB;
+        $user->phone = $request->phone;
+        $user->skype = $request->skype;
+        $user->activities = $request->activities;
+        $user->skills = $request->skills;
+        $user->about_myself = $request->about_myself;
+        $user->photo = $request->photo;
+        $user->save();
+
+        return redirect('/users/$id');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-       Question::findOrFail($id)->delete();
-        return redirect('/questions');
+       User::findOrFail($id)->delete();
+        return redirect('/home');
     }
 }

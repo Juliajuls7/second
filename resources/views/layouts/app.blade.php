@@ -74,7 +74,7 @@ _________________________________________________________ -->
                               <a href="{{ route('register') }}"><i class="fa fa-user"></i> <span class="hidden-xs text-uppercase">Sign up</span></a>
 
                                   @else
-                                  <a href="javascript: void(0)"   aria-expanded="false">
+                                  <a href="/users/{{Auth::user()->id}}"   aria-expanded="false">
                                       {{ Auth::user()->name }}
                                   </a>
                                   <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Sign out</span></a>

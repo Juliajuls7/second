@@ -34,7 +34,7 @@
                                          <div class="col-md-4">
                                              <div class="image">
                                                  <a href="blog-post.html">
-                                                     <img src="img/blog-medium.jpg" class="img-responsive" alt="Example blog post alt">
+                                                     <img src="/img/blog-medium.jpg" class="img-responsive" alt="Example blog post alt">
                                                  </a>
                                              </div>
                                          </div>

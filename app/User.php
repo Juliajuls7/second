@@ -26,7 +26,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    
+
     public function questions(){
         return $this->hasMany('App\Question');
     }
@@ -36,15 +36,15 @@ class User extends Authenticatable
     public function city(){
         return $this->belongsTo('App\City');
     }
-    
+
      public function articles(){
         return $this->hasMany('App\Article');
     }
-    
+
      public function services(){
         return $this->hasMany('App\Service','author_id','id');
     }
-    
+
     public function doneservices(){
         return $this->hasMany('App\Service','executor_id','id');
     }
@@ -57,4 +57,7 @@ class User extends Authenticatable
      public function commentservices(){
         return $this->hasMany('App\CommentService');
     }
+    public function education(){
+       return $this->belongsTo('App\Education');
+   }
 }

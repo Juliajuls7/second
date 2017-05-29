@@ -80,10 +80,10 @@ _________________________________________________________ -->
 
                               @else
 
-                                      <a href="javascript: void(0)"   aria-expanded="false">
+                                      <a href="/users/{{Auth::user()->id}}"   aria-expanded="false">
                                           {{ Auth::user()->name }}
                                       </a>
-                                      <div class="Sigh_out">
+
                                       <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" data-toggle="modal" data-target="#login-modal"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Sign out</span></a>
 
 
@@ -91,7 +91,7 @@ _________________________________________________________ -->
                                                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                                       {{ csrf_field() }}
                                                   </form>
-                                      </div>
+
 
 
 

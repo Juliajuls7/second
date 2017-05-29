@@ -36,7 +36,7 @@
                         <div id="post-content">
 
                         <h2>{{ $question->head }}</h2>
-                        <p>{!! $question->text !!}</p>
+                        <p>{{ $question->text }}</p>
 
 
 
