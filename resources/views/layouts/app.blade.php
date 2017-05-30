@@ -7,8 +7,8 @@
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
+  <title>Secondhelp</title>
 
-  <title>{{ config('app.name', 'Secondhelp') }}</title>
   <meta name="keywords" content="">
 
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
@@ -44,6 +44,7 @@
   </script>
    <!-- Scripts -->
 
+@yield('localcss')
 </head>
 
 <body>
@@ -227,7 +228,7 @@ _________________________________________________________ -->
 
         <!-- *** LOGIN MODAL END *** -->
 
-@yield('content')
+        @yield('content')
 
 
         <!-- *** FOOTER ***
@@ -272,7 +273,7 @@ _________________________________________________________ -->
                         <div class="item same-height-row clearfix">
                             <div class="image same-height-always">
                                 <a href="#">
-                                    <img class="img-responsive" src="img/detailsquare.jpg" alt="">
+                                    <img class="img-responsive" src="/img/detailsquare.jpg" alt="">
                                 </a>
                             </div>
                             <div class="name same-height-always">
@@ -283,7 +284,7 @@ _________________________________________________________ -->
                         <div class="item same-height-row clearfix">
                             <div class="image same-height-always">
                                 <a href="#">
-                                    <img class="img-responsive" src="img/detailsquare.jpg" alt="">
+                                    <img class="img-responsive" src="/img/detailsquare.jpg" alt="">
                                 </a>
                             </div>
                             <div class="name same-height-always">
@@ -294,7 +295,7 @@ _________________________________________________________ -->
                         <div class="item same-height-row clearfix">
                             <div class="image same-height-always">
                                 <a href="#">
-                                    <img class="img-responsive" src="img/detailsquare.jpg" alt="">
+                                    <img class="img-responsive" src="/img/detailsquare.jpg" alt="">
                                 </a>
                             </div>
                             <div class="name same-height-always">
@@ -337,32 +338,32 @@ _________________________________________________________ -->
                     <div class="photostream">
                         <div>
                             <a href="#">
-                                <img src="img/detailsquare.jpg" class="img-responsive" alt="#">
+                                <img src="/img/detailsquare.jpg" class="img-responsive" alt="#">
                             </a>
                         </div>
                         <div>
                             <a href="#">
-                                <img src="img/detailsquare2.jpg" class="img-responsive" alt="#">
+                                <img src="/img/detailsquare2.jpg" class="img-responsive" alt="#">
                             </a>
                         </div>
                         <div>
                             <a href="#">
-                                <img src="img/detailsquare3.jpg" class="img-responsive" alt="#">
+                                <img src="/img/detailsquare3.jpg" class="img-responsive" alt="#">
                             </a>
                         </div>
                         <div>
                             <a href="#">
-                                <img src="img/detailsquare3.jpg" class="img-responsive" alt="#">
+                                <img src="/img/detailsquare3.jpg" class="img-responsive" alt="#">
                             </a>
                         </div>
                         <div>
                             <a href="#">
-                                <img src="img/detailsquare2.jpg" class="img-responsive" alt="#">
+                                <img src="/img/detailsquare2.jpg" class="img-responsive" alt="#">
                             </a>
                         </div>
                         <div>
                             <a href="#">
-                                <img src="img/detailsquare.jpg" class="img-responsive" alt="#">
+                                <img src="/img/detailsquare.jpg" class="img-responsive" alt="#">
                             </a>
                         </div>
                     </div>
@@ -394,10 +395,6 @@ _________________________________________________________ -->
 
         <!-- *** COPYRIGHT END *** -->
 
-
-
-
-
     </div>
         <!-- /#all -->
 
@@ -405,17 +402,20 @@ _________________________________________________________ -->
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <!-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
-        <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('/js/app.js') }}"></script>
         <!-- <script>
             window.jQuery || document.write('<script src="/js/jquery-1.11.0.min.js"><\/script>')
         </script> -->
-
+        <script>
+            window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')
+        </script>
         <script src="/js/jquery.cookie.js"></script>
         <script src="/js/waypoints.min.js"></script>
         <script src="/js/jquery.counterup.min.js"></script>
         <script src="/js/jquery.parallax-1.1.3.js"></script>
         <script src="/js/front.js"></script>
 
+          @yield('localjs')
 
 
 

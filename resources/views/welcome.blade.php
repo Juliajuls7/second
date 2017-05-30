@@ -44,10 +44,8 @@
             <link rel="apple-touch-icon" sizes="144x144" href="img/apple-touch-icon-144x144.png" />
             <link rel="apple-touch-icon" sizes="152x152" href="img/apple-touch-icon-152x152.png" />
             <!-- owl carousel css -->
-
             <link href="css/owl.carousel.css" rel="stylesheet">
             <link href="css/owl.theme.css" rel="stylesheet">
-
     </head>
     <body>
       <div id="all">
@@ -72,29 +70,18 @@ _________________________________________________________ -->
                                 <a href="#" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
                                 <a href="#" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
                             </div>
-
                             <div class="login">
                               @if (Auth::guest())
                           <a href="#" data-toggle="modal" data-target="#login-modal"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Sign in</span></a>
                           <a href="{{ route('register') }}"><i class="fa fa-user"></i> <span class="hidden-xs text-uppercase">Sign up</span></a>
-
                               @else
-
                                       <a href="/users/{{Auth::user()->id}}"   aria-expanded="false">
                                           {{ Auth::user()->name }}
                                       </a>
-
                                       <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" data-toggle="modal" data-target="#login-modal"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Sign out</span></a>
-
-
-
                                                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                                       {{ csrf_field() }}
                                                   </form>
-
-
-
-
                               @endif
 
                             </div>
@@ -895,8 +882,6 @@ _________________________________________________________ -->
     <script src="js/jquery.counterup.min.js"></script>
     <script src="js/jquery.parallax-1.1.3.js"></script>
     <script src="js/front.js"></script>
-
-
 
     <!-- owl carousel -->
     <script src="js/owl.carousel.min.js"></script>

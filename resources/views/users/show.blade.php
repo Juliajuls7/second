@@ -56,7 +56,7 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                          <h5>День рождения: <a href="#">{{$user->DOB}}</a></h5>
+                                          <h5>День рождения: <a href="#">{{ \Carbon\Carbon::parse($user->DOB)->format('d.m.Y') }}</a></h5>
                                           <h5>Пол:
                                             @if($user->sex==0)
                                               Не указан
@@ -136,7 +136,7 @@
                             </form>
 
                         </div>
-                        
+
                     </div>
                     <!-- /.col-md-9 -->
 

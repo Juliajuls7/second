@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->integer('sex')->default(0);
-            $table->date('DOB')->default('01.01.2000');
+            $table->date('DOB')->default('1950-01-01');
             $table->integer('city_id')->unsigned()->default(0);
             $table->string('phone')->default('');
             $table->string('skype')->default('');

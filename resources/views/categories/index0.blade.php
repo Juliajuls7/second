@@ -31,14 +31,14 @@
                                 <div class="form-group">
                                   <a type="button"  href="/categories/create" class="btn btn-lg btn-template-primary">Создать категорию</a>
                                 <hr>
+                                @foreach($categories as $category)
 
                                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                                @foreach($categories as $category)
 
                                  <div class="panel panel-default">
                                    <div class="panel-heading" role="tab" id="headingOne">
                                      <h4 class="panel-title">
-                                       <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$category->id}}" aria-expanded="false"  aria-controls="collapse{{$category->id}}">
+                                       <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false"  aria-controls="collapseOne">
                                       {{$category->name}}
                                        </a>
                                              <span class="read-more"><a href="categories/subcategories/{{ $category->id}}" class="btn btn-template-main">Подкатегории</a>
@@ -54,7 +54,7 @@
                                              </form>
                                      </h4>
                                    </div>
-                                             <div id="collapse{{$category->id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                             <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                                 @if (count($category->subcategories)>0)
                                                    <ul class="list-group">
                                                        @foreach ($category->subcategories as $sub)
@@ -66,8 +66,8 @@
                                                 @endif
                                              </div>
                                   </div>
-                                 @endforeach
                                </div>
+                                 @endforeach
 
                                   </div>
                                   <!-- ***  END form-group *** -->
