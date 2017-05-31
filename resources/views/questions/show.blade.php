@@ -50,7 +50,7 @@
                         <div class="row comment">
                             <div class="col-sm-3 col-md-2 text-center-xs">
                                 <p>
-                                    <img src="/img/blog-avatar2.jpg" class="img-responsive img-circle" alt="">
+                                    <img src="{{ $comment->user->photo }}" class="img-responsive img-circle" alt="">
                                 </p>
                             </div>
                             <div class="col-sm-9 col-md-10">

@@ -26,64 +26,66 @@
                       <div class="col-md-9" id="blog-listing-medium">
                         <section class="post">
                               <div class="row">
+                                <a type="button"  href="/questions/create" class="btn btn-lg btn-template-primary">Задать вопрос</a>
+                              <hr>
                                 <div class="form-group">
-
-                                  <a type="button"  href="/questions/create" class="btn btn-lg btn-template-primary">Задать вопрос</a>
-                                <hr>
                                          @foreach ($questions as $question)
-                                         <div class="col-md-4">
-                                             <div class="image">
-                                                 <a href="blog-post.html">
-                                                     <img src="/img/blog-medium.jpg" class="img-responsive" alt="Example blog post alt">
-                                                 </a>
-                                             </div>
+
+                                         <div class="col-sm-3 col-md-2 text-center-xs">
+                                             <p>
+                                                <img src="{{$question->user->photo}}" class="img-responsive img-circle" alt="">
+                                             </p>
                                          </div>
 
+                                         <div class="col-md-10">
+                                             <h2><a href="/questions/{{ $question->id }}">{{ $question->head }}</a></h2>
 
-                                         <div class="col-md-8">
-                                             <h2><a href="/question/">{{ $question->head }}</a></h2>
                                              <div class="clearfix">
-                                                 <p class="author-category">By <a href="/users">{{ $question->user->name }}</a>
+                                                 <p class="author-category">By <a href="/users/{{ $question->user->id }}">{{ $question->user->name }}</a>
                                                  </p>
-                                                 <p class="date-comments">
-                                                     <a href="#"><i class="fa fa-calendar-o"></i> {{ $question->created_at->format('D, d M Y H:i:s') }}</a>
-                                                     <a href="#"><i class="fa fa-comment-o"></i>{{ count($question->comments) }}  Comments</a>
-                                                 </p>
+
                                              </div>
                                               <p class="intro">
                                                 {!! $question->text !!}
                                               </p>
-                                             <p class="read-more"><a href="/questions/{{$question->id}}" class="btn btn-template-main">Читать далее...</a>
-                                             </p>
-                                             <p class="read-more"><a href="/questions/edit/{{$question->id}}" class="btn btn-template-main">Редактировать</a>
-                                             </p>
-                                             <p class="read-more"><a href="/questions/{{ $question->id }}"
+                                             <span class="read-more"><a href="/questions/{{$question->id}}" class="btn btn-template-main">Читать далее...</a>
+                                             </span>
+                                             <span class="read-more"><a href="/questions/edit/{{$question->id}}" class="btn btn-template-main">Редактировать</a>
+                                             </span>
+                                             <span class="read-more"><a href="/questions/{{ $question->id }}"
                                                    onclick="event.preventDefault();
                                                 document.getElementById('destroy-form{{ $question->id }}').submit();" class="btn btn-template-main">Удалить</a>
-                                             </p>
+                                             </span>
                                              <form id="destroy-form{{ $question->id }}" action="/questions/{{ $question->id }}" method="POST" style="display: none;">
                                                  {{ csrf_field() }}
                                                  {{ method_field('DELETE') }}
                                              </form>
+                                               <hr>
                                          </div>
 
 
                                         <hr>
+
                                          @endforeach
+
                                   </div>
                                   <!-- ***  END form-group *** -->
+
+                                </div>
+                                <div class="text-center" >
+                                {{ $questions->links() }}
                                 </div>
                                 <!-- ***  END row *** -->
                               </section>
                               <!-- ***  END form-group *** -->
+
                             </div>
-                                              <!-- /.col-md-9 -->
+                                          <!-- /.col-md-9 -->
 
                                               <!-- *** LEFT COLUMN END *** -->
 
                                               <!-- *** RIGHT COLUMN ***
                           			 _________________________________________________________ -->
-
 
 
                 <div class="col-md-3">
@@ -155,12 +157,16 @@ _________________________________________________________ -->
                       <!-- *** MENUS AND FILTERS END *** -->
 
                   </div>
+
+
                 </div>
-                          <!-- /.row -->
+
+                 <!-- /.row -->
               </div>
                               <!-- /.container -->
           </div>
                           <!-- /#content -->
+
 
 <script>
 // $(function() {

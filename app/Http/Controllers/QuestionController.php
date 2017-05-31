@@ -15,7 +15,8 @@ class QuestionController extends Controller
 
     public function index()
     {
-          return view('questions.index', ['questions' => Question::orderByDesc('created_at')->get()]);
+          return view('questions.index', ['questions' => Question::orderByDesc('created_at')->paginate(8)]);
+
     }
 
 
