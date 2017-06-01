@@ -43,7 +43,10 @@
                                              <div class="clearfix">
                                                  <p class="author-category">By <a href="/users/{{ $question->user->id }}">{{ $question->user->name }}</a>
                                                  </p>
-
+                                                 <p class="date-comments">
+                                                                                                     <a href="#"><i class="fa fa-calendar-o"></i> {{ $question->created_at->format('D, d M Y H:i:s') }}</a>
+                                                                                                     <a href="#"><i class="fa fa-comment-o"></i>{{ count($question->comments) }}  Comments</a>
+                                                </p>
                                              </div>
                                               <p class="intro">
                                                 {!! $question->text !!}

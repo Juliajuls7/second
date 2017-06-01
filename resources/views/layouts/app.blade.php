@@ -118,22 +118,25 @@ _________________________________________________________ -->
 
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="active">
-                                    <a href="/home" class="home">Home</a>
+                                    <a href="/home" class="home">На главную</a>
 
                                 </li>
                                 <li class="menu">
-                                    <a href="/questions" class="question" >Questions</a>
+                                    <a href="/questions" class="question" >Вопросы</a>
 
                                 </li>
                                 <li class="menu">
-                                    <a href="/categories" class="categories">Categories</a>
+                                    <a href="/categories" class="categories">Категории</a>
 
                                 </li>
                                 <li class="menu">
-                                    <a href="/cities" class="cities">Cities</a>
+                                    <a href="/cities" class="cities">Города</a>
                                 </li>
                                 <li class="menu">
-                                    <a href="/services" class="services">Service</a>
+                                    <a href="#" class="services">Услуги</a>
+                                </li>
+                                <li class="menu">
+                                    <a href="/articles" class="articles">Статьи</a>
                                 </li>
 
                             </ul>
