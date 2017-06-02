@@ -16,14 +16,14 @@ class CreateServicesTable extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('author_id')->unsigned();
-            $table->integer('flag');
+            $table->integer('flag');//задание или услуга
             $table->integer('subcategory_id')->unsigned();
             $table->string('head');
             $table->string('text');
-            $table->integer('state_service_id')->unsigned();
-            $table->integer('executor_id')->unsigned();
-	        $table->integer('rating');
-            $table->integer('remote');
+            $table->integer('state_service_id')->unsigned();//состояние задания
+            $table->integer('executor_id')->unsigned()->default(0);//кто выполнил
+	          $table->integer('rating');
+            $table->integer('remote');//удаленная
             $table->string('files')->default('');
             $table->timestamps();
         });

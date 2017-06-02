@@ -75,6 +75,7 @@ button i.fa {
 @media (max-width: 991px) {
   .text-center-sm {
     text-align: center;
+    word-wrap: break-word;
   }
 }
 p.lead {
@@ -2020,6 +2021,7 @@ fieldset[disabled] .btn-template-primary.active {
 #blog-listing-big .post .intro,
 #blog-homepage .post .intro {
   text-align: left;
+  word-wrap: break-word;
 }
 #blog-listing-big .post .image,
 #blog-homepage .post .image {
@@ -2090,6 +2092,7 @@ fieldset[disabled] .btn-template-primary.active {
 }
 #blog-listing-medium .post .intro {
   text-align: left;
+  word-wrap: break-word;
 }
 #blog-listing-medium .post .clearfix:before,
 #blog-listing-medium .post .clearfix:after,
@@ -3529,7 +3532,7 @@ a.list-group-item.active > .badge,
 /*!
  * Yamm!3 - Yet another megamenu for Bootstrap 3
  * http://geedmo.github.com/yamm3
- * 
+ *
  * @geedmo - Licensed under the MIT license
  */
 .yamm .nav,

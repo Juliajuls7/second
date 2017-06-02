@@ -111,3 +111,18 @@ Route::delete('/articles/{article}', 'ArticleController@destroy');
 Route::post('/articles/{article}/comment', 'CommentArticleController@store'); // добавить новый комментарий к вопросу
 
 
+//----------Услуги---------------------------------------------------
+// добавление
+Route::get('/services/create', 'ServiceController@create');
+Route::post('/articles', 'ArticleController@store');
+//// просмотр
+Route::get('/articles', 'ArticleController@index');
+Route::get('/articles/{id}', 'ArticleController@show'); //показать 1
+// редактирование
+Route::get('/articles/edit/{article}', 'ArticleController@edit');
+Route::put('/articles/edit/{article}', 'ArticleController@save');
+// удаление
+Route::delete('/articles/{article}', 'ArticleController@destroy');
+
+//----------КОММЕНТАРИИ К СТАТЬЯМ---------------------------------------
+Route::post('/articles/{article}/comment', 'CommentArticleController@store'); // добавить новый комментарий к вопросу

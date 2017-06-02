@@ -42,8 +42,9 @@
 <script>
 $(function() {
     $('#deleteBtn').click(function(event) {
+      event.preventDefault();
         if (confirm("Действительно хотите удалить этот город?")) {
-            event.preventDefault();
+
             document.getElementById('destroy-form').submit();
         }
     });

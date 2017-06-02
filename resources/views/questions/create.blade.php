@@ -23,12 +23,6 @@
                         <div class="form-group">
                             <label for="subcategory">Подкатегория</label>
                            <select class="form-control" id="subcategory" name = "subcategory">
-                             @foreach($categories as $category)
-                              @foreach ($category->subcategories as $subcategory)
-                                 <option value="{{$subcategory->id}}">{{$subcategory->name}}</option>
-                            @endforeach
-                             @endforeach
-
 
                             </select>
                         </div>
@@ -54,16 +48,31 @@
     </div>
 </div>
 
-<script>
-// $(function() {
-//    $('#deleteBtn').click(function(event) {
-//        if (confirm("Действительно хотите удалить этот тип?")) {
-//            event.preventDefault();
-//            document.getElementById('destroy-form').submit();
-//        }
-//    });
-// });
-//
-</script>
+@stop
 
+@section ('localjs')
+<script>
+$(function () {
+
+  function loadSub() {
+    $.get('/api/categories/sub/'+$('#category').val(), function (data) {
+      $('#subcategory').empty();
+      $.each(data, function(key, value) {
+        $('#subcategory')
+         .append($("<option></option>")
+            .attr("value",value['id'])
+            .text(value['name']));
+      });
+      $('#subcategory').prop('disabled', false);
+    });
+  }
+
+  $('#category').on('change', function() {
+    $('#subcategory').prop('disabled', 'disabled');
+    loadSub();
+  });
+
+  loadSub();
+});
+</script>
 @stop

@@ -38,14 +38,15 @@
                                          </div>
 
                                          <div class="col-md-10">
+                                           <a href="#">{{ $question->category->name }}</a> > <a href="#">{{ $question->subcategory->name }}</a>
                                              <h2><a href="/questions/{{ $question->id }}">{{ $question->head }}</a></h2>
 
                                              <div class="clearfix">
                                                  <p class="author-category">By <a href="/users/{{ $question->user->id }}">{{ $question->user->name }}</a>
                                                  </p>
                                                  <p class="date-comments">
-                                                                                                     <a href="#"><i class="fa fa-calendar-o"></i> {{ $question->created_at->format('D, d M Y H:i:s') }}</a>
-                                                                                                     <a href="#"><i class="fa fa-comment-o"></i>{{ count($question->comments) }}  Comments</a>
+                                                     <a href="#"><i class="fa fa-calendar-o"></i> {{ $question->created_at->diffForHumans() }}</a>
+                                                     <a href="#"><i class="fa fa-comment-o"></i>{{ count($question->comments) }}  Comments</a>
                                                 </p>
                                              </div>
                                               <p class="intro">

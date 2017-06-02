@@ -32,7 +32,9 @@
                 <div class="col-md-9" id="blog-post">
 
 
-                    <p class="text-muted text-uppercase mb-small text-right">By <a href="/users">{{ $question->user->name }}</a> {{ $question->created_at->format('D, d M Y H:i:s') }}</p>
+                    <p class="text-muted text-uppercase mb-small text-right">Создано <a href="/users">{{ $question->user->name }}</a> {{ $question->created_at->diffForHumans() }}</p>
+                    <p class="text-muted text-uppercase mb-small text-right"> <a href="#">{{ $question->category->name }}</a> > <a href="#">{{ $question->subcategory->name }}</a></p>
+
                         <div id="post-content">
 
                         <h2>{{ $question->head }}</h2>
@@ -44,7 +46,7 @@
                     <!-- /#post-content -->
 
                     <div id="comments">
-                        <h4 class="text-uppercase">{{ count($question->comments) }} comments</h4>
+                        <h4 class="text-uppercase">Комментарии</h4>
 
                           @foreach ($comments as $comment)
                         <div class="row comment">
@@ -69,7 +71,7 @@
 
 
                     <div id="comment-form">
-                        <h4 class="text-uppercase">Leave comment</h4>
+                        <h4 class="text-uppercase">Оставить комментарий</h4>
                         <form action="/questions/{{ $question->id }}/comment" method="POST">
                           {{ csrf_field() }}
 
@@ -77,7 +79,7 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label for="text">Comment</label>
+                                        <label for="text">Комментарий</label>
                                         <textarea name="text" id="text" class="form-control"  rows="4"></textarea>
                                     </div>
                                 </div>
@@ -85,7 +87,7 @@
 
                             <div class="row">
                                 <div class="col-sm-12 text-right">
-                                    <button class="btn btn-template-main"><i class="fa fa-comment-o"></i> Post comment</button>
+                                    <button class="btn btn-template-main"><i class="fa fa-comment-o"></i> Отправить</button>
                                 </div>
                             </div>
                         </form>

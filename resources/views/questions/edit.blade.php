@@ -11,7 +11,7 @@
                       <ul class="breadcrumb">
                           <li><a href="/home">Home</a>
                           </li>
-                          <li><a href="/questions">Questions</a>
+                          <li><a href="/questions">Вопросы</a>
                           </li>
                           <li>Редактирование вопроса</li>
                       </ul>
@@ -22,129 +22,91 @@
 
 
 
-
+  
       <div class="container">
-
           <div class="row">
-              <div class="col-md-6">
-                  <div class="box">
-                      <h2 class="text-uppercase">Редактирование вопроса</h2>
-                      <hr>
+              <div class="col-md-8 col-md-offset-2">
+                  <div class="panel panel-default">
+                      <div class="panel-heading">Редактирование вопроса</div>
 
-                      <form class="form-horizontal" role="form" action="/questions/edit/{{ $question->id }}" method="post">
-                          {{ csrf_field() }}
-                          <div class="form-group">
-                            <label for="category">Категория</label>
-                            <select class="form-control" id="category" name = "category">
-                              @foreach($categories as $category)
-                                 <option value="{{$category->id}}"
-                                 @if($category->id == $question->category_id)
-                                 selected
-                                 @endif
-                                 >{{$category->name}}</option>
-                             @endforeach
-                            </select>
-                          </div>
+                      <div class="panel-body">
+                            <form class="form-horizontal" role="form" action="/questions/edit/{{ $question->id }}" method="post">
+                            <div class="form-group">
+                                <label for="category">Категория</label>
+                               <select class="form-control" id="category" name = "category">
 
-                          <div class="form-group">
-                            <label for="subcategory">Подкатегория</label>
-                            <select class="form-control" id="subcategory" name = "subcategory">
-                              @foreach ($category->subcategories as $subcategory)
-                                  <option value="{{$subcategory->id}}"
-                                    @if($subcategory->id == $question->subcategory_id)
+                                   @foreach($categories as $category)
+                                      <option value="{{$category->id}}"
+                                      @if($category->id == $question->category_id)
                                       selected
                                       @endif
-                                  >{{$subcategory->name}}</option>
-                              @endforeach
-                            </select>
-                          </div>
+                                      >{{$category->name}}</option>
+                                  @endforeach
+                                 </select>
 
-                          <div class="form-group">
-                              <label for="email">Email</label>
+                            </div>
 
-                                  <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
-                                  @if ($errors->has('email'))
-                                      <span class="help-block">
-                                          <strong>{{ $errors->first('email') }}</strong>
-                                      </span>
-                                  @endif
+                              <div class="form-group">
+                                  <label for="subcategory">Подкатегория</label>
+                                 <select class="form-control" id="subcategory" name = "subcategory">
+                                   @foreach ($category->subcategories as $subcategory)
+                                       <option value="{{$subcategory->id}}"
+                                         @if($subcategory->id == $question->subcategory_id)
+                                           selected
+                                           @endif
+                                       >{{$subcategory->name}}</option>
+                                   @endforeach
+                                  </select>
+                              </div>
 
-                          </div>
-                          <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                              <label for="password">Password</label>
-                              <input id="password" type="password" class="form-control" name="password" required>
+                              <div class="form-group">
+                              <label for="head">Заголовок</label>
+                                    <input class="form-control" type="text" id="head" name="head" value="{{ $question->head }}">
+                              </div>
 
-                              @if ($errors->has('password'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('password') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
+                                <div class="form-group">
+                              <label for="text">Текст вопроса</label>
+                                    <textarea class="form-control" type="text" id="text" name="text" rows="3">{{ $question->text }}</textarea>
+                              </div>
+                              {{ csrf_field() }}
+                               {{ method_field('PUT') }}
 
-                          <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                              <label for="password-confirm">Confirm Password</label>
-                              <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                          </div>
-                          <div class="text-center">
-                              <button type="submit" class="btn btn-template-main"><i class="fa fa-user-md"></i> Register</button>
-                          </div>
-                      </form>
+
+
+                              <button class="btn btn-default" type="submit">Сохранить</button>
+                          </form>
+                      </div>
                   </div>
               </div>
-
-
-
           </div>
-          <!-- /.row -->
-
       </div>
-      <!-- /.container -->
 
+      @stop
 
+      @section ('localjs')
+      <script>
+      $(function () {
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Редактирование вопроса</div>
+        function loadSub() {
+          $.get('/api/categories/sub/'+$('#category').val(), function (data) {
+            $('#subcategory').empty();
+            $.each(data, function(key, value) {
+              $('#subcategory')
+               .append($("<option></option>")
+                  .attr("value",value['id'])
+                  .text(value['name']));
+            });
+            $('#subcategory').prop('disabled', false);
+          });
+        }
 
-                <div class="panel-body">
-                   <form action="/questions/edit/{{ $question->id }}" method="post">
-                        <div class="form-group">
-                            <label for="subcategory">Подкатегория</label>
-                           <select class="form-control" id="subcategory" name = "subcategory">
-                              @foreach($subcategories as $subcategory)
-                                 <option value="{{$subcategory->id}}"
-                                 @if($subcategory->id == $question->subcategory_id)
-                                 selected
-                                 @endif
-                                 >{{$subcategory->name}}</option>
-                             @endforeach
-                            </select>
+        $('#category').on('change', function() {
+          $('#subcategory').prop('disabled', 'disabled');
+          loadSub();
+        });
 
-
-                        </div>
-
-                        <div class="form-group">
-                        <label for="head">Заголовок</label>
-
-                            <input class="form-control" type="text" id="head" name="head" value="{{ $question->head }}">
-                        </div>
-
-                          <div class="form-group">
-                        <label for="text">Текст вопроса</label>
-                            <textarea class="form-control" type="text" id="text" name="text" rows="3">{{ $question->text }}</textarea>
-                        </div>
-                        {{ csrf_field() }}
-                         {{ method_field('PUT') }}
-
-
-                        <button class="btn btn-default" type="submit">Сохранить</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@stop
+        loadSub();
+      });
+      </script>
+      @stop
