@@ -38,7 +38,7 @@
                                          </div>
 
                                          <div class="col-md-10">
-                                           <a href="#">{{ $question->category->name }}</a> > <a href="#">{{ $question->subcategory->name }}</a>
+                                           <a href="#">{{ $question->subcategory->category->name }}</a> > <a href="#">{{ $question->subcategory->name }}</a>
                                              <h2><a href="/questions/{{ $question->id }}">{{ $question->head }}</a></h2>
 
                                              <div class="clearfix">

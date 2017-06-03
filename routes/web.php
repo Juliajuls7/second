@@ -83,7 +83,7 @@ Route::post('/questions/{question}/comment', 'CommentQuestionController@store');
 Route::get('/users/create', 'UserController@create');
 Route::post('/users', 'UserController@store');
 //// просмотр
-Route::get('/users', 'UserController@index');
+Route::get('/users', 'UserController@index')->middleware('admin');
 Route::get('/users/{id}', 'UserController@show'); //показать 1
 // редактирование
 Route::get('/users/edit/{id}', 'UserController@edit');

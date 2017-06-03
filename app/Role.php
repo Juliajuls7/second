@@ -10,4 +10,3 @@ class Role extends Model
         return $this->hasMany('App\User');
     }
 }
-}

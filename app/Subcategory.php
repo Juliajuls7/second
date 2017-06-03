@@ -15,4 +15,8 @@ class Subcategory extends Model
      public function services(){
         return $this->hasMany('App\Service');
     }
+    public function category(){
+        return $this->belongsTo('App\Category');
+    }
+
 }

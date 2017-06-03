@@ -33,7 +33,7 @@
 
 
                     <p class="text-muted text-uppercase mb-small text-right">Создано <a href="/users">{{ $question->user->name }}</a> {{ $question->created_at->diffForHumans() }}</p>
-                    <p class="text-muted text-uppercase mb-small text-right"> <a href="#">{{ $question->category->name }}</a> > <a href="#">{{ $question->subcategory->name }}</a></p>
+                    <p class="text-muted text-uppercase mb-small text-right"> <a href="#">{{ $question->subcategory->category->name}}</a> > <a href="#">{{ $question->subcategory->name }}</a></p>
 
                         <div id="post-content">
 

@@ -125,13 +125,14 @@ _________________________________________________________ -->
                                     <a href="/questions" class="question" >Вопросы</a>
 
                                 </li>
+                                @if (Role::admin())
                                 <li class="menu">
                                     <a href="/categories" class="categories">Категории</a>
-
                                 </li>
                                 <li class="menu">
                                     <a href="/cities" class="cities">Города</a>
                                 </li>
+                                @endif
                                 <li class="menu">
                                     <a href="#" class="services">Услуги</a>
                                 </li>

@@ -29,7 +29,7 @@ class CreateUsersTable extends Migration
             $table->string('skills')->default('');
             $table->integer('education_id')->unsigned()->default(0);
             $table->string('about_myself')->default('');
-            $table->integer('role_id')->unsigned()->default(0);
+            $table->integer('role_id')->unsigned()->default(1);
             $table->string('photo')->default('/img/icon_user.png');
             $table->rememberToken();
             $table->timestamps();

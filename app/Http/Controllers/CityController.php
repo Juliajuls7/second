@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 class CityController extends Controller
 {
     public function __construct() {
-        $this->middleware('auth');
+        $this->middleware(['auth','admin']);
     }
-    
+
     public function index()
     {
          return view ('cities.index', [
@@ -17,7 +17,7 @@ class CityController extends Controller
         ]);
     }
 
-    
+
     public function create()
     {
         return view ('cities.create');
@@ -34,38 +34,38 @@ class CityController extends Controller
        $this->validate($request,[
             'name' => 'unique:cities|required|min:2|max:255'
         ]);
-        
+
         $city = new City();
         $city->name = $request->name;
         $city->save();
-        
+
         return redirect('/cities');
     }
 
-   
-   
+
+
     public function edit($id)
     {
         return view ('cities.edit', [
-           'city' => City::findOrFail($id) 
+           'city' => City::findOrFail($id)
         ]);
     }
 
-   
+
     public function save(Request $request, $id)
     {
         $this->validate($request,[
             'name' => 'unique:cities|required|min:3|max:255'
         ]);
-        
+
         $city = City::findOrFail($id);
         $city->name = $request->name;
         $city->save();
-        
+
         return redirect('/cities');
     }
 
- 
+
     public function destroy($id)
     {
          City::findOrFail($id)->delete();

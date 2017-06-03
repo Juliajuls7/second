@@ -14,9 +14,9 @@ class Question extends Model
         return $this->belongsTo('App\Subcategory');
     }
 
-    public function category(){
-       return $this->belongsTo('App\Category');
-   }
+  //   public function category(){
+  //      return $this->belongsTo('App\Category');
+  //  }
       public function comments(){
         return $this->hasMany('App\CommentQuestion');
     }
