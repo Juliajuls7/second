@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('phone')->default('');
             $table->string('skype')->default('');
             $table->integer('rating')->default(0);
-            $table->string('activities')->default('');
+            $table->integer('activities')->default('0');
             $table->string('skills')->default('');
             $table->integer('education_id')->unsigned()->default(0);
             $table->string('about_myself')->default('');
