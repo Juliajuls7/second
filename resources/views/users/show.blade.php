@@ -5,14 +5,14 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-7">
-                        <h1>My account</h1>
+                        <h1>Мой аккаунт</h1>
                     </div>
                     <div class="col-md-5">
                         <ul class="breadcrumb">
 
-                            <li><a href="index.html">Home</a>
+                            <li><a href="/">На главную</a>
                             </li>
-                            <li>My account</li>
+                            <li>Мой аккаунт</li>
                         </ul>
                     </div>
                 </div>

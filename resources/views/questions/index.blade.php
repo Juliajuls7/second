@@ -5,13 +5,13 @@
           <div class="container">
               <div class="row">
                   <div class="col-md-6">
-                      <h1>Questions</h1>
+                      <h1>Вопросы</h1>
                   </div>
                   <div class="col-md-6">
                       <ul class="breadcrumb">
-                          <li><a href="/home">Home</a>
+                          <li><a href="/">На главную</a>
                           </li>
-                          <li>Questions</li>
+                          <li>Вопросы</li>
                       </ul>
 
                   </div>

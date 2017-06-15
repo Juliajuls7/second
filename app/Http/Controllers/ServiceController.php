@@ -15,72 +15,60 @@ class ServiceController extends Controller
 
   public function index()
   {
-        return view('questions.index', ['questions' => Question::orderByDesc('created_at')->paginate(8)]);
+        return view('services.index', ['services' => Service::orderByDesc('created_at')->paginate(8)]);
 
   }
-
-
   public function create()
   {
-    return view ('questions.create', [
+    return view ('service.create', [
       'categories' => Category::all()
+
     ]);
   }
-
-
   public function store(Request $request)
   {
-      $question = new Question();
-      $question->category_id = $request->category;
-      $question->subcategory_id = $request->subcategory;
-      $question->head = $request->head;
-      $question->text = $request->text;
-      $request->user()->questions()->save($question);
+      $service = new Service();
 
-      return redirect('/questions');
+      $service->subcategory_id = $request->subcategory;
+      $service->head = $request->head;
+      $service->text = $request->text;
+      $service->t_finish = $request->t_finish;
+      $service->t_start = $request->t_start;
+      $service->remote = $request->remote;
+      $service->user()->services()->save($service);
+
+      return redirect('/services');
   }
-
-
   public function show($id)
   {
-      $question = Question::findOrFail($id);
+      $service = Service::findOrFail($id);
 
-      return view ('questions.show', [
-        'question' => $question,
-        'comments' => $question->comments
+      return view ('services.show', [
+        'service' => $service,
+        'comments' => $service->comments
       ]);
   }
-
-
   public function edit($id)
   {
 
-      return view('questions.edit',['question'=>Question::findOrFail($id),'categories'=> Category::all()]);
+      return view('services.edit',['service'=>Service::findOrFail($id),'categories'=> Category::all()]);
   }
-
-
   public function save(Request $request, $id)
   {
-      $question = Question::findOrFail($id);
-      $question->category_id = $request->category;
-      $question->subcategory_id = $request->subcategory;
-      //$question->user_id = $request->user;
-      $question->head = $request->head;
-      $question->text = $request->text;
-      $question->save();
-      return redirect('/questions');
+      $service = Question::findOrFail($id);
+      $service->subcategory_id = $request->subcategory;
+      $service->head = $request->head;
+      $service->text = $request->text;
+      $service->t_finish = $request->t_finish;
+      $service->t_start = $request->t_start;
+      $service->remote = $request->remote;
+      $service->save();
+      return redirect('/services');
   }
-
-  /**
-   * Remove the specified resource from storage.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
   public function destroy($id)
   {
      Question::findOrFail($id)->delete();
-      return redirect('/questions');
+      return redirect('/services');
   }
 
 }

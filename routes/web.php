@@ -11,13 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 //----------ГОРОДА--------------------------------------------------
 
@@ -114,15 +114,15 @@ Route::post('/articles/{article}/comment', 'CommentArticleController@store'); //
 //----------Услуги---------------------------------------------------
 // добавление
 Route::get('/services/create', 'ServiceController@create');
-Route::post('/articles', 'ArticleController@store');
+Route::post('/services', 'ServiceController@store');
 //// просмотр
-Route::get('/articles', 'ArticleController@index');
-Route::get('/articles/{id}', 'ArticleController@show'); //показать 1
+Route::get('/services', 'ServiceController@index');
+Route::get('/services/{id}', 'ServiceController@show'); //показать 1
 // редактирование
-Route::get('/articles/edit/{article}', 'ArticleController@edit');
-Route::put('/articles/edit/{article}', 'ArticleController@save');
+Route::get('/services/edit/{service}', 'ServiceController@edit');
+Route::put('/services/edit/{service}', 'ServiceController@save');
 // удаление
-Route::delete('/articles/{article}', 'ArticleController@destroy');
+Route::delete('/services/{service}', 'ServiceController@destroy');
 
 //----------КОММЕНТАРИИ К СТАТЬЯМ---------------------------------------
-Route::post('/articles/{article}/comment', 'CommentArticleController@store'); // добавить новый комментарий к вопросу
+Route::post('/services/{service}/comment', 'ServiceController@store'); // добавить новый комментарий к вопросу

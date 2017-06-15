@@ -37,6 +37,7 @@
   <link rel="apple-touch-icon" sizes="120x120" href="img/apple-touch-icon-120x120.png" />
   <link rel="apple-touch-icon" sizes="144x144" href="img/apple-touch-icon-144x144.png" />
   <link rel="apple-touch-icon" sizes="152x152" href="img/apple-touch-icon-152x152.png" />
+  <link href="https://fonts.googleapis.com/css?family=Leckerli+One|Pacifico" rel="stylesheet">
   <script>
       window.Laravel = {!! json_encode([
           'csrfToken' => csrf_token(),
@@ -57,7 +58,7 @@ _________________________________________________________ -->
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-5 contact">
-                            <p class="hidden-sm hidden-xs">Contact us on +420 777 555 333 or hello@universal.com.</p>
+                            <p class="hidden-sm hidden-xs"></p>
                             <p class="hidden-md hidden-lg"><a href="#" data-animate-hover="pulse"><i class="fa fa-phone"></i></a>  <a href="#" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
                             </p>
                         </div>
@@ -71,14 +72,14 @@ _________________________________________________________ -->
 
                             <div class="login">
                                   @if (Auth::guest())
-                              <a href="#" data-toggle="modal" data-target="#login-modal"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Sign in</span></a>
-                              <a href="{{ route('register') }}"><i class="fa fa-user"></i> <span class="hidden-xs text-uppercase">Sign up</span></a>
+                              <a href="#" data-toggle="modal" data-target="#login-modal"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Вход</span></a>
+                              <a href="{{ route('register') }}"><i class="fa fa-user"></i> <span class="hidden-xs text-uppercase">Регистрация</span></a>
 
                                   @else
                                   <a href="/users/{{Auth::user()->id}}"   aria-expanded="false">
                                       {{ Auth::user()->name }}
                                   </a>
-                                  <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Sign out</span></a>
+                                  <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Выход</span></a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}
                                     </form>
@@ -103,7 +104,7 @@ _________________________________________________________ -->
 
                             <a class="navbar-brand home" href="/home">
                                 <img src="/img/logo.png" alt="Universal logo" class="hidden-xs hidden-sm">
-                                <img src="/img/logo-small.png" alt="Universal logo" class="visible-xs visible-sm"><span class="sr-only">Universal - go to homepage</span>
+
                             </a>
                             <div class="navbar-buttons">
                                 <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
@@ -118,7 +119,7 @@ _________________________________________________________ -->
 
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="active">
-                                    <a href="/home" class="home">На главную</a>
+                                    <a href="/" class="home">На главную</a>
 
                                 </li>
                                 <li class="menu">
@@ -134,7 +135,7 @@ _________________________________________________________ -->
                                 </li>
                                 @endif
                                 <li class="menu">
-                                    <a href="#" class="services">Услуги</a>
+                                    <a href="/services" class="services">Услуги</a>
                                 </li>
                                 <li class="menu">
                                     <a href="/articles" class="articles">Статьи</a>
@@ -178,57 +179,58 @@ _________________________________________________________ -->
         <!-- *** LOGIN MODAL ***
 _________________________________________________________ -->
 
-        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
-            <div class="modal-dialog modal-sm">
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
 
-              <div class="modal-content">
-                  <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                      <h4 class="modal-title" id="Login">User login</h4>
-                  </div>
-                  <div class="modal-body">
-                      <form role="form" method="POST" action="{{ route('login') }}">
-                            {{ csrf_field() }}
-                          <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                              <input id="email" type="email" class="form-control" name="email" placeholder="email" value="{{ old('email') }}" required>
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="Login">Авторизация</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" method="POST" action="{{ route('login') }}">
+                      {{ csrf_field() }}
+                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <input id="email" type="email" class="form-control" name="email" placeholder="email" value="{{ old('email') }}" required>
 
-                              @if ($errors->has('email'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('email') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
-                          <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                              <input id="password" type="password" class="form-control" name="password" placeholder="password" required>
+                        @if ($errors->has('email'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <input id="password" type="password" class="form-control" name="password" placeholder="пароль" required>
 
-                              @if ($errors->has('password'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('password') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
-                          <div class="form-group">
+                        @if ($errors->has('password'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('password') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                    <div class="form-group">
 
-                                  <div class="checkbox">
-                                      <label>
-                                          <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                      </label>
-                                  </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Запомнить меня
+                                </label>
+                            </div>
 
-                          </div>
-                          <p class="text-center">
-                              <button class="btn btn-template-main"><i class="fa fa-sign-in"></i> Log in</button>
-                          </p>
+                    </div>
+                    <p class="text-center">
+                        <button class="btn btn-template-main"><i class="fa fa-sign-in"></i> Вход</button>
+                    </p>
 
-                      </form>
+                </form>
 
-                      <p class="text-center text-muted">Not registered yet?</p>
-                      <p class="text-center text-muted"><a href="{{ route('register') }}"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
+                <p class="text-center text-muted">Еще не зарегистрированы?</p>
+                <p class="text-center text-muted"><a href="{{ route('register') }}"><strong>Зарегистрируйтесь </strong></a>сейчас! Это легко и займет всего 1&nbsp;минуту!</p>
 
-                  </div>
-              </div>
             </div>
         </div>
+    </div>
+</div>
+
 
         <!-- *** LOGIN MODAL END *** -->
 

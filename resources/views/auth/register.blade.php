@@ -6,13 +6,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-7">
-                <h1>Register</h1>
+                <h1>Регистрация</h1>
             </div>
             <div class="col-md-5">
                 <ul class="breadcrumb">
-                    <li><a href="/home">Home</a>
+                    <li><a href="/home">На главную</a>
                     </li>
-                    <li>Register</li>
+                    <li>Регистрация</li>
                 </ul>
 
             </div>
@@ -24,18 +24,18 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="box">
-                            <h2 class="text-uppercase">New account</h2>
+                            <h2 class="text-uppercase">Новый аккаунт</h2>
 
-                            <p class="lead">Not our registered customer yet?</p>
-                            <p>With registration with us new world of fashion, fantastic discounts and much more opens to you! The whole process will not take you more than a minute!</p>
-                            <p class="text-muted">If you have any questions, please feel free to <a href="contact.html">contact us</a>, our customer service center is working for you 24/7.</p>
+                            <p class="lead">Еще не зарегестрированы?</p>
+                            <p>Присоединяйтесь к нам!</p>
+                            <p class="text-muted">Если у вас возникнут вопросы, <a href="contact.html"> обращайтесь к нам</a>, наш сервис работает для вас 24/7.</p>
 
                             <hr>
 
                             <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
                                 {{ csrf_field() }}
                                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                    <label for="name">Name</label>
+                                    <label for="name">Имя</label>
 
                                     <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required>
 
@@ -59,7 +59,7 @@
 
                                 </div>
                                 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                    <label for="password">Password</label>
+                                    <label for="password">Пароль</label>
                                     <input id="password" type="password" class="form-control" name="password" required>
 
                                     @if ($errors->has('password'))
@@ -70,11 +70,11 @@
                                 </div>
 
                                 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                    <label for="password-confirm">Confirm Password</label>
+                                    <label for="password-confirm">Повторите пароль</label>
                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-template-main"><i class="fa fa-user-md"></i> Register</button>
+                                    <button type="submit" class="btn btn-template-main"><i class="fa fa-user-md"></i> Зарегистрироваться</button>
                                 </div>
                             </form>
                         </div>

@@ -1,6 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>Восстановление доступа к аккаунту</h1>
+            </div>
+            <div class="col-md-5">
+                <ul class="breadcrumb">
+                    <li><a href="/home">На главную</a>
+                    </li>
+                    <li>Восстановление доступа к аккаунту</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">

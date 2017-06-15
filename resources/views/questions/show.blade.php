@@ -9,9 +9,9 @@
                   </div>
                   <div class="col-md-5">
                       <ul class="breadcrumb">
-                          <li><a href="/home">Home</a>
+                          <li><a href="/">На главную</a>
                           </li>
-                          <li><a href="/questions">Questions</a>
+                          <li><a href="/questions">Вопросы</a>
                           </li>
                           <li>Просмотр вопроса</li>
                       </ul>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Subcategory;
 use App\Article;
+use App\Category;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -13,13 +14,13 @@ class ArticleController extends Controller
 
     public function index()
     {
-          return view('articles.index', ['articles' => Article::orderByDesc('created_at')->get()]);
+          return view('articles.index', ['articles' => Article::orderByDesc('created_at')->paginate(8)]);
     }
 
 
     public function create()
     {
-        return view('articles.create',['subcategories'=> Subcategory::all()]);
+        return view('articles.create',['categories'=> Category::all()]);
     }
 
 
@@ -50,7 +51,7 @@ class ArticleController extends Controller
     {
         return view('articles.edit',[
           'article'=> $article,
-          'subcategories'=> Subcategory::all(),
+          'categories'=> Category::all(),
 
         ]);
     }

@@ -19,7 +19,7 @@ class CreateArticlesTable extends Migration
             $table->integer('subcategory_id')->unsigned();
 
             $table->string('head');
-            $table->string('text');
+            $table->text('text');
             $table->integer('rating');
             $table->timestamps();
         });
