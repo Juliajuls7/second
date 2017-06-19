@@ -18,8 +18,6 @@
               </div>
           </div>
       </div>
-
-
       <div id="content">
                 <div class="container">
                     <div class="row">
@@ -54,27 +52,25 @@
                                               </p>
                                              <span class="read-more"><a href="/questions/{{$question->id}}" class="btn btn-template-main">Читать далее...</a>
                                              </span>
+                                               @if (Role::check($question)||Role::admin())
                                              <span class="read-more"><a href="/questions/edit/{{$question->id}}" class="btn btn-template-main">Редактировать</a>
                                              </span>
                                              <span class="read-more"><a href="/questions/{{ $question->id }}"
                                                    onclick="event.preventDefault();
                                                 document.getElementById('destroy-form{{ $question->id }}').submit();" class="btn btn-template-main">Удалить</a>
                                              </span>
+                                             @endif
                                              <form id="destroy-form{{ $question->id }}" action="/questions/{{ $question->id }}" method="POST" style="display: none;">
                                                  {{ csrf_field() }}
                                                  {{ method_field('DELETE') }}
                                              </form>
+
                                                <hr>
                                          </div>
-
-
                                         <hr>
-
                                          @endforeach
-
                                   </div>
                                   <!-- ***  END form-group *** -->
-
                                 </div>
                                 <div class="text-center" >
                                 {{ $questions->links() }}
@@ -82,18 +78,12 @@
                                 <!-- ***  END row *** -->
                               </section>
                               <!-- ***  END form-group *** -->
-
                             </div>
                                           <!-- /.col-md-9 -->
-
                                               <!-- *** LEFT COLUMN END *** -->
-
                                               <!-- *** RIGHT COLUMN ***
                           			 _________________________________________________________ -->
-
-
                 <div class="col-md-3">
-
                       <!-- *** MENUS AND WIDGETS ***
 _________________________________________________________ -->
                       <div class="panel panel-default sidebar-menu">
@@ -101,41 +91,31 @@ _________________________________________________________ -->
                           <div class="panel-heading">
                               <h3 class="panel-title">Text widget</h3>
                           </div>
-
                           <div class="panel-body text-widget">
                               <p>Improved own provided blessing may peculiar domestic. Sight house has sex never. No visited raising gravity outward subject my cottage mr be. Hold do at tore in park feet near my case.
                               </p>
-
                           </div>
                       </div>
-
                       <div class="panel panel-default sidebar-menu">
-
                           <div class="panel-heading">
                               <h3 class="panel-title">Search</h3>
                           </div>
-
                           <div class="panel-body">
                               <form role="search">
                                   <div class="input-group">
                                       <input type="text" class="form-control" placeholder="Search">
                                       <span class="input-group-btn">
-
-      <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
-
-  </span>
-                                  </div>
+                                      <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+                                  </span>
+                                </div>
                               </form>
                           </div>
                       </div>
-
                     @includeIf('questions.partials.categories')
-
                       <div class="panel sidebar-menu">
                           <div class="panel-heading">
                               <h3 class="panel-title">Tags</h3>
                           </div>
-
                           <div class="panel-body">
                               <ul class="tag-cloud">
                                   <li><a href="#"><i class="fa fa-tags"></i> html5</a>
@@ -157,21 +137,14 @@ _________________________________________________________ -->
                               </ul>
                           </div>
                       </div>
-
                       <!-- *** MENUS AND FILTERS END *** -->
-
                   </div>
-
-
                 </div>
-
                  <!-- /.row -->
               </div>
-                              <!-- /.container -->
+                        <!-- /.container -->
           </div>
                           <!-- /#content -->
-
-
 <script>
 // $(function() {
 //    $('#deleteBtn').click(function(event) {

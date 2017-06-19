@@ -62,9 +62,7 @@ class QuestionController extends Controller
     public function save(Request $request, $id)
     {
         $question = Question::findOrFail($id);
-        // $question->category_id = $request->category;
         $question->subcategory_id = $request->subcategory;
-        //$question->user_id = $request->user;
         $question->head = $request->head;
         $question->text = $request->text;
         $question->save();

@@ -19,8 +19,6 @@
               </div>
           </div>
       </div>
-
-
 <div id="content">
         <div class="container">
 
@@ -32,7 +30,7 @@
                 <div class="col-md-9" id="blog-post">
 
 
-                    <p class="text-muted text-uppercase mb-small text-right">Создано <a href="/users">{{ $question->user->name }}</a> {{ $question->created_at->diffForHumans() }}</p>
+                    <p class="text-muted text-uppercase mb-small text-right">Автор <a href="/users">{{ $question->user->name }}</a> | {{ $question->created_at->diffForHumans() }}</p>
                     <p class="text-muted text-uppercase mb-small text-right"> <a href="#">{{ $question->subcategory->category->name}}</a> > <a href="#">{{ $question->subcategory->name }}</a></p>
 
                         <div id="post-content">

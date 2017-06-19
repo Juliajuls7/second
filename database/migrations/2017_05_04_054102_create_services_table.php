@@ -1,17 +1,9 @@
 <?php
-
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-
 class CreateServicesTable extends Migration
-{
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+{    public function up()
     {
         Schema::create('services', function (Blueprint $table) {
             $table->increments('id');
@@ -23,18 +15,13 @@ class CreateServicesTable extends Migration
             $table->dateTime('t_start')->default(\Carbon\Carbon::now());
             $table->integer('state_service_id')->unsigned()->default(1);//состояние задания
             $table->integer('executor_id')->unsigned()->default(0);//кто выполнил
-	          $table->integer('rating')->default(0);
+            $table->integer('price')->default(0);
+            $table->integer('review_id')->unsigned()->default(0);;
             $table->integer('remote')->default(0);//удаленная
             $table->string('files')->default('');
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('services');

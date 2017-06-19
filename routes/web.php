@@ -108,7 +108,7 @@ Route::put('/articles/edit/{article}', 'ArticleController@save');
 Route::delete('/articles/{article}', 'ArticleController@destroy');
 
 //----------КОММЕНТАРИИ К СТАТЬЯМ---------------------------------------
-Route::post('/articles/{article}/comment', 'CommentArticleController@store'); // добавить новый комментарий к вопросу
+Route::post('/articles/{article}/comment', 'CommentArticleController@store'); // добавить новый комментарий к статье
 
 
 //----------Услуги---------------------------------------------------
@@ -125,4 +125,4 @@ Route::put('/services/edit/{service}', 'ServiceController@save');
 Route::delete('/services/{service}', 'ServiceController@destroy');
 
 //----------КОММЕНТАРИИ К СТАТЬЯМ---------------------------------------
-Route::post('/services/{service}/comment', 'ServiceController@store'); // добавить новый комментарий к вопросу
+Route::post('/services/{service}/comment', 'CommentServiceController@store'); // добавить новый комментарий к заданию

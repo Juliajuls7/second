@@ -20,7 +20,7 @@ class ServiceController extends Controller
   }
   public function create()
   {
-    return view ('service.create', [
+    return view ('services.create', [
       'categories' => Category::all()
 
     ]);
@@ -34,8 +34,11 @@ class ServiceController extends Controller
       $service->text = $request->text;
       $service->t_finish = $request->t_finish;
       $service->t_start = $request->t_start;
-      $service->remote = $request->remote;
-      $service->user()->services()->save($service);
+
+      if (null!==$request->remote) $service->remote=1;
+      else $service->remote=0;
+
+      $request->user()->services()->save($service);
 
       return redirect('/services');
   }

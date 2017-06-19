@@ -16,6 +16,8 @@ class Role {
     }
   }
 
+
+
   // является ли текущий пользователь администратором
   public function admin()
   {
@@ -35,5 +37,10 @@ class Role {
   public function banned()
   {
     return $this->role=='banned';
+  }
+
+  public function check($self)
+  {
+    return $self->user->id == Auth::user()->id;
   }
 }

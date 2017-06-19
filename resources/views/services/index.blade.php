@@ -6,13 +6,13 @@
           <div class="container">
               <div class="row">
                   <div class="col-md-6">
-                      <h1>Статьи</h1>
+                      <h1>Задания</h1>
                   </div>
                   <div class="col-md-6">
                       <ul class="breadcrumb">
                           <li><a href="/">На главную</a>
                           </li>
-                          <li>Статьи</li>
+                          <li>Задания</li>
                       </ul>
 
                   </div>
@@ -36,7 +36,8 @@
                                 </div>
 
                                 <div class="panel-body text-widget">
-                                    <p>Improved own provided blessing may peculiar domestic. Sight house has sex never. No visited raising gravity outward subject my cottage mr be. Hold do at tore in park feet near my case.
+                                    <p>Создавайте задания и выбирайте исполнителей.
+                                      Или становитесь исполнителем, заполняйте аккаунт повышайте рейтинг и зарабатывайте деньги
                                     </p>
 
                                 </div>
@@ -62,7 +63,7 @@
                                 </div>
                             </div>
 
-                          @includeIf('questions.partials.categories')
+                          <!-- @includeIf('questions.partials.categories') -->
 
                             <div class="panel sidebar-menu">
                                 <div class="panel-heading">
@@ -100,29 +101,50 @@
                       <div class="col-md-9" id="blog-listing-medium">
                         <section class="post">
                               <div class="row">
-                                <a type="button"  href="/service/create" class="btn btn-lg btn-template-primary">Создать задание</a>
+                                <a type="button"  href="/services/create" class="btn btn-lg btn-template-primary">Создать задание</a>
+
                               <hr>
                                 <div class="form-group">
-                                         @foreach ($services as $service)
-
-                                         <div class="col-sm-3 col-md-2 text-center-xs">
-                                             <p>
-                                                <img src="{{$service->user->photo}}" class="img-responsive img-circle" alt="">
-                                             </p>
-                                         </div>
+                                  @foreach ($services as $service)
+                                          <div class="col-sm-3 col-md-2 text-center-xs">
+                                              <p>
+                                                 <img src="{{$service->author->photo}}" class="img-responsive img-circle" alt="">
+                                              </p>
+                                          </div>
 
                                          <div class="col-md-10">
                                            <a href="#">{{ $service->subcategory->category->name }}</a> > <a href="#">{{ $service->subcategory->name }}</a>
-                                             <h2><a href="/service/{{ $service->id }}">{{ $question->head }}</a></h2>
+                                           <p class="date-comments">
+                                               <a href="#"><i class="fa fa-calendar-o"></i> {{ $service->created_at->diffForHumans() }}</a>
+                                               <a href="#"><i class="fa fa-comment-o"></i>{{ count($service->comments) }}  Comments</a>
+                                               <br>
+                                               @if( $service->remote == 1)
+                                               <p class="date-comments">
+                                                  <a href="#">
+                                                    <b>
+                                                      <u> Удаленная работа </u>
+                                                    </b>
+                                                    </a>
+                                               </p>
+                                               @endif
+                                          </p>
+                                             <h2><a href="/service/{{ $service->id }}">{{ $service->head }}</a></h2>
 
                                              <div class="clearfix">
-                                                 <p class="author-category">By <a href="/users/{{ $service->user->id }}">{{ $service->user->name }}</a>
-                                                 </p>
-                                                 <p class="date-comments">
-                                                     <a href="#"><i class="fa fa-calendar-o"></i> {{ $service->created_at->diffForHumans() }}</a>
-                                                     <a href="#"><i class="fa fa-comment-o"></i>{{ count($service->comments) }}  Comments</a>
-                                                </p>
+                                               <p class="author-category">Заказчик <a href="/users/{{ $service->author->id }}">{{ $service->author->name }}</a>
+                                               </p>
+                                               <p class="date-comments">Окончание
+                                                 <a href="#">{{ $service->t_finish}}</a>
+                                               </p>
+                                               <p class="date-comments">Начало
+                                                 <a href="#">{{ $service->t_start }}</a>
+                                               </p>
+                                               <br>
+
+                                            <br>
+
                                              </div>
+
                                               <p class="intro">
                                                 {!! $service->text !!}
                                               </p>
@@ -139,6 +161,7 @@
                                                  {{ method_field('DELETE') }}
                                              </form>
                                                <hr>
+
                                          </div>
 
 

@@ -60,6 +60,15 @@
                                                        @foreach ($category->subcategories as $sub)
                                                            <li class="list-group-item">
                                                                <a href="#" >{{$sub->name}}</a>
+                                                               <span class="read-more"><a href="/categories/subcategories/edit/{{ $sub->id }}" class="btn btn-xs btn-template-main">Редактировать</a>
+                                                               </span>
+                                                               <span class="read-more"><a href="/categories/subcategories/{{ $sub->id }}" onclick="event.preventDefault();
+                                                                  document.getElementById('destroy-form{{ $sub->id }}').submit();"class="btn btn-xs btn-template-main" >Удалить</a>
+                                                               </span>
+                                                               <form id="destroy-form{{ $sub->id }}" action="/categories/subcategories/{{ $sub->id }}" method="POST" style="display: none;">
+                                                                   {{ csrf_field() }}
+                                                                   {{ method_field('DELETE') }}
+                                                               </form>
                                                            </li>
                                                        @endforeach
                                                   </ul>

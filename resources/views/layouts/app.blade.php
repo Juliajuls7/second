@@ -8,25 +8,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Secondhelp</title>
-
   <meta name="keywords" content="">
-
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
-
-
   <!-- Bootstrap and Font Awesome css -->
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
   <!-- Css animations  -->
   <link href="/css/animate.css" rel="stylesheet">
-
   <!-- Theme stylesheet, if possible do not edit this stylesheet -->
   <link href="/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
-
   <!-- Custom stylesheet - for your changes -->
   <link href="/css/custom.css" rel="stylesheet">
-
-
   <!-- Favicon and apple touch icons-->
   <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
@@ -44,14 +36,11 @@
       ]) !!};
   </script>
    <!-- Scripts -->
-
 @yield('localcss')
 </head>
-
 <body>
   <div id="all">
         <header>
-
             <!-- *** TOP ***
 _________________________________________________________ -->
             <div id="top">
@@ -69,12 +58,10 @@ _________________________________________________________ -->
                                 <a href="#" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
                                 <a href="#" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
                             </div>
-
                             <div class="login">
                                   @if (Auth::guest())
                               <a href="#" data-toggle="modal" data-target="#login-modal"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Вход</span></a>
                               <a href="{{ route('register') }}"><i class="fa fa-user"></i> <span class="hidden-xs text-uppercase">Регистрация</span></a>
-
                                   @else
                                   <a href="/users/{{Auth::user()->id}}"   aria-expanded="false">
                                       {{ Auth::user()->name }}
@@ -89,9 +76,7 @@ _________________________________________________________ -->
                     </div>
                 </div>
             </div>
-
             <!-- *** TOP END *** -->
-
             <!-- *** NAVBAR ***
     _________________________________________________________ -->
 

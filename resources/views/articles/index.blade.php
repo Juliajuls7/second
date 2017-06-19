@@ -43,7 +43,7 @@ _________________________________________________________ -->
                       <div class="clearfix">
                             <p class="author-category">By <a href="/users/{{ $article->user->id }}">{{ $article->user->name }}</a>
                             </p>
-                          </p>
+
                           <a href="#">{{ $article->subcategory->category->name}}</a>
                             >
                             <a href="#">{{ $article->subcategory->name }}</a>
@@ -58,12 +58,14 @@ _________________________________________________________ -->
                     <p class="intro">{!! $article->text !!}</p>
                     <p class="read-more">
                         <a href="/articles/{{ $article->id }}" class="btn btn-template-main">Продолжить чтение</a>
+                        @if (Role::check($article)||Role::admin())
                         <a href="/articles/edit/{{$article->id}}" class="btn btn-template-main">Редактировать</a>
                         <a class="btn btn-template-main" href="/articles/{{ $article->id }}"
                               onclick="event.preventDefault();
                            document.getElementById('destroy-form{{ $article->id }}').submit();">
                              Удалить
                          </a>
+                         @endif
                    </p>
                   <form id="destroy-form{{ $article->id }}" action="/articles/{{ $article->id }}" method="POST" style="display: none;">
                   {{ csrf_field() }}
@@ -98,7 +100,7 @@ _________________________________________________________ -->
                     </div>
 
                     <div class="panel-body text-widget">
-                        <p>Improved own provided blessing may peculiar domestic. Sight house has sex never. No visited raising gravity outward subject my cottage mr be. Hold do at tore in park feet near my case.
+                        <p>Поделитесь своими знаниями с другими пользователями, написав статью и повышайте себе рейтинг
                         </p>
 
                     </div>
