@@ -11,11 +11,12 @@ class CreateCitiesTable extends Migration
         Schema::create('cities', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->integer('region_id')->unsigned();
             $table->timestamps();
         });
     }
 
-  
+
     public function down()
     {
         Schema::dropIfExists('cities');

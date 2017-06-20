@@ -120,7 +120,10 @@ _________________________________________________________ -->
                                 </li>
                                 @endif
                                 <li class="menu">
-                                    <a href="/services" class="services">Услуги</a>
+                                    <a href="/services" class="services">Задания</a>
+                                </li>
+                                <li class="menu">
+                                    <a href="#" class="services">Услуги</a>
                                 </li>
                                 <li class="menu">
                                     <a href="/articles" class="articles">Статьи</a>

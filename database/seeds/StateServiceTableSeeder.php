@@ -13,7 +13,6 @@ class StateServiceTableSeeder extends Seeder
     {
       DB::table('state_services')->insert([
         [
-
           'name' => 'Открыт'
         ],
         [
