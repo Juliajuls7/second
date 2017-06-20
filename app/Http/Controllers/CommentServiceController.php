@@ -20,7 +20,7 @@ class CommentServiceController extends Controller
         $comment = new Comment();
         $comment->user_id = request()->user()->id;
         $comment->text = request('text');
-
+        $comment->price = request('price');
         $service->comments()->save($comment);
         return back();
 }

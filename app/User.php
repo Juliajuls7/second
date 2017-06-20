@@ -18,11 +18,7 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+
     protected $hidden = [
         'password', 'remember_token',
     ];
@@ -44,7 +40,6 @@ class User extends Authenticatable
      public function services(){
         return $this->hasMany('App\Service','author_id','id');
     }
-
     public function doneservices(){
         return $this->hasMany('App\Service','executor_id','id');
     }
@@ -60,4 +55,9 @@ class User extends Authenticatable
     public function education(){
        return $this->belongsTo('App\Education');
    }
+     public function subcategories(){
+         return $this->belongsToMany('App\Subcategory');
+     }
+
+
 }

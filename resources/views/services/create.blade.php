@@ -54,19 +54,28 @@
 
             <div class="col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label for="text">Дата и время начала</label>
+                  <label for="t_start">Дата и время начала</label>
                     <input type="datetime-local" id="t_start" name="t_start">
                 </div>
             </div>
             <div class="col-sm-6 col-md-6">
                 <div class="form-group">
-                  <label for="text">Дата и время окончания</label>
+                  <label for="t_finish">Дата и время окончания</label>
                     <input type="datetime-local" id="t_finish" name="t_finish">
                 </div>
             </div>
-            <div class="col-sm-6 col-md-6">
+            <div class="col-sm-2 col-md-2">
+                <div class="form-inline">
+                <label for="price">Укажите желаемую цену</label>
+                    <input class="form-control" type="text" id="price" name="price">
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-12">
                 <div class="form-group">
-                       <input type="checkbox" id="remote"  name="remote" value="1"> Удаленная работа<br>
+                  <br>
+                    <label for="remote">Удаленная работа</label>
+                       <input type="checkbox" id="remote"  name="remote" value="1"> <br>
                 </div>
             </div>
 

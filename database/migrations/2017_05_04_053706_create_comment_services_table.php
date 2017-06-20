@@ -12,8 +12,8 @@ class CreateCommentServicesTable extends Migration
             $table->increments('id');
             $table->string('text');
             $table->integer('user_id')->unsigned();
-
             $table->integer('service_id')->unsigned();
+            $table->integer('price');
             $table->timestamps();
         });
     }

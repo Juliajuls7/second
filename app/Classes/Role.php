@@ -43,4 +43,12 @@ class Role {
   {
     return $self->user->id == Auth::user()->id;
   }
+  public function check_service($self)
+  {
+    return $self->author->id == Auth::user()->id;
+  }
+  public function check_account($self)
+  {
+    return $self->id == Auth::user()->id;
+  }
 }

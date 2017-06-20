@@ -17,7 +17,7 @@ class StateServiceTableSeeder extends Seeder
         ],
         [
 
-          'name' => 'Исполнитель утвержден'
+          'name' => 'Выполняется'
         ],
         [
 

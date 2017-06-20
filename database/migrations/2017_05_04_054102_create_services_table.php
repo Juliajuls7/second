@@ -14,9 +14,10 @@ class CreateServicesTable extends Migration
             $table->dateTime('t_finish')->default(\Carbon\Carbon::now());
             $table->dateTime('t_start')->default(\Carbon\Carbon::now());
             $table->integer('state_service_id')->unsigned()->default(1);//состояние задания
-            $table->integer('executor_id')->unsigned()->default(0);//кто выполнил
+            $table->integer('executor_id')->unsigned()->default(0);//исполнитель
             $table->integer('price')->default(0);
-            $table->integer('review_id')->unsigned()->default(0);;
+            $table->integer('review_author')->unsigned()->default(0);//отзыв заказчика
+            $table->integer('review_executor')->unsigned()->default(0);//отзыв исполнителя
             $table->integer('remote')->default(0);//удаленная
             $table->string('files')->default('');
             $table->timestamps();

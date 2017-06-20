@@ -104,73 +104,60 @@
                                 <a type="button"  href="/services/create" class="btn btn-lg btn-template-primary">Создать задание</a>
 
                               <hr>
-                                <div class="form-group">
-                                  @foreach ($services as $service)
-                                          <div class="col-sm-3 col-md-2 text-center-xs">
-                                              <p>
-                                                 <img src="{{$service->author->photo}}" class="img-responsive img-circle" alt="">
-                                              </p>
-                                          </div>
 
-                                         <div class="col-md-10">
-                                           <a href="#">{{ $service->subcategory->category->name }}</a> > <a href="#">{{ $service->subcategory->name }}</a>
-                                           <p class="date-comments">
-                                               <a href="#"><i class="fa fa-calendar-o"></i> {{ $service->created_at->diffForHumans() }}</a>
-                                               <a href="#"><i class="fa fa-comment-o"></i>{{ count($service->comments) }}  Comments</a>
-                                               <br>
-                                               @if( $service->remote == 1)
-                                               <p class="date-comments">
-                                                  <a href="#">
-                                                    <b>
-                                                      <u> Удаленная работа </u>
-                                                    </b>
-                                                    </a>
-                                               </p>
-                                               @endif
-                                          </p>
-                                             <h2><a href="/service/{{ $service->id }}">{{ $service->head }}</a></h2>
+                              <div class="form-group">
+                                @foreach ($services as $service)
+                                        <div class="col-sm-3 col-md-2 text-center-xs">
+                                            <p>
+                                               <img src="{{$service->author->photo}}" class="img-responsive img-circle" alt="">
+                                            </p>
+                                        </div>
 
-                                             <div class="clearfix">
-                                               <p class="author-category">Заказчик <a href="/users/{{ $service->author->id }}">{{ $service->author->name }}</a>
-                                               </p>
-                                               <p class="date-comments">Окончание
-                                                 <a href="#">{{ $service->t_finish}}</a>
-                                               </p>
-                                               <p class="date-comments">Начало
-                                                 <a href="#">{{ $service->t_start }}</a>
-                                               </p>
-                                               <br>
-
-                                            <br>
-
-                                             </div>
-
-                                              <p class="intro">
-                                                {!! $service->text !!}
-                                              </p>
-                                             <span class="read-more"><a href="/services/{{$service->id}}" class="btn btn-template-main">Читать далее...</a>
-                                             </span>
-                                             <span class="read-more"><a href="/services/edit/{{$service->id}}" class="btn btn-template-main">Редактировать</a>
-                                             </span>
-                                             <span class="read-more"><a href="/services/{{ $service->id }}"
-                                                   onclick="event.preventDefault();
-                                                document.getElementById('destroy-form{{ $service->id }}').submit();" class="btn btn-template-main">Удалить</a>
-                                             </span>
-                                             <form id="destroy-form{{ $service->id }}" action="/services/{{ $service->id }}" method="POST" style="display: none;">
-                                                 {{ csrf_field() }}
-                                                 {{ method_field('DELETE') }}
-                                             </form>
-                                               <hr>
-
+                                       <div class="col-md-10">
+                                         <h2><a href="/services/{{$service->id}}">{{ $service->head }}</a>
+                                        <span class="price-icon pull-right">   {{ $service->price }} руб.</span>
+                                         </h2>
+                                         <a href="#">{{ $service->subcategory->category->name }}</a> > <a href="#">{{ $service->subcategory->name }}</a>
+                                         <div class="clearfix text-right" >
+                                           <p class="">Начало
+                                             <a href="#">{{ $service->t_start }}</a>
+                                           </p>
+                                           <p class="">Окончание
+                                             <a href="#">{{ $service->t_finish}}</a>
+                                           </p>
                                          </div>
+                                         <p class="date-comments">
+                                             <a href="#"><i class="fa fa-calendar-o"></i> {{ $service->created_at->diffForHumans() }}</a>
+                                             <a href="#"><i class="fa fa-comment-o"></i>{{ count($service->comments) }}  Предложений</a>
+                                         </p>
 
+                                         @if( $service->remote == 1)
+                                         <p class="clearfix text-left">
+                                            <a href="#">
+                                              <b>
+                                                <u> Удаленная работа </u>
+                                              </b>
+                                              </a>
+                                         </p>
+                                         @endif
+                                             @if (Role::admin())
+                                           <span class="read-more"><a href="/services/edit/{{$service->id}}" class="btn btn-template-main">Редактировать</a>
+                                           </span>
+                                           <span class="read-more"><a href="/services/{{ $service->id }}"
+                                                 onclick="event.preventDefault();
+                                              document.getElementById('destroy-form{{ $service->id }}').submit();" class="btn btn-template-main">Удалить</a>
+                                           </span>
+                                           <form id="destroy-form{{ $service->id }}" action="/services/{{ $service->id }}" method="POST" style="display: none;">
+                                               {{ csrf_field() }}
+                                               {{ method_field('DELETE') }}
+                                           </form>
+                                           @endif
+                                             <hr>
+                                       </div>
+                                       @endforeach
 
-                                        <hr>
-
-                                         @endforeach
-
-                                  </div>
-                                  <!-- ***  END form-group *** -->
+                                </div>
+                                <!-- ***  END form-group *** -->
 
                                 </div>
                                 <div class="text-center" >

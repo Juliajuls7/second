@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 use App\User;
 use App\City;
 use App\Education;
-
+use App\Service;
+use App\Question;
+use App\Article;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -39,9 +41,13 @@ class UserController extends Controller
 
     public function show($id)
     {
-      //return 1;
-        return view ('users.show', [
-            'user' => User::findOrFail($id)
+      $user = User::findOrFail($id);
+
+      return view ('users.show', [
+            'user' => $user,
+            'services'=> $user->services()->orderByDesc('created_at')->get(),
+            'articles'=> $user->articles,
+            'questions'=> $user->questions,
         ]);
     }
 

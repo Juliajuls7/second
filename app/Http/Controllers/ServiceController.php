@@ -34,7 +34,7 @@ class ServiceController extends Controller
       $service->text = $request->text;
       $service->t_finish = $request->t_finish;
       $service->t_start = $request->t_start;
-
+      $service->price = $request->price;
       if (null!==$request->remote) $service->remote=1;
       else $service->remote=0;
 
@@ -53,12 +53,11 @@ class ServiceController extends Controller
   }
   public function edit($id)
   {
-
       return view('services.edit',['service'=>Service::findOrFail($id),'categories'=> Category::all()]);
   }
   public function save(Request $request, $id)
   {
-      $service = Question::findOrFail($id);
+      $service = Service::findOrFail($id);
       $service->subcategory_id = $request->subcategory;
       $service->head = $request->head;
       $service->text = $request->text;
@@ -70,8 +69,24 @@ class ServiceController extends Controller
   }
   public function destroy($id)
   {
-     Question::findOrFail($id)->delete();
+     Service::findOrFail($id)->delete();
       return redirect('/services');
   }
 
+  public function setexecutor($service, $user)
+  {
+
+    $service = Service::findOrFail($service);
+    $service->executor_id = $user;
+    $service->state_service_id = 2;
+    $service->save();
+    return back();
+  }
+  public function endservice($service)
+  {
+    $service = Service::findOrFail($service);
+    $service->state_service_id = 3;
+    $service->save();
+    return back();
+  }
 }

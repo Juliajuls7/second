@@ -12,19 +12,21 @@ class Service extends Model
     public function commentservices(){
         return $this->hasMany('App\CommentService');
     }
-
      public function subcategory(){
         return $this->belongsTo('App\Subcategory');
     }
       public function stateservice(){
-        return $this->belongsTo('App\Stateservice');
+        return $this->belongsTo('App\StateService','state_service_id','id');
     }
    public function executor(){
-        return $this->belongsTo('App\User','id','executor_id');
+        return $this->belongsTo('App\User','executor_id','id');
     }
-    public function review(){
-         return $this->hasOne('App\Review');
+    public function review_ex(){
+         return $this->hasOne('App\Review','id','review_executor');
      }
+     public function review_au(){
+          return $this->hasOne('App\Review','review_author','id');
+      }
      public function comments(){
         return $this->hasMany('App\CommentService');
      }

@@ -121,6 +121,12 @@ Route::get('/services/{id}', 'ServiceController@show'); //показать 1
 // редактирование
 Route::get('/services/edit/{service}', 'ServiceController@edit');
 Route::put('/services/edit/{service}', 'ServiceController@save');
+// установление исполнителя
+Route::post('/services/executor/{service}/{user}', 'ServiceController@setexecutor');
+// завершение задачи
+Route::post('/services/state/{service}', 'ServiceController@endservice');
+// установление исполнителя
+Route::post('/services/executor/{service}/{user}', 'ServiceController@setexecutor');
 // удаление
 Route::delete('/services/{service}', 'ServiceController@destroy');
 

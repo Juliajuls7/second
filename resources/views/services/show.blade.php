@@ -33,41 +33,86 @@
 
                         <div id="post-content">
 
-                        <h2>{{ $service->head }}</h2>
+                        <h2>{{ $service->head }}
+                          <span class="price-icon pull-right">{{ $service->price }} руб.</span>
+                        </h2>
+                        Нужно:
                         <p>{{ $service->text }}</p>
+                        статус:   <p>{{ $service->stateservice->name }}</p>
 
-
-
+                        @if ( $service->stateservice->id ==2)
+                        <div class="form-group pull-right">
+                          <form action="/services/state/{{$service->id}}" method="post">
+                          {{ csrf_field() }}
+                          <button class="btn btn-default pull-left" type="submit">Закрыть задачу</button>
+                          </form>
+                        </div>
+                        <br>
+                        @endif
                     </div>
                     <!-- /#post-content -->
 
                     <div id="comments">
-                        <h4 class="text-uppercase">Комментарии</h4>
+                        <h4 class="text-uppercase">Предложения исполнителей</h4>
+                        @if(Role::check_service($service))
+                          @if ( count($comments) == 0 )
+                          На ваше задание еще никто не откликнулся
+                          @endif
+                            @foreach ($comments as $comment)
 
-                          @foreach ($comments as $comment)
-                        <div class="row comment">
-                            <div class="col-sm-3 col-md-2 text-center-xs">
-                                <p>
-                                    <img src="{{ $comment->user->photo }}" class="img-responsive img-circle" alt="">
-                                </p>
-                            </div>
-                            <div class="col-sm-9 col-md-10">
-                                <h5 class="text-uppercase">{{ $comment->user->name }}</h5>
-                                <p class="posted"><i class="fa fa-clock-o"></i> {{ $comment->created_at->diffForHumans() }}</p>
-                                <p>{{ $comment->text }}</p>
-                                <p class="reply"><a href="#"><i class="fa fa-reply"></i> Reply</a>
-                                </p>
-                            </div>
-                        </div>
+                              @if(($service->stateservice->id ==2 || $service->stateservice->id ==3) && $service->executor->id == $comment->user->id)
+                                <div class=" executor-comment row comment">
+                                  <div class="col-sm-3 col-md-2 text-center-xs">
+                                      <p>
+                                          <img src="{{ $comment->user->photo }}" class="img-responsive img-circle" alt="">
+                                      </p>
+                                  </div>
+                                  <div class="col-sm-9 col-md-10">
+                                      <h5 class="text-uppercase">{{ $comment->user->name }}
+                                          <i>  - Ваш Исполнитель</i>
+                                          <span class="price-icon pull-right">{{ $comment->price }} руб.</span>
+                                      </h5>
+                                      <p class="posted"><i class="fa fa-clock-o"></i> {{ $comment->created_at->diffForHumans() }}</p>
+                                      <p>{{ $comment->text }}</p>
+                                  </div>
+                              </div>
+                              @else
+                                  <div class="row comment">
+                                    <div class="col-sm-3 col-md-2 text-center-xs">
+                                        <p>
+                                            <img src="{{ $comment->user->photo }}" class="img-responsive img-circle" alt="">
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-9 col-md-10">
+                                        <h5 class="text-uppercase">{{ $comment->user->name }}
+                                            <span class="price-icon pull-right">   {{ $comment->price }} руб.</span>
+                                        </h5>
+                                        <p class="posted"><i class="fa fa-clock-o"></i> {{ $comment->created_at->diffForHumans() }}</p>
+                                        <p>{{ $comment->text }}</p>
+                                    </div>
+                                          @if ( $service->stateservice->id ==1)
+                                      <form action="/services/executor/{{$service->id}}/{{$comment->user->id}}" method="post">
+                                          {{ csrf_field() }}
+                                          <button class="btn btn-default" type="submit">Назначить исполнителем</button>
+                                      </form>
+                                      @endif
+                                    </div>
+
+                        @endif
+
                         @endforeach
                         <!-- /.comment -->
-
+                        @else
+                        <p>
+                            Предложения исполнителей может видеть только заказчик
+                        </p>
+                        @endif
                     </div>
                     <!-- /#comments -->
 
-
+                    @if ( $service->stateservice->id ==1 && !Role::check_service($service) )
                     <div id="comment-form">
-                        <h4 class="text-uppercase">Оставить комментарий</h4>
+                        <h4 class="text-uppercase">Откликнуться на задание</h4>
                         <form action="/services/{{ $service->id }}/comment" method="POST">
                           {{ csrf_field() }}
 
@@ -82,13 +127,21 @@
                             </div>
 
                             <div class="row">
+                              <div class="col-sm-6 col-md-6">
+                                  <label for="price"></label>
+                                      <input class="form-control" type="text" id="price" name="price" placeholder="Предложите свою цену">
+                              </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-sm-12 text-right">
-                                    <button class="btn btn-template-main"><i class="fa fa-comment-o"></i> Отправить</button>
+                                    <button class="btn btn-template-main"><i class="fa fa-comment-o"></i> Откликнуться</button>
                                 </div>
                             </div>
                         </form>
 
                     </div>
+                    @endif
+
                     <!-- /#comment-form -->
 
 
