@@ -34,14 +34,32 @@
                     <p class="text-muted text-uppercase mb-small text-right"> <a href="#">{{ $article->subcategory->category->name}}</a> > <a href="#">{{ $article->subcategory->name }}</a></p>
 
                         <div id="post-content">
+                          <h1>{{$article->head}}</h1>
+                          <p>{{ $article->text }}</p>
+                        </div>
 
-                        <h1>{{$article->head}}</h1>
-                        <p>{{ $article->text }}</p>
+                        @if ($likeOn)
+                          <a onclick="event.preventDefault();
+                          document.getElementById('dis-form{{ $article->id }}').submit();">
+                          <i class="fa fa-thumbs-down fa-2x" aria-hidden="true"></i>
+                          </a>
+                        @else
+                          <a onclick="event.preventDefault();
+                          document.getElementById('set-form{{ $article->id }}').submit();">
+                          <i class="fa fa-thumbs-up fa-2x" aria-hidden="true"></i>
+                          </a>
+                        @endif
+                        {{$article->rates->count()}}
 
+                        <form id="set-form{{ $article->id }}" action="/articles/{{$article->id}}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                          {{ method_field('PUT') }}
+                        </form>
 
-
-                    </div>
-                    <!-- /#post-content -->
+                        <form id="dis-form{{ $article->id }}" action="/articles/{{$article->id}}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                          {{ method_field('PUT') }}
+                        </form>
 
                     <div id="comments">
                         <h4 class="text-uppercase">Комментарии</h4>

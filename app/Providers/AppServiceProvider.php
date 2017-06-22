@@ -14,6 +14,12 @@ class AppServiceProvider extends ServiceProvider
       view()->composer('questions.partials.categories', function($view){
         $view->with('categories', \App\Category::getCategories());
       });
+      view()->composer('services.partials.categories', function($view){
+        $view->with('categories', \App\Category::getCategories());
+      });
+      view()->composer('executors.partials.categories', function($view){
+        $view->with('categories', \App\Category::getCategories());
+      });
     }
 
     /**

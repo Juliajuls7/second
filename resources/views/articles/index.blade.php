@@ -38,7 +38,7 @@ _________________________________________________________ -->
                       </p>
                   </div>
 
-                    <h2><a href="/article/">{{ $article->head }}</a></h2>
+                    <h2><a href="/articles/{{ $article->id }}">{{ $article->head }}</a></h2>
                     <div class="row">
                       <div class="clearfix">
                             <p class="author-category">By <a href="/users/{{ $article->user->id }}">{{ $article->user->name }}</a>
@@ -58,7 +58,7 @@ _________________________________________________________ -->
                     <p class="intro">{!! $article->text !!}</p>
                     <p class="read-more">
                         <a href="/articles/{{ $article->id }}" class="btn btn-template-main">Продолжить чтение</a>
-                        @if (Role::check($article)||Role::admin())
+                        @if (Role::admin())
                         <a href="/articles/edit/{{$article->id}}" class="btn btn-template-main">Редактировать</a>
                         <a class="btn btn-template-main" href="/articles/{{ $article->id }}"
                               onclick="event.preventDefault();
@@ -72,11 +72,8 @@ _________________________________________________________ -->
                   {{ method_field('DELETE') }}
                   </form>
                    <hr>
-
                 </section>
-  @endforeach
-
-
+                @endforeach
             </div>
             <div class="text-center" >
             {{ $articles->links() }}

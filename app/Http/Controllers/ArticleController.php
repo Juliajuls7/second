@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Subcategory;
 use App\Article;
 use App\Category;
+use App\Rate;
+use Auth;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -40,10 +42,16 @@ class ArticleController extends Controller
     public function show($id)
     {
         $article = Article::findOrFail($id);
+        $likeOn = 0;
+
+        if ($article->rates->where('user_id', Auth::user()->id)->count()>0) {
+            $likeOn = 1;
+        }
 
         return view ('articles.show', [
           'article' => $article,
-          'comments' => $article->comments
+          'comments' => $article->comments,
+          'likeOn' => $likeOn,
         ]);
     }
 
@@ -69,5 +77,19 @@ class ArticleController extends Controller
     {
         $article->delete();
         return redirect('/articles');
+    }
+
+    public function setlike(Request $request, Article $article)
+    {
+        if ($article->rates->where('user_id', Auth::user()->id)->count()>0) {
+          $article->rates()->where('user_id', Auth::user()->id)->delete();
+          return back();
+        } else {
+          $rate = new Rate();
+          $rate->user_id = Auth::user()->id;
+          $rate->value = 1;
+          $article->rates()->save($rate);
+          return back();
+        }
     }
 }

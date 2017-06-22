@@ -28,7 +28,7 @@
   _________________________________________________________ -->
 
                 <div class="col-md-9" id="blog-post">
-                    <p class="text-muted text-uppercase mb-small text-right">Автор <a href="/users">{{ $service->author->name }}</a> | {{ $service->created_at->diffForHumans() }}</p>
+                    <p class="text-muted text-uppercase mb-small text-right">Автор <a href="/users/{{ $service->author->id }}">{{ $service->author->name }}</a> | {{ $service->created_at->diffForHumans() }}</p>
                     <p class="text-muted text-uppercase mb-small text-right"> <a href="#">{{ $service->subcategory->category->name}}</a> > <a href="#">{{ $service->subcategory->name }}</a></p>
 
                         <div id="post-content">
@@ -44,10 +44,52 @@
                         <div class="form-group pull-right">
                           <form action="/services/state/{{$service->id}}" method="post">
                           {{ csrf_field() }}
+
+
                           <button class="btn btn-default pull-left" type="submit">Закрыть задачу</button>
                           </form>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
+
+                          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                  <h4 class="modal-title" id="exampleModalLabel">Отзыв об исполнителе</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form role="form" method="POST" action="/services/{{$service->id}}/review">
+                                        {{ csrf_field() }}
+                                    <div class="form-group">
+                                      <label for="text" class="control-label">Отзыв</label>
+                                      <textarea id="text"  class="form-control" name="text" placeholder="Отлично справился с поставленной задачей. Все сделал быстро и качественно. Рекомендую!" ></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="quality" class="control-label">Качество:</label>
+                                      <textarea id="quality"  class="form-control" name="quality" placeholder="Отлично справился с поставленной задачей. Все сделал быстро и качественно. Рекомендую!" ></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="price" class="control-label">Цена:</label>
+                                      <textarea id="price"  class="form-control" name="price" placeholder="Отлично справился с поставленной задачей. Все сделал быстро и качественно. Рекомендую!" ></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="politeness" class="control-label">Вежливость:</label>
+                                      <textarea id="politeness"  class="form-control" name="politeness" placeholder="Отлично справился с поставленной задачей. Все сделал быстро и качественно. Рекомендую!" ></textarea>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+                                      <button type="submit" class="btn btn-primary">Отправить отзыв</button>
+                                    </div>
+                                  </form>
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+
                         </div>
-                        <br>
+                        <hr>
+
                         @endif
                     </div>
                     <!-- /#post-content -->
@@ -141,37 +183,20 @@
 
                     </div>
                     @endif
-
-                    <!-- /#comment-form -->
-
-
                 </div>
-                <!-- /#blog-post -->
-
-                <!-- *** LEFT COLUMN END *** -->
-
-                <!-- *** RIGHT COLUMN ***
-    _________________________________________________________ -->
 
                 <div class="col-md-3">
-
-                    <!-- *** MENUS AND WIDGETS ***
-_________________________________________________________ -->
                     <div class="panel panel-default sidebar-menu">
-
                         <div class="panel-heading">
                             <h3 class="panel-title">Text widget</h3>
                         </div>
-
                         <div class="panel-body text-widget">
                             <p>Improved own provided blessing may peculiar domestic. Sight house has sex never. No visited raising gravity outward subject my cottage mr be. Hold do at tore in park feet near my case.
                             </p>
 
                         </div>
                     </div>
-
                     <div class="panel panel-default sidebar-menu">
-
                         <div class="panel-heading">
                             <h3 class="panel-title">Search</h3>
                         </div>
@@ -181,80 +206,30 @@ _________________________________________________________ -->
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="Search">
                                     <span class="input-group-btn">
-
-    <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
-
-</span>
+                                        <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
+                                    </span>
                                 </div>
                             </form>
                         </div>
                     </div>
-
-                    @includeIf('questions.partials.categories')
-
-
-                    <div class="panel sidebar-menu">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Tags</h3>
-                        </div>
-
-                        <div class="panel-body">
-                            <ul class="tag-cloud">
-                                <li><a href="#"><i class="fa fa-tags"></i> html5</a>
-                                </li>
-                                <li><a href="#"><i class="fa fa-tags"></i> css3</a>
-                                </li>
-                                <li><a href="#"><i class="fa fa-tags"></i> jquery</a>
-                                </li>
-                                <li><a href="#"><i class="fa fa-tags"></i> ajax</a>
-                                </li>
-                                <li><a href="#"><i class="fa fa-tags"></i> php</a>
-                                </li>
-                                <li><a href="#"><i class="fa fa-tags"></i> responsive</a>
-                                </li>
-                                <li><a href="#"><i class="fa fa-tags"></i> visio</a>
-                                </li>
-                                <li><a href="#"><i class="fa fa-tags"></i> bootstrap</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- *** MENUS AND FILTERS END *** -->
-
+                    @includeIf('services.partials.categories')
                 </div>
-                <!-- /.col-md-3 -->
-
-                <!-- *** RIGHT COLUMN END *** -->
-
-
             </div>
             <!-- /.row -->
-
         </div>
         <!-- /.container -->
     </div>
     <!-- /#content -->
 
-
-
-
-
-
-
-
-
-
-
-
 <script>
-$(function() {
-//    $('#deleteBtn').click(function(event) {
-//        if (confirm("Действительно хотите удалить этот тип?")) {
-//            event.preventDefault();
-//            document.getElementById('destroy-form').submit();
-//        }
-//    });
+$('#exampleModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text('New message to ' + recipient)
+  modal.find('.modal-body input').val(recipient)
 });
 </script>
 @stop

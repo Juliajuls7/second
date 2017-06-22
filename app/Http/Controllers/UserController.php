@@ -7,6 +7,10 @@ use App\Education;
 use App\Service;
 use App\Question;
 use App\Article;
+use App\Subcategory;
+use App\Category;
+use App\Rate;
+use Auth;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -17,10 +21,13 @@ class UserController extends Controller
 
     public function index()
     {
-          return view('users.index', ['users' => User::orderByDesc('created_at')->get()]);
+          return view('users.index', ['users' => User::orderByDesc('created_at')->paginate(20)]);
     }
 
-
+    public function showexecutor()
+    {
+          return view('executors.showexecutor', ['users' => User::orderByDesc('created_at')->paginate(15)]);
+    }
     public function create()
     {
   //      return view('users.create',['subcategories'=> Subcategory::all()]);
@@ -42,12 +49,22 @@ class UserController extends Controller
     public function show($id)
     {
       $user = User::findOrFail($id);
+      $rating = 0;
+
+      foreach ($user->articles as $article) {
+        $rating+=$article->rates->sum('value');
+      }
+
+      foreach ($user->commentquestions as $comment) {
+        $rating+=$comment->rates->sum('value');
+      }
 
       return view ('users.show', [
+            'rating' => $rating,
             'user' => $user,
             'services'=> $user->services()->orderByDesc('created_at')->get(),
-            'articles'=> $user->articles,
-            'questions'=> $user->questions,
+            'articles'=> $user->articles(),
+            'questions'=> $user->questions(),
         ]);
     }
 

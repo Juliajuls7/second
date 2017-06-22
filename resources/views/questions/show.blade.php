@@ -44,21 +44,44 @@
                     <!-- /#post-content -->
 
                     <div id="comments">
-                        <h4 class="text-uppercase">Комментарии</h4>
-
-                          @foreach ($comments as $comment)
+                        <h4 class="text-uppercase">Ответы</h4>
+                        @if ( count($comments) == 0 )
+                        Еще никто не ответил на этот вопрос
+                        @endif
+                      @foreach ($comments as $comment)
                         <div class="row comment">
                             <div class="col-sm-3 col-md-2 text-center-xs">
                                 <p>
-                                    <img src="{{ $comment->user->photo }}" class="img-responsive img-circle" alt="">
+                                    <img src="{{ $comment[0]->user->photo }}" class="img-responsive img-circle" alt="">
                                 </p>
                             </div>
                             <div class="col-sm-9 col-md-10">
-                                <h5 class="text-uppercase">{{ $comment->user->name }}</h5>
-                                <p class="posted"><i class="fa fa-clock-o"></i> {{ $comment->created_at->diffForHumans() }}</p>
-                                <p>{{ $comment->text }}</p>
-                                <p class="reply"><a href="#"><i class="fa fa-reply"></i> Reply</a>
-                                </p>
+                                <h5 class="text-uppercase">{{ $comment[0]->user->name }}</h5>
+                                <p class="posted"><i class="fa fa-clock-o"></i> {{ $comment[0]->created_at->diffForHumans() }}</p>
+                                <p>{{ $comment[0]->text }}</p>
+
+                                @if ($comment[1])
+                                  <a onclick="event.preventDefault();
+                                  document.getElementById('dis-form{{ $comment[0]->id }}').submit();">
+                                  <i class="fa fa-thumbs-down fa-2x" aria-hidden="true"></i>
+                                  </a>
+                                @else
+                                  <a onclick="event.preventDefault();
+                                  document.getElementById('set-form{{ $comment[0]->id }}').submit();">
+                                  <i class="fa fa-thumbs-up fa-2x" aria-hidden="true"></i>
+                                  </a>
+                                @endif
+                              {{$comment[0]->rates->count()}}
+                              <form id="set-form{{  $comment[0]->id }}" action="/questions/{{ $question->id }}/{{$comment[0]->id}}" method="POST" style="display: none;">
+                              {{ csrf_field() }}
+                                {{ method_field('PUT') }}
+                              </form>
+
+                              <form id="dis-form{{  $comment[0]->id }}" action="/questions/{{ $question->id }}/{{$comment[0]->id}}" method="POST" style="display: none;">
+                              {{ csrf_field() }}
+                                {{ method_field('PUT') }}
+                              </form>
+
                             </div>
                         </div>
                         @endforeach
@@ -69,7 +92,7 @@
 
 
                     <div id="comment-form">
-                        <h4 class="text-uppercase">Оставить комментарий</h4>
+                        <h4 class="text-uppercase">Ответить на вопрос</h4>
                         <form action="/questions/{{ $question->id }}/comment" method="POST">
                           {{ csrf_field() }}
 
@@ -77,7 +100,7 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label for="text">Комментарий</label>
+                                        <label for="text">Ответ</label>
                                         <textarea name="text" id="text" class="form-control"  rows="4"></textarea>
                                     </div>
                                 </div>

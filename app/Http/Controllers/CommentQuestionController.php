@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\CommentQuestion as Comment;
 use App\Question;
-
+use App\Rate;
+use Auth;
 class CommentQuestionController extends Controller
 {
 
@@ -24,5 +25,19 @@ class CommentQuestionController extends Controller
 
       $question->comments()->save($comment);
       return back();
+    }
+
+    public function setlike(Request $request,Question $question, Comment $comment)
+    {
+        if ($comment->rates->where('user_id', Auth::user()->id)->count()>0) {
+          $comment->rates()->where('user_id', Auth::user()->id)->delete();
+          return back();
+        } else {
+          $rate = new Rate();
+          $rate->user_id = Auth::user()->id;
+          $rate->value = 1;
+          $comment->rates()->save($rate);
+          return back();
+        }
     }
 }

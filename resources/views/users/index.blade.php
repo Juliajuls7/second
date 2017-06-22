@@ -6,22 +6,15 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Все пользователи </div>
-
                 <div class="panel-body">
                    @foreach ($users as $user)
                     <ul>
-                       <li> {{ $user->name  }} Почта:  {{ $user->email }}    
-                      
-                  
-
+                       <li> {{ $user->name  }} Почта:  {{ $user->email }}
                   <form id="destroy-form{{ $user->id }}" action="/users/{{ $user->id }}" method="POST" style="display: none;">
                       {{ csrf_field() }}
                       {{ method_field('DELETE') }}
                   </form>
-
-                     
-                      
-                       </li> 
+                       </li>
                    </ul>
                    @endforeach
                 </div>
@@ -34,7 +27,7 @@
 $(function() {
     $('#deleteBtn').click(function(event) {
         if (confirm("Действительно хотите удалить этот город?")) {
-            event.preventDefault(); 
+            event.preventDefault();
             document.getElementById('destroy-form').submit();
         }
     });

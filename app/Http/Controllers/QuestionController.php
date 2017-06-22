@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Subcategory;
 use App\Category;
 use App\Question;
+use Auth;
 use Illuminate\Http\Request;
 
 class QuestionController extends Controller
@@ -45,19 +46,27 @@ class QuestionController extends Controller
     {
         $question = Question::findOrFail($id);
 
+        $comments = collect([]);
+        foreach ($question->comments as $comment) {
+          $likeOn = 0;
+          if ($comment->rates->where('user_id', Auth::user()->id)->count()>0) {
+              $likeOn = 1;
+          }
+
+          $comments->push([$comment,$likeOn]);
+        }
+
         return view ('questions.show', [
           'question' => $question,
-          'comments' => $question->comments
+          'comments' => $comments,
         ]);
     }
 
 
     public function edit($id)
     {
-
         return view('questions.edit',['question'=>Question::findOrFail($id),'categories'=> Category::all()]);
     }
-
 
     public function save(Request $request, $id)
     {
@@ -69,15 +78,10 @@ class QuestionController extends Controller
         return redirect('/questions');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
        Question::findOrFail($id)->delete();
         return redirect('/questions');
     }
+
 }

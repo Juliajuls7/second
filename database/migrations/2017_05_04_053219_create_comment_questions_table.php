@@ -13,7 +13,6 @@ class CreateCommentQuestionsTable extends Migration
             $table->string('text');
             $table->integer('user_id')->unsigned();
             $table->integer('question_id')->unsigned();
-
             $table->integer('rating');
             $table->timestamps();
         });

@@ -47,9 +47,11 @@ _________________________________________________________ -->
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-5 contact">
-                            <p class="hidden-sm hidden-xs"></p>
-                            <p class="hidden-md hidden-lg"><a href="#" data-animate-hover="pulse"><i class="fa fa-phone"></i></a>  <a href="#" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
-                            </p>
+                            @if (Auth::user())
+                          <a href="#" data-animate-hover="pulse">
+                            <i class="fa fa-envelope"></i>
+                            <span class="hidden-xs text-uppercase">Уведомления</span></a>
+                            @endif
                         </div>
                         <div class="col-xs-7">
                             <div class="social">
@@ -57,6 +59,7 @@ _________________________________________________________ -->
                                 <a href="#" class="external gplus" data-animate-hover="pulse"><i class="fa fa-google-plus"></i></a>
                                 <a href="#" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
                                 <a href="#" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
+
                             </div>
                             <div class="login">
                                   @if (Auth::guest())
@@ -64,8 +67,10 @@ _________________________________________________________ -->
                               <a href="{{ route('register') }}"><i class="fa fa-user"></i> <span class="hidden-xs text-uppercase">Регистрация</span></a>
                                   @else
                                   <a href="/users/{{Auth::user()->id}}"   aria-expanded="false">
+
                                       {{ Auth::user()->name }}
                                   </a>
+
                                   <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Выход</span></a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}
@@ -116,7 +121,10 @@ _________________________________________________________ -->
                                     <a href="/categories" class="categories">Категории</a>
                                 </li>
                                 <li class="menu">
-                                    <a href="/cities" class="cities">Города</a>
+                                    <a href="/cities" class="cities">Области и города</a>
+                                </li>
+                                <li class="menu">
+                                    <a href="/users" class="cities">Пользоватеи</a>
                                 </li>
                                 @endif
                                 <li class="menu">
@@ -124,6 +132,9 @@ _________________________________________________________ -->
                                 </li>
                                 <li class="menu">
                                     <a href="#" class="services">Услуги</a>
+                                </li>
+                                <li class="menu">
+                                    <a href="/executors" class="articles">Исполнители</a>
                                 </li>
                                 <li class="menu">
                                     <a href="/articles" class="articles">Статьи</a>

@@ -13,7 +13,7 @@ class CreateReviewsTable extends Migration
           $table->integer('quality');//качество
           $table->integer('price');
           $table->integer('politeness'); //вежливость
-          $table->integer('speed');
+
           $table->text('text');
           $table->timestamps();
       });

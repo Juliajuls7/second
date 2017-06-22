@@ -75,7 +75,7 @@ Route::delete('/questions/{id}', 'QuestionController@destroy');
 //----------КОММЕНТАРИИ К ВОПРОСАМ-----------------------------------
 
 Route::post('/questions/{question}/comment', 'CommentQuestionController@store'); // добавить новый комментарий к вопросу
-
+Route::put('/questions/{question}/{comment}', 'CommentQuestionController@setlike');
 
 //----------ПОЛЬЗОВАТЕИ----------------------------------------------
 
@@ -84,6 +84,7 @@ Route::get('/users/create', 'UserController@create');
 Route::post('/users', 'UserController@store');
 //// просмотр
 Route::get('/users', 'UserController@index')->middleware('admin');
+Route::get('/executors', 'UserController@showexecutor');
 Route::get('/users/{id}', 'UserController@show'); //показать 1
 // редактирование
 Route::get('/users/edit/{id}', 'UserController@edit');
@@ -109,9 +110,10 @@ Route::delete('/articles/{article}', 'ArticleController@destroy');
 
 //----------КОММЕНТАРИИ К СТАТЬЯМ---------------------------------------
 Route::post('/articles/{article}/comment', 'CommentArticleController@store'); // добавить новый комментарий к статье
+//----------LIKES К СТАТЬЯМ---------------------------------------
+Route::put('/articles/{article}', 'ArticleController@setlike');
 
-
-//----------Услуги---------------------------------------------------
+//----------ЗАДАЧИ---------------------------------------------------
 // добавление
 Route::get('/services/create', 'ServiceController@create');
 Route::post('/services', 'ServiceController@store');
@@ -130,5 +132,7 @@ Route::post('/services/executor/{service}/{user}', 'ServiceController@setexecuto
 // удаление
 Route::delete('/services/{service}', 'ServiceController@destroy');
 
-//----------КОММЕНТАРИИ К СТАТЬЯМ---------------------------------------
+//----------КОММЕНТАРИИ К ЗАДАЧЕ ---------------------------------------
 Route::post('/services/{service}/comment', 'CommentServiceController@store'); // добавить новый комментарий к заданию
+//----------отзывы К ЗАДАЧЕ---------------------------------------
+Route::post('/services/{service}/review', 'ReviewController@store'); // добавить новый отзыв к заданию
