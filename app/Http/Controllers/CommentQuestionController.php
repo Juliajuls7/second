@@ -20,7 +20,7 @@ class CommentQuestionController extends Controller
     {
       $comment = new Comment();
       $comment->user_id = request()->user()->id;
-      $comment->rating = 0;
+    
       $comment->text = request('text');
 
       $question->comments()->save($comment);
@@ -31,12 +31,16 @@ class CommentQuestionController extends Controller
     {
         if ($comment->rates->where('user_id', Auth::user()->id)->count()>0) {
           $comment->rates()->where('user_id', Auth::user()->id)->delete();
+          $comment->user->rating_ex -= 1;
+          $comment->user->save();
           return back();
         } else {
           $rate = new Rate();
           $rate->user_id = Auth::user()->id;
           $rate->value = 1;
           $comment->rates()->save($rate);
+          $comment->user->rating_ex += 1;
+          $comment->user->save();
           return back();
         }
     }

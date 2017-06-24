@@ -25,6 +25,7 @@
                         <section class="post">
                               <div class="row">
                                 <a type="button"  href="/questions/create" class="btn btn-lg btn-template-primary">Задать вопрос</a>
+                              
                               <hr>
                                 <div class="form-group">
                                          @foreach ($questions as $question)
@@ -41,7 +42,7 @@
                                                <a href="#"><i class="fa fa-calendar-o"></i> {{ $question->created_at->diffForHumans() }}</a>
                                                <a href="#"><i class="fa fa-comment-o"></i>{{ count($question->comments) }}  Comments</a>
                                            </p>
-                                             <h2><a href="/questions/{{$question->id}}">{{ $question->head }}</a></h2>
+                                             <h4><a href="/questions/{{$question->id}}">{{ $question->head }}</a></h4>
 
                                              <div class="clearfix">
                                                <a href="#">{{ $question->subcategory->category->name }}</a> > <a href="#">{{ $question->subcategory->name }}</a>
@@ -85,23 +86,9 @@
                       <!-- *** MENUS AND WIDGETS ***
 _________________________________________________________ -->
 
-                      <div class="panel panel-default sidebar-menu">
-                          <div class="panel-heading">
-                              <h3 class="panel-title">Search</h3>
-                          </div>
-                          <div class="panel-body">
-                              <form role="search">
-                                  <div class="input-group">
-                                      <input type="text" class="form-control" placeholder="Search">
-                                      <span class="input-group-btn">
-                                      <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
-                                  </span>
-                                </div>
-                              </form>
-                          </div>
-                      </div>
+
                     @includeIf('questions.partials.categories')
-                  
+
                   </div>
                 </div>
                  <!-- /.row -->

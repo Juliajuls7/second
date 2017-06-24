@@ -27,8 +27,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="box">
                     <p class="lead">Уже зарегистрированы?</p>
-                    <p class="text-muted">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
-                        ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+                    <p class="text-muted">Спасибо,что выбираете нас!</p>
                     <hr>
 
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">

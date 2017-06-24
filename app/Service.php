@@ -25,7 +25,7 @@ class Service extends Model
          return $this->hasOne('App\Review','id','review_executor');
      }
      public function review_au(){
-          return $this->hasOne('App\Review','review_author','id');
+          return $this->hasOne('App\Review','id','review_author');
       }
      public function comments(){
         return $this->hasMany('App\CommentService');

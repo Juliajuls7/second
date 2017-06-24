@@ -19,9 +19,6 @@
   </div>
 </div>
 
-
-
-
 <div id="content">
     <div class="container">
 
@@ -56,7 +53,18 @@
                       </div>
                       <!-- /.col-md-3 -->
             <div class="col-md-9" id="blog-listing-big">
+              <div class="dropdown ">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Сортировать по
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#">Дате</a></li>
+                    <li><a href="#">Рейтингу исполнителя</a></li>
 
+                  </ul>
+            </div>
+            <hr>
               @foreach ($users as $user)
                 <section class="post">
                   <div class="col-sm-3 col-md-2 text-center-xs">
@@ -64,7 +72,8 @@
                          <img src="{{$user->photo}}" class="img-responsive img-circle" alt="">
                       </p>
                       <p>
-                         Рейтинг: {{$user->rating}}
+                        Рейтинг: 100
+                         <!-- Рейтинг: {{$user->rating}} -->
                       </p>
                   </div>
                     <h3><a href="/users/{{$user->id}}">{{ $user->name }}</a></h3>
@@ -73,7 +82,7 @@
                          Обо мне: {!! $user->about_myself !!}
                       </div>
                     </div>
-                  
+
 
                   <form id="destroy-form" action="/articles/" method="POST" style="display: none;">
                   {{ csrf_field() }}

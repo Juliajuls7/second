@@ -19,9 +19,14 @@ class StateServiceTableSeeder extends Seeder
 
           'name' => 'Выполняется'
         ],
+      
         [
 
-          'name' => 'Закрыт'
+          'name' => 'Выполнена успешно'
+        ],
+        [
+
+          'name' => 'Задача не выполнена'
         ]
      ]);
     }

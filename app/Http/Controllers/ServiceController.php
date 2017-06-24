@@ -75,18 +75,19 @@ class ServiceController extends Controller
 
   public function setexecutor($service, $user)
   {
-
     $service = Service::findOrFail($service);
     $service->executor_id = $user;
     $service->state_service_id = 2;
     $service->save();
     return back();
   }
-  public function endservice($service)
+  public function endservice(Request $request, $service)
   {
     $service = Service::findOrFail($service);
-    $service->state_service_id = 3;
+    $service->state_service_id = $request->state_service_id;
+
     $service->save();
     return back();
   }
+
 }

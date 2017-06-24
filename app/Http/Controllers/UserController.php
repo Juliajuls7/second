@@ -28,39 +28,21 @@ class UserController extends Controller
     {
           return view('executors.showexecutor', ['users' => User::orderByDesc('created_at')->paginate(15)]);
     }
-    public function create()
-    {
-  //      return view('users.create',['subcategories'=> Subcategory::all()]);
-    }
-
-
-    public function store(Request $request)
-    {
-    //     $question = new Question();
-    //     $question->subcategory_id = $request->subcategory;
-    //     $question->head = $request->head;
-    //     $question->text = $request->text;
-    //     $request->user()->questions()->save($question);
-
-    //    return redirect('/questions');
-    }
-
 
     public function show($id)
     {
       $user = User::findOrFail($id);
-      $rating = 0;
 
-      foreach ($user->articles as $article) {
-        $rating+=$article->rates->sum('value');
-      }
-
-      foreach ($user->commentquestions as $comment) {
-        $rating+=$comment->rates->sum('value');
-      }
+      // foreach ($user->articles as $article) {
+      //   $rating+=$article->rates->sum('value');
+      // }
+      //
+      // foreach ($user->commentquestions as $comment) {
+      //   $rating+=$comment->rates->sum('value');
+      // }
 
       return view ('users.show', [
-            'rating' => $rating,
+          
             'user' => $user,
             'services'=> $user->services()->orderByDesc('created_at')->get(),
             'articles'=> $user->articles(),

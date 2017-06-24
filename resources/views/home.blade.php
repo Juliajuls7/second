@@ -9,82 +9,7 @@
 
             <section>
 
-                <div class="home-carousel">
-
-                    <div class="dark-mask"></div>
-
-                    <div class="container">
-                        <div class="homepage owl-carousel">
-                            <div class="item">
-                                <div class="row">
-                                    <div class="col-sm-5 right">
-                                        <p>
-                                            <img src="img/logo.png" alt="">
-                                        </p>
-                                        <h1>Multipurpose responsive theme</h1>
-                                        <p>Business. Corporate. Agency.
-                                            <br />Portfolio. Blog. E-commerce.</p>
-                                    </div>
-                                    <div class="col-sm-7">
-                                        <img class="img-responsive" src="img/template-homepage.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="row">
-
-                                    <div class="col-sm-7 text-center">
-                                        <img class="img-responsive" src="img/template-mac.png" alt="">
-                                    </div>
-
-                                    <div class="col-sm-5">
-                                        <h2>46 HTML pages full of features</h2>
-                                        <ul class="list-style-none">
-                                            <li>Sliders and carousels</li>
-                                            <li>4 Header variations</li>
-                                            <li>Google maps, Forms, Megamenu, CSS3 Animations and much more</li>
-                                            <li>+ 11 extra pages showing template features</li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="row">
-                                    <div class="col-sm-5 right">
-                                        <h1>Design</h1>
-                                        <ul class="list-style-none">
-                                            <li>Clean and elegant design</li>
-                                            <li>Full width and boxed mode</li>
-                                            <li>Easily readable Roboto font and awesome icons</li>
-                                            <li>7 preprepared colour variations</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-sm-7">
-                                        <img class="img-responsive" src="img/template-easy-customize.png" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="row">
-                                    <div class="col-sm-7">
-                                        <img class="img-responsive" src="img/template-easy-code.png" alt="">
-                                    </div>
-                                    <div class="col-sm-5">
-                                        <h1>Easy to customize</h1>
-                                        <ul class="list-style-none">
-                                            <li>7 preprepared colour variations.</li>
-                                            <li>Easily to change fonts</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.project owl-slider -->
-                    </div>
-                </div>
-
-                <!-- *** HOMEPAGE CAROUSEL END *** -->
+            
             </section>
 
             <section class="bar background-white">
@@ -96,10 +21,12 @@
                             <div class="col-md-4">
                                 <div class="box-simple">
                                     <div class="icon">
-                                        <i class="fa fa-desktop"></i>
+                                        <i class="fa fa-home"></i>
                                     </div>
-                                    <h3>Webdesign</h3>
-                                    <p>Fifth abundantly made Give sixth hath. Cattle creature i be don't them behold green moved fowl Moved life us beast good yielding. Have bring.</p>
+                                    <h3>Помощь по дому и хозяйству</h3>
+                                    <p>Уборка</p>
+                                    <p>Мелкий бытовой ремонт</p>
+                                    <p>Приготовление еды</p>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -107,17 +34,21 @@
                                     <div class="icon">
                                         <i class="fa fa-print"></i>
                                     </div>
-                                    <h3>Print</h3>
-                                    <p>Advantage old had otherwise sincerity dependent additions. It in adapted natural hastily is justice. Six draw you him full not mean evil. Prepare garrets it expense windows shewing do an.</p>
+                                    <h3>Бизнес Учеба Страхование</h3>
+                                    <p>Административная работа</p>
+                                      <p>Обучение и репетиторы</p>
+                                      <p>Юридические услуги</p>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="box-simple">
                                     <div class="icon">
-                                        <i class="fa fa-globe"></i>
+                                        <i class="fa fa-truck"></i>
                                     </div>
-                                    <h3>SEO and SEM</h3>
-                                    <p>Am terminated it excellence invitation projection as. She graceful shy believed distance use nay. Lively is people so basket ladies window expect.</p>
+                                    <h3>Грузоперевозки и доставки</h3>
+                                    <p>Доставка на дом</p>
+                                    <p>Переезд</p>
+                                    <p>Пассажирские перевозки</p>
                                 </div>
                             </div>
                         </div>
@@ -126,19 +57,24 @@
                             <div class="col-md-4">
                                 <div class="box-simple">
                                     <div class="icon">
-                                        <i class="fa fa-lightbulb-o"></i>
+                                        <i class="fa fa-desktop"></i>
                                     </div>
-                                    <h3>Consulting</h3>
-                                    <p>Fifth abundantly made Give sixth hath. Cattle creature i be don't them behold green moved fowl Moved life us beast good yielding. Have bring.</p>
+                                    <h3>Компьютеры и интернет</h3>
+                                    <p>Настройка интернета</p>
+                                    <p>Ремонт ноутбуков и компьютеров</p>
+                                    <p>Удаление вирусов</p>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="box-simple">
                                     <div class="icon">
-                                        <i class="fa fa-envelope-o"></i>
+                                        <i class="fa fa-heart"></i>
                                     </div>
-                                    <h3>Email Marketing</h3>
-                                    <p>Advantage old had otherwise sincerity dependent additions. It in adapted natural hastily is justice. Six draw you him full not mean evil. Prepare garrets it expense windows shewing do an.</p>
+                                    <h3>Красота и здоровье</h3>
+                                    <p>Массаж</p>
+                                      <p>Косметология и макияж</p>
+                                        <p>Уход за собой</p>
+                                          <p>Спорт</p>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -146,8 +82,10 @@
                                     <div class="icon">
                                         <i class="fa fa-user"></i>
                                     </div>
-                                    <h3>UX</h3>
-                                    <p>Am terminated it excellence invitation projection as. She graceful shy believed distance use nay. Lively is people so basket ladies window expect.</p>
+                                    <h3>Виртуальная помощь</h3>
+                                    <p>Работа с текстом</p>
+                                    <p>Поиск и обработка информации</p>
+                                    <p>Обзвон по базе</p>
                                 </div>
                             </div>
                         </div>
@@ -160,10 +98,10 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="heading text-center">
-                                <h2>Testimonials</h2>
+                                <h2>Исполнители</h2>
                             </div>
 
-                            <p class="lead">We have worked with many clients and we always like to hear they come out from the cooperation happy and satisfied. Have a look what our clients said about us.</p>
+                            <p class="lead">Выбирайте лучшего исполнителя для своей задачи</p>
 
 
 

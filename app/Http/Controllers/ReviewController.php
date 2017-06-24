@@ -14,14 +14,17 @@ class ReviewController extends Controller
   }
 
   // добавить отзыв о задаче
-  public function store(Service $service)
+  public function store(Request $request,Service $service)
   {
     $review = new Review();
-    $review->quality = request()->quality;
-    $review->price = request()->price;
-    $review->politeness =request()->politeness;
-    $review->text = request('text');
-    $service->review_au->save($review);
+    $review->key1 = $request->key1;
+    $review->key2 = $request->key2;
+    $review->key3 = $request->key3;
+    $review->text = $request->text;
+    $service->state_service_id = $request->state;
+    $service->review_au()->save($review);
+    $service->review_author = $review->id;
+    $service->save();
     return back();
   }
 

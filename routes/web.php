@@ -135,4 +135,4 @@ Route::delete('/services/{service}', 'ServiceController@destroy');
 //----------КОММЕНТАРИИ К ЗАДАЧЕ ---------------------------------------
 Route::post('/services/{service}/comment', 'CommentServiceController@store'); // добавить новый комментарий к заданию
 //----------отзывы К ЗАДАЧЕ---------------------------------------
-Route::post('/services/{service}/review', 'ReviewController@store'); // добавить новый отзыв к заданию
+Route::post('/services/{service}/review_author', 'ReviewController@store'); // добавить новый отзыв к заданию

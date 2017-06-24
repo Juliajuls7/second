@@ -10,7 +10,7 @@ class CreateServicesTable extends Migration
             $table->integer('author_id')->unsigned();
             $table->integer('subcategory_id')->unsigned();
             $table->string('head');
-            $table->string('text');
+            $table->text('text');
             $table->dateTime('t_finish')->default(\Carbon\Carbon::now());
             $table->dateTime('t_start')->default(\Carbon\Carbon::now());
             $table->integer('state_service_id')->unsigned()->default(1);//состояние задания

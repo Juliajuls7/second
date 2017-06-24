@@ -44,8 +44,8 @@ _________________________________________________________ -->
                                 </div>
                                   <div class="row">
                                     <div class="col-sm-4 col-md-8">
-                                      <p >Рейтинг исполнителя: <span>{{ $rating }}</span></p>
-                                      <p >Рейтинг заказчика: <span>{{ $user->rating }}</span></p>
+                                      <p >Рейтинг исполнителя: <span>{{ $user->rating_ex }}</span></p>
+                                      <p >Рейтинг заказчика: <span>{{ $user->rating}}</span></p>
                                     </div>
                                   </div>
                           </div>

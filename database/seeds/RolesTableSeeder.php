@@ -24,6 +24,10 @@ class RolesTableSeeder extends Seeder
          [
            'title' => 'Заблокированый',
            'name' => 'banned'
+         ],
+         [
+           'title' => 'Гость',
+           'name' => 'guest'
          ]
       ]);
     }

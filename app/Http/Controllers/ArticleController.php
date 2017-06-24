@@ -82,6 +82,8 @@ class ArticleController extends Controller
     public function setlike(Request $request, Article $article)
     {
         if ($article->rates->where('user_id', Auth::user()->id)->count()>0) {
+          $article->user->rating_ex -= 1;
+          $article->user->save();
           $article->rates()->where('user_id', Auth::user()->id)->delete();
           return back();
         } else {
@@ -89,6 +91,8 @@ class ArticleController extends Controller
           $rate->user_id = Auth::user()->id;
           $rate->value = 1;
           $article->rates()->save($rate);
+          $article->user->rating_ex += 1;
+          $article->user->save();
           return back();
         }
     }

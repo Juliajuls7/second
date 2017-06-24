@@ -29,30 +29,18 @@
 
                             <!-- *** MENUS AND WIDGETS ***
             _________________________________________________________ -->
-                            <div class="panel panel-default sidebar-menu">
 
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Text widget</h3>
-                                </div>
-
-                                <div class="panel-body text-widget">
-                                    <p>Создавайте задания и выбирайте исполнителей.
-                                      Или становитесь исполнителем, заполняйте аккаунт повышайте рейтинг и зарабатывайте деньги
-                                    </p>
-
-                                </div>
-                            </div>
 
                             <div class="panel panel-default sidebar-menu">
 
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Search</h3>
+                                    <h3 class="panel-title">Поиск</h3>
                                 </div>
 
                                 <div class="panel-body">
                                     <form role="search">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Search">
+                                            <input type="text" class="form-control" placeholder="Поиск">
                                             <span class="input-group-btn">
 
             <button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
@@ -62,6 +50,7 @@
                                     </form>
                                 </div>
                             </div>
+                                  @includeIf('services.partials.categories')
 
                           <!-- @includeIf('questions.partials.categories') -->
 
@@ -102,7 +91,19 @@
                         <section class="post">
                               <div class="row">
                                 <a type="button"  href="/services/create" class="btn btn-lg btn-template-primary">Создать задание</a>
+                                <div class="dropdown pull-right">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                      Сортировать по
+                                      <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                      <li><a href="#">Дате</a></li>
+                                      <li><a href="#">Рейтингу исполнителя</a></li>
 
+
+
+                                    </ul>
+                              </div>
                               <hr>
 
                               <div class="form-group">

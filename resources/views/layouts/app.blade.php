@@ -19,6 +19,7 @@
   <link href="/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
   <!-- Custom stylesheet - for your changes -->
   <link href="/css/custom.css" rel="stylesheet">
+  <link href="/css/starsrev.css" rel="stylesheet">
   <!-- Favicon and apple touch icons-->
   <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
@@ -92,7 +93,7 @@ _________________________________________________________ -->
                     <div class="container">
                         <div class="navbar-header">
 
-                            <a class="navbar-brand home" href="/home">
+                            <a class="navbar-brand home" href="/">
                                 <img src="/img/logo.png" alt="Universal logo" class="hidden-xs hidden-sm">
 
                             </a>
@@ -130,9 +131,9 @@ _________________________________________________________ -->
                                 <li class="menu">
                                     <a href="/services" class="services">Задания</a>
                                 </li>
-                                <li class="menu">
+                                <!-- <li class="menu">
                                     <a href="#" class="services">Услуги</a>
-                                </li>
+                                </li> -->
                                 <li class="menu">
                                     <a href="/executors" class="articles">Исполнители</a>
                                 </li>
@@ -242,28 +243,13 @@ _________________________________________________________ -->
         <footer id="footer">
             <div class="container">
                 <div class="col-md-3 col-sm-6">
-                    <h4>About us</h4>
+                    <h4>О нас</h4>
 
-                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                    <p>Сайт, предназначенный для создания задач и поиска исполнителей по всей стране</p>
 
                     <hr>
 
-                    <h4>Join our monthly newsletter</h4>
 
-                    <form>
-                        <div class="input-group">
-
-                            <input type="text" class="form-control">
-
-                            <span class="input-group-btn">
-
-                        <button class="btn btn-default" type="button"><i class="fa fa-send"></i></button>
-
-                    </span>
-
-                        </div>
-                        <!-- /input-group -->
-                    </form>
 
                     <hr class="hidden-md hidden-lg hidden-sm">
 
@@ -272,39 +258,31 @@ _________________________________________________________ -->
 
                 <div class="col-md-3 col-sm-6">
 
-                    <h4>Blog</h4>
+                    <h4>Как тут все устроено</h4>
 
                     <div class="blog-entries">
                         <div class="item same-height-row clearfix">
-                            <div class="image same-height-always">
-                                <a href="#">
-                                    <img class="img-responsive" src="/img/detailsquare.jpg" alt="">
-                                </a>
-                            </div>
+
                             <div class="name same-height-always">
-                                <h5><a href="#">Blog post name</a></h5>
+                                <h5><a href="#">Формирование рейтинга</a></h5>
                             </div>
                         </div>
 
                         <div class="item same-height-row clearfix">
                             <div class="image same-height-always">
-                                <a href="#">
-                                    <img class="img-responsive" src="/img/detailsquare.jpg" alt="">
-                                </a>
+
                             </div>
                             <div class="name same-height-always">
-                                <h5><a href="#">Blog post name</a></h5>
+                                <h5><a href="#">Как это работает</a></h5>
                             </div>
                         </div>
 
                         <div class="item same-height-row clearfix">
                             <div class="image same-height-always">
-                                <a href="#">
-                                    <img class="img-responsive" src="/img/detailsquare.jpg" alt="">
-                                </a>
+
                             </div>
                             <div class="name same-height-always">
-                                <h5><a href="#">Very very long blog post name</a></h5>
+                                <h5><a href="#">Отзывы о нас</a></h5>
                             </div>
                         </div>
                     </div>
@@ -316,15 +294,15 @@ _________________________________________________________ -->
 
                 <div class="col-md-3 col-sm-6">
 
-                    <h4>Contact</h4>
+                    <h4>Контакты</h4>
 
-                    <p><strong>Universal Ltd.</strong>
-                        <br>13/25 New Avenue
-                        <br>Newtown upon River
-                        <br>45Y 73J
-                        <br>England
+                    <p><strong>SecondHelp.ru</strong>
+                        <br>+7 908 589 29 68
+                        <br>+7 906 866 54 47
+                        <br>Челябинск
                         <br>
-                        <strong>Great Britain</strong>
+                        <br>
+                        <strong>Россия</strong>
                     </p>
 
                     <a href="contact.html" class="btn btn-small btn-template-main">Go to contact page</a>
@@ -388,11 +366,7 @@ _________________________________________________________ -->
         <div id="copyright">
             <div class="container">
                 <div class="col-md-12">
-                    <p class="pull-left">&copy; 2015. Your company / name goes here</p>
-                    <p class="pull-right">Template by <a href="https://bootstrapious.com">Bootstrapious</a> & <a href="https://remoteplease.com">Remote Please</a>
-                         <!-- Not removing these links is part of the license conditions of the template. Thanks for understanding :) If you want to use the template without the attribution links, you can do so after supporting further themes development at https://bootstrapious.com/donate  -->
-                    </p>
-
+                    <p class="pull-left">&copy; 2017. SecondHelp</p>
                 </div>
             </div>
         </div>
