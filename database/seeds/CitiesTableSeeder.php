@@ -1055,7 +1055,7 @@ class CitiesTableSeeder extends Seeder
         array('id' => '1041','region_id' => '4052','name' => 'Тульский'),
         array('id' => '1042','region_id' => '4052','name' => 'Усть-Лабинск'),
         array('id' => '1043','region_id' => '4052','name' => 'Шовгеновский'),
-        array('id' => '1044','region_id' => '4105','name' => ' Железногорск'),
+        array('id' => '1044','region_id' => '4105','name' => 'Железногорск'),
         array('id' => '1045','region_id' => '4105','name' => 'Абаза'),
         array('id' => '1046','region_id' => '4105','name' => 'Абакан'),
         array('id' => '1047','region_id' => '4105','name' => 'Абан'),

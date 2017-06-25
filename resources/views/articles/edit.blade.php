@@ -85,10 +85,18 @@
           $.get('/api/categories/sub/'+$('#category').val(), function (data) {
             $('#subcategory').empty();
             $.each(data, function(key, value) {
-              $('#subcategory')
-               .append($("<option></option>")
-                  .attr("value",value['id'])
-                  .text(value['name']));
+              if (value['id']=={{ $article->subcategory->id }}) {
+                $('#subcategory')
+                 .append($("<option></option>")
+                    .attr("value",value['id'])
+                    .attr("selected","selected")
+                    .text(value['name']));
+              } else {
+                $('#subcategory')
+                 .append($("<option></option>")
+                    .attr("value",value['id'])
+                    .text(value['name']));
+              }
             });
             $('#subcategory').prop('disabled', false);
           });

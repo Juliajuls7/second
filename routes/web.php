@@ -127,7 +127,7 @@ Route::put('/services/edit/{service}', 'ServiceController@save');
 // установление исполнителя
 Route::post('/services/executor/{service}/{user}', 'ServiceController@setexecutor');
 // завершение задачи
-Route::post('/services/state/{service}', 'ServiceController@endservice');
+Route::post('/services/state/{service}', 'ServiceController@endservice1');
 // установление исполнителя
 Route::post('/services/executor/{service}/{user}', 'ServiceController@setexecutor');
 // удаление

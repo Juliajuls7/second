@@ -81,11 +81,17 @@ class ServiceController extends Controller
     $service->save();
     return back();
   }
+  public function endservice1( $service)
+  {
+    $service = Service::findOrFail($service);
+    $service->state_service_id = 5;
+    $service->save();
+    return back();
+  }
   public function endservice(Request $request, $service)
   {
     $service = Service::findOrFail($service);
     $service->state_service_id = $request->state_service_id;
-
     $service->save();
     return back();
   }

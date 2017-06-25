@@ -108,13 +108,12 @@ _________________________________________________________ -->
                                         @if($user->city_id==0)
                                           Не указан,
                                         @else
-                                        {{$user->city_id}},
+                                        {{$user->city->name}},
                                         @endif
                                       </span>
                                           <span>День рождения:
                                       @if($user->DOB=='1900-01-01')
                                         Не указан
-
                                       @else
                                       {{ \Carbon\Carbon::parse($user->DOB)->format('d.m.Y') }}
                                       </span>
@@ -145,10 +144,10 @@ _________________________________________________________ -->
                                         @endif
                                        </h5>
                                        <h5>Образование:
-                                         @if($user->education==0)
+                                         @if($user->education->id==0)
                                            Не указано
                                          @else
-                                           <a href="#">{{$user->education}}</a>
+                                           <a href="#">{{$user->education->name}}</a>
                                          @endif
                                        </h5>
                                        <h5>Деятельность:

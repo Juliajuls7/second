@@ -45,11 +45,11 @@
 
             <div class="form-group">
             <label for="head">Заголовок</label>
-                <input class="form-control" type="text" id="head" name="head">
+                <input class="form-control" type="text" id="head" name="head" required>
             </div>
               <div class="form-group">
             <label for="text">Текст вопроса</label>
-                <textarea class="form-control" type="text" id="text" name="text" rows="3"></textarea>
+                <textarea class="form-control" type="text" id="text" name="text" rows="3" required></textarea>
             </div>
             {{ csrf_field() }}
             <div class="col-sm-12 text-center">

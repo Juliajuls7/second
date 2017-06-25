@@ -109,35 +109,37 @@ _________________________________________________________ -->
                         <div class="navbar-collapse collapse" id="navigation">
 
                             <ul class="nav navbar-nav navbar-right">
-                                <li class="active">
+                                <li class="menu {{{ (Request::is('/') ? 'active' : '') }}}">
                                     <a href="/" class="home">На главную</a>
 
                                 </li>
-                                <li class="menu">
+                                <li class="menu {{{ (Request::is('questions') ? 'active' : '') }}}">
                                     <a href="/questions" class="question" >Вопросы</a>
 
                                 </li>
                                 @if (Role::admin())
-                                <li class="menu">
+                                <li class="menu {{{ (Request::is('categories') ? 'active' : '') }}}">
                                     <a href="/categories" class="categories">Категории</a>
                                 </li>
-                                <li class="menu">
+                                <li class="menu {{{ (Request::is('cities') ? 'active' : '') }}}">
                                     <a href="/cities" class="cities">Области и города</a>
                                 </li>
-                                <li class="menu">
-                                    <a href="/users" class="cities">Пользоватеи</a>
+                                <li class="menu {{{ (Request::is('users') ? 'active' : '') }}}">
+                                    <a href="/users" class="cities">Пользователи</a>
                                 </li>
                                 @endif
-                                <li class="menu">
+                                <li class="menu {{{ (Request::is('services') ? 'active' : '') }}}">
                                     <a href="/services" class="services">Задания</a>
                                 </li>
                                 <!-- <li class="menu">
                                     <a href="#" class="services">Услуги</a>
                                 </li> -->
-                                <li class="menu">
+                                  @if (Role::user()||Role::guest())
+                                <li class="menu {{{ (Request::is('executors') ? 'active' : '') }}}">
                                     <a href="/executors" class="articles">Исполнители</a>
                                 </li>
-                                <li class="menu">
+                                  @endif
+                                <li class="menu {{{ (Request::is('articles') ? 'active' : '') }}}">
                                     <a href="/articles" class="articles">Статьи</a>
                                 </li>
 
@@ -305,7 +307,7 @@ _________________________________________________________ -->
                         <strong>Россия</strong>
                     </p>
 
-                    <a href="contact.html" class="btn btn-small btn-template-main">Go to contact page</a>
+
 
                     <hr class="hidden-md hidden-lg hidden-sm">
 
@@ -316,39 +318,10 @@ _________________________________________________________ -->
 
                 <div class="col-md-3 col-sm-6">
 
-                    <h4>Photostream</h4>
+                    
 
                     <div class="photostream">
-                        <div>
-                            <a href="#">
-                                <img src="/img/detailsquare.jpg" class="img-responsive" alt="#">
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <img src="/img/detailsquare2.jpg" class="img-responsive" alt="#">
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <img src="/img/detailsquare3.jpg" class="img-responsive" alt="#">
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <img src="/img/detailsquare3.jpg" class="img-responsive" alt="#">
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <img src="/img/detailsquare2.jpg" class="img-responsive" alt="#">
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <img src="/img/detailsquare.jpg" class="img-responsive" alt="#">
-                            </a>
-                        </div>
+
                     </div>
 
                 </div>

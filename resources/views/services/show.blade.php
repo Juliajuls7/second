@@ -44,14 +44,18 @@
                         </div>
                         статус:   <p>{{ $service->stateservice->name }}</p>
                         @if ( ($service->stateservice->id ==2 || $service->stateservice->id ==1)&& Role::check_service($service))
-                        <span class="form-group pull-right">
+                        @if($service->stateservice->id==1 )
+                        <div class="form-group pull-right">
                           <form action="/services/state/{{$service->id}}" method="post">
                           {{ csrf_field() }}
                           <button class="btn btn-default pull-left" type="submit">Закрыть задачу</button>
                           </form>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
-                        </span>
-
+                        </div>
+                        @else
+                        <div class="form-group pull-right">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Закрыть задачу</button>
+                            </div>
+                            @endif
                           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
                             <div class="modal-dialog" role="document">
                               <div class="modal-content">

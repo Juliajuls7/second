@@ -24,6 +24,7 @@ class User extends Authenticatable
     public function role(){
         return $this->belongsTo('App\Role');
     }
+    
     public function city(){
         return $this->belongsTo('App\City');
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\User;
 use App\City;
+use App\Region;
 use App\Education;
 use App\Service;
 use App\Question;
@@ -55,9 +56,8 @@ class UserController extends Controller
     {
         return view('users.edit',[
           'user'=>User::findOrFail($id),
-          'city'=> City::all(),
-          'education'=> Education::all()
-
+          'regions' => Region::all(),
+          'educations'=> Education::all()
         ]);
     }
 
@@ -77,10 +77,10 @@ class UserController extends Controller
         $user->activities = $request->activities;
         $user->skills = $request->skills;
         $user->about_myself = $request->about_myself;
-        $user->photo = $request->photo;
+        // $user->photo = $request->photo;
         $user->save();
 
-        return redirect('/users/$id');
+        return back();
     }
 
     public function destroy($id)

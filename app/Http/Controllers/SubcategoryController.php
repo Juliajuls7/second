@@ -10,9 +10,9 @@ class SubcategoryController extends Controller
     public function __construct() {
         $this->middleware('auth');
     }
-    
+
     public function index($id)
-    {   
+    {
    // return dd(Category::findOrFail($id)->subcategories);
        return view('categories.subcategories.index', [
         'category'=>$id,
@@ -20,7 +20,7 @@ class SubcategoryController extends Controller
        ]);
     }
 
- 
+
     public function create($id)
     {
         return view ('categories.subcategories.create',[
@@ -28,18 +28,18 @@ class SubcategoryController extends Controller
         ]);
     }
 
-    
+
     public function store(Request $request, $id)
     {
          $this->validate($request,[
             'name' => 'unique:subcategories|required|min:2|max:255'
         ]);
-        
+
         $subcategory = new Subcategory();
         $subcategory->name = $request->name;
         $category=Category::findOrFail($id);
         $category->subcategories()->save($subcategory);
-        
+
         return redirect('/categories/subcategories/'.$id);
     }
 
@@ -60,11 +60,10 @@ class SubcategoryController extends Controller
         ]);
     }
 
-   
+
     public function destroy(Request $request, $id)
     {
-       Subcategory::findOrFail($id)->delete();
-        
-        return redirect('/categories/subcategories/'.$request->category_id);
+      Subcategory::findOrFail($id)->delete();
+      return back();
     }
 }

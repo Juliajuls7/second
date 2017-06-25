@@ -19,3 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/categories/all', 'Api\ApiCategoryController@getAll');
 Route::get('/categories/sub/{category}', 'Api\ApiCategoryController@getSubAll');
+
+Route::get('/regions/all', 'Api\ApiRegionController@getAll');
+Route::get('/regions/city/{region}', 'Api\ApiRegionController@getCityAll');

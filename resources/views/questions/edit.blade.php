@@ -20,7 +20,6 @@
   </div>
 </div>
 
-
 <div class="container">
     <div class="row">
       <div id="content" class="clearfix">
@@ -58,11 +57,11 @@
 
             <div class="form-group">
             <label for="head">Заголовок</label>
-                <input class="form-control" type="text" id="head" name="head" value="{{ $question->head }}">
+                <input class="form-control" type="text" id="head" name="head" value="{{ $question->head }} required">
             </div>
               <div class="form-group">
             <label for="text">Текст вопроса</label>
-                <textarea class="form-control" type="text" id="text" name="text" rows="3">{{ $question->text }}</textarea>
+                <textarea class="form-control" type="text" id="text" name="text" rows="3 required">{{ $question->text }}</textarea>
             </div>
             {{ csrf_field() }}
              {{ method_field('PUT') }}
@@ -77,7 +76,7 @@
 <!-- /.container -->
 </div>
 <!-- /#content -->
-    
+
       @stop
       @section ('localjs')
       <script>
@@ -86,10 +85,18 @@
           $.get('/api/categories/sub/'+$('#category').val(), function (data) {
             $('#subcategory').empty();
             $.each(data, function(key, value) {
-              $('#subcategory')
-               .append($("<option></option>")
-                  .attr("value",value['id'])
-                  .text(value['name']));
+              if (value['id']=={{ $question->subcategory->id }}) {
+                $('#subcategory')
+                 .append($("<option></option>")
+                    .attr("value",value['id'])
+                    .attr("selected","selected")
+                    .text(value['name']));
+              } else {
+                $('#subcategory')
+                 .append($("<option></option>")
+                    .attr("value",value['id'])
+                    .text(value['name']));
+              }
             });
             $('#subcategory').prop('disabled', false);
           });
