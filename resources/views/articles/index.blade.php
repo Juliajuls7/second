@@ -41,7 +41,7 @@ _________________________________________________________ -->
                     <h2><a href="/articles/{{ $article->id }}">{{ $article->head }}</a></h2>
                     <div class="row">
                       <div class="clearfix">
-                            <p class="author-category">By <a href="/users/{{ $article->user->id }}">{{ $article->user->name }}</a>
+                            <p class="author-category">Автор <a href="/users/{{ $article->user->id }}">{{ $article->user->name }}</a>
                             </p>
 
                           <a href="#">{{ $article->subcategory->category->name}}</a>

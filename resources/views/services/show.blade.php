@@ -62,7 +62,7 @@
                                 <div class="modal-body">
                                     <form role="form" method="POST" action="/services/{{$service->id}}/review_author">
                                         {{ csrf_field() }}
-                                            <label for="text" class="control-label">Ваша задача выполнена?</label>
+                                      <label for="text" class="control-label">Ваша задача выполнена?</label>
                                         <div class="btn-group" data-toggle="buttons">
                                           <label class="btn btn-default">
                                               <input type="radio" id="state" name="state" value="3" /> Да
@@ -75,75 +75,63 @@
                                       <label for="text" class="control-label">Отзыв</label>
                                       <textarea id="text"  class="form-control" name="text" placeholder="" ></textarea>
                                     </div>
+                                    <div class="form-group">
+                                      <label for="bkey1"> <h4>Качество</h4></label>
+                                      <span  id="bkey1">
 
-                                    <!--[if lte IE 7]><style>#reviewStars-input{display:none}</style><![endif]-->
-
-                                  <div class="form-group">
-                                      <div class="col-md-5 text-center" >
-                                        <label for="key2"> <h4>Вежливость</h4></label>
-                                      </div>
-                                      <div class="col-md-7 text-left"  id="reviewStars-input">
-                                          <input id="star-4" type="radio" name="key2" value="5"/>
+                                          <input id="key11" type="radio" name="key1"value="1"/>
+                                          <label title="очень плохо" for="star-0"></label>
+                                          <input id="key12" type="radio" name="key1"value="2"/>
+                                          <label title="плохо" for="star-1"></label>
+                                          <input id="key13" type="radio" name="key1"value="3"/>
+                                          <label title="удовлетворительно" for="star-2"></label>
+                                          <input id="key14" type="radio" name="key1"value="4"/>
+                                          <label title="хорошо" for="star-3"></label>
+                                          <input id="key15" type="radio" name="key1" value="5"/>
                                           <label title="отлично" for="star-4"></label>
 
-                                          <input id="star-3" type="radio" name="key2" value="4"/>
-                                          <label title="хорошо" for="star-3"></label>
-
-                                          <input id="star-2" type="radio" name="key2"value="3"/>
-                                          <label title="удовлетворительно" for="star-2"></label>
-
-                                          <input id="star-1" type="radio" name="key2"value="2"/>
-                                          <label title="плохо" for="star-1"></label>
-
-                                          <input id="star-0" type="radio" name="key2"value="1"/>
-                                          <label title="очень плохо" for="star-0"></label>
-                                      </div>
+                                      </span>
                                   </div>
                                   <div class="form-group">
-                                      <div class="col-md-5 text-center" >
-                                        <label for="key1"> <h4>Качество</h4></label>
-                                      </div>
-                                      <div class="col-md-7 text-left"  id="reviewStars-input">
-                                          <input id="star-4" type="radio" name="key1" value="5"/>
-                                          <label title="отлично" for="star-4"></label>
+                                    <label for="bkey1"> <h4>Вежливость</h4></label>
+                                    <span  id="bkey1">
 
-                                          <input id="star-3" type="radio" name="key1"value="4"/>
-                                          <label title="хорошо" for="star-3"></label>
 
-                                          <input id="star-2" type="radio" name="key1"value="3"/>
-                                          <label title="удовлетворительно" for="star-2"></label>
+                                      <input id="key21" type="radio" name="key2"value="1"/>
+                                      <label title="очень плохо" for="star-0"></label>
+                                      <input id="key22" type="radio" name="key2"value="2"/>
+                                      <label title="плохо" for="star-1"></label>
+                                      <input id="key23" type="radio" name="key2"value="3"/>
+                                      <label title="удовлетворительно" for="star-2"></label>
 
-                                          <input id="star-1" type="radio" name="key1"value="2"/>
-                                          <label title="плохо" for="star-1"></label>
+                                      <input id="key24" type="radio" name="key2" value="4"/>
+                                      <label title="хорошо" for="star-3"></label>
+                                      <input id="key25" type="radio" name="key2" value="5"/>
+                                      <label title="отлично" for="star-4"></label>
 
-                                          <input id="star-0" type="radio" name="key1"value="1"/>
-                                          <label title="очень плохо" for="star-0"></label>
-                                      </div>
+
+                                    </span>
                                 </div>
-                                  <div class="form-group">
-                                      <div class="col-md-5 text-center" >
-                                        <label for="key3"> <h4>Цена</h4></label>
-                                      </div>
-                                      <div class="col-md-7 text-left"  id="reviewStars-input">
-                                          <input id="star-4" type="radio" name="key3" value="5"/>
-                                          <label title="отлично" for="star-4"></label>
-
-                                          <input id="star-3" type="radio" name="key3"value="4"/>
-                                          <label title="хорошо" for="star-3"></label>
-
-                                          <input id="star-2" type="radio" name="key3"value="3"/>
-                                          <label title="удовлетворительно" for="star-2"></label>
-
-                                          <input id="star-1" type="radio" name="key3"value="2"/>
-                                          <label title="плохо" for="star-1"></label>
-
-                                          <input id="star-0" type="radio" name="key3"value="1"/>
-                                          <label title="очень плохо" for="star-0"></label>
-                                      </div>
-                                </div>
+                                <div class="form-group">
+                                  <label for="bkey1"> <h4>Цена</h4></label>
+                                  <span  id="bkey1">
 
 
+                                    <input id="key31" type="radio" name="key3"value="1"/>
+                                    <label title="очень плохо" for="star-0"></label>
+                                    <input id="key32" type="radio" name="key3"value="2"/>
+                                    <label title="плохо" for="star-1"></label>
+                                    <input id="key33" type="radio" name="key3"value="3"/>
+                                    <label title="удовлетворительно" for="star-2"></label>
+                                    <input id="key34" type="radio" name="key3"value="4"/>
+                                    <label title="хорошо" for="star-3"></label>
+                                    <input id="key35" type="radio" name="key3" value="5"/>
+                                    <label title="отлично" for="star-4"></label>
 
+                                  </span>
+                              </div>
+
+                                    <br>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
                                       <button type="submit" class="btn btn-primary">Отправить отзыв</button>

@@ -19,180 +19,87 @@
       </div>
 
 
+        <div id="content" class="clearfix">
+            <div class="container">
+                <div class="row">
+                        <div class="col-md-4">
+                            <!-- *** CUSTOMER MENU ***
+      _________________________________________________________ -->
+                            <div class="panel panel-default sidebar-menu">
 
+                                <div class="panel-heading">
+                                  <div class="row">
+                                          <div class="col-sm-4 col-md-4">
+                                              <p>
+                                                <img src="{{$user->photo}}" class="img-responsive " alt="">
+                                              </p>
+                                          </div>
+                                          <div class="col-sm-4 col-md-4">
+                                              <h4>{{ $user->name }}</h4>
+                                              <h4>{{ $user->surname }}</h4>
+                                          </div>
+                                      </div>
+                                        <div class="row">
+                                          <div class="col-sm-4 col-md-8">
+                                            <p >Рейтинг исполнителя: <span>{{ $user->rating_ex }}</span></p>
+                                            <p >Рейтинг заказчика: <span>{{ $user->rating}}</span></p>
+                                          </div>
+                                        </div>
+                                </div>
 
-      <div class="container">
+                                <div class="panel-body">
 
-          <div class="row">
-              <div class="col-md-6">
-                  <div class="box">
-                      <h2 class="text-uppercase">Редактирование акканта</h2>
-                      <hr>
-
-                      <form class="form-horizontal" role="form" action="/users/edit/{{ $user->id }}" method="post">
-                          {{ csrf_field() }}
-
-
-                          <div class="form-group">
-                              <label for="email">Email</label>
-
-                                  <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                  @if ($errors->has('email'))
-                                      <span class="help-block">
-                                          <strong>{{ $errors->first('email') }}</strong>
-                                      </span>
-                                  @endif
-
-                          </div>
-                          <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                              <label for="password">Password</label>
-                              <input id="password" type="password" class="form-control" name="password" required>
-
-                              @if ($errors->has('password'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('password') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
-
-                          <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                              <label for="password-confirm">Confirm Password</label>
-                              <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                          </div>
-                          <div class="text-center">
-                              <button type="submit" class="btn btn-template-main"><i class="fa fa-user-md"></i> Register</button>
-                          </div>
-                      </form>
-                  </div>
-              </div>
-
-          </div>
-          <!-- /.row -->
-
-      </div>
-      <!-- /.container -->
-
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Редактирование вопроса</div>
-
-                <div class="panel-body">
-                   <form action="/questions/edit/{{ $question->id }}" method="post">
-                        <div class="form-group">
-                            <label for="subcategory">Подкатегория</label>
-                           <select class="form-control" id="subcategory" name = "subcategory">
-                              @foreach($subcategories as $subcategory)
-                                 <option value="{{$subcategory->id}}"
-                                 @if($subcategory->id == $question->subcategory_id)
-                                 selected
-                                 @endif
-                                 >{{$subcategory->name}}</option>
-                             @endforeach
-                            </select>
-
-
-                        </div>
-
-                        <div class="form-group">
-                        <label for="head">Заголовок</label>
-
-                            <input class="form-control" type="text" id="head" name="head" value="{{ $question->head }}">
-                        </div>
-
-                          <div class="form-group">
-                        <label for="text">Текст вопроса</label>
-                            <textarea class="form-control" type="text" id="text" name="text" rows="3">{{ $question->text }}</textarea>
-                        </div>
-                        {{ csrf_field() }}
-                         {{ method_field('PUT') }}
-
-
-                        <button class="btn btn-default" type="submit">Сохранить</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-<div id="content" class="clearfix">
-
-    <div class="container">
-
-        <div class="row">
-
-            <!-- *** LEFT COLUMN ***
-_________________________________________________________ -->
-
-            <div class="col-md-9 clearfix" id="customer-account">
-
-                <p class="lead">Change your personal details or your password here.</p>
-                <p class="text-muted">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-
-                <div class="box">
-
-                    <div class="heading">
-                        <h3 class="text-uppercase">Change password</h3>
-                    </div>
-
-                    <form>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="password_old">Old password</label>
-                                    <input type="password" class="form-control" id="password_old">
+                                    <ul class="nav nav-pills nav-stacked">
+                                      <li class="active">
+                                          <a href="/users/{{$user->id}}"><i class="fa fa-user"></i> Мой аккаунт</a>
+                                      </li>
+                                        <li >
+                                            <a href="#"><i class="fa fa-list"></i> Мои задания</a>
+                                        </li>
+                                        <li>
+                                            <a href="customer-wishlist.html"><i class="fa fa-briefcase"></i> Мои услуги</a>
+                                        </li>
+                                        <li>
+                                            <a href="index.html"><i class="fa fa-bell"></i>Уведомления </a>
+                                        </li>
+                                        <li>
+                                            <a href="/users/edit/{{$user->id}}"><i class="fa fa-align-justify"></i>
+                                              Заполнить профиль </a>
+                                        </li>
+                                        <li>
+                                            <a href="/users/edit/{{$user->id}}"><i class="fa fa-cog"></i>Настройки </a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
+                            <!-- /.col-md-3 -->
+                                          <!-- *** CUSTOMER MENU END *** -->
                         </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="password_1">New password</label>
-                                    <input type="password" class="form-control" id="password_1">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="password_2">Retype new password</label>
-                                    <input type="password" class="form-control" id="password_2">
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.row -->
 
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-template-main"><i class="fa fa-save"></i> Save new password</button>
-                        </div>
-                    </form>
+                                      <!-- *** RIGHT COLUMN END *** -->
+                    <!-- *** LEFT COLUMN ***
+       _________________________________________________________ -->
 
-                </div>
-                <!-- /.box -->
+                    <div class="col-md-8 clearfix" id="customer-account">
 
 
+                            <form>
                 <div class="box clearfix">
                     <div class="heading">
-                        <h3 class="text-uppercase">Personal details</h3>
+                        <h3 class="text-uppercase">Личные данные</h3>
                     </div>
 
                     <form>
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="firstname">Firstname</label>
+                                    <label for="firstname">Имя</label>
                                     <input type="text" class="form-control" id="firstname">
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="lastname">Lastname</label>
+                                    <label for="lastname">Фамилия</label>
                                     <input type="text" class="form-control" id="lastname">
                                 </div>
                             </div>
@@ -200,63 +107,158 @@ _________________________________________________________ -->
                         <!-- /.row -->
 
                         <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="company">Company</label>
-                                    <input type="text" class="form-control" id="company">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="street">Street</label>
-                                    <input type="text" class="form-control" id="street">
-                                </div>
-                            </div>
+                          <div class="col-sm-6 col-md-6">
+                              <div class="form-group">
+                                  <label for="state">Регион</label>
+                                  <select class="form-control" id="state"></select>
+                              </div>
+                          </div>
+                          <div class="col-sm-6 col-md-6">
+                              <div class="form-group">
+                                  <label for="country">Город</label>
+                                  <select class="form-control" id="country"></select>
+                              </div>
+                          </div>
                         </div>
                         <!-- /.row -->
 
                         <div class="row">
-                            <div class="col-sm-6 col-md-3">
+                            <div class="col-sm-6 col-md-12">
                                 <div class="form-group">
-                                    <label for="city">Company</label>
-                                    <input type="text" class="form-control" id="city">
+                                  <label for="text" class="control-label">Пол </label>
+                                    <div class="btn-group" data-toggle="buttons">
+                                      <label class="btn btn-default">
+                                          <input type="radio" id="state" name="state" value="1" /> Мужской
+                                      </label>
+                                      <label class="btn btn-default">
+                                          <input type="radio" id="state" name="state" value="2" /> Женский
+                                      </label>
+                                  </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-md-3">
-                                <div class="form-group">
-                                    <label for="zip">ZIP</label>
-                                    <input type="text" class="form-control" id="zip">
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-3">
-                                <div class="form-group">
-                                    <label for="state">State</label>
-                                    <select class="form-control" id="state"></select>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-md-3">
-                                <div class="form-group">
-                                    <label for="country">Country</label>
-                                    <select class="form-control" id="country"></select>
-                                </div>
-                            </div>
+                          </div>
+                        <div class="row">
+                          <div class="col-sm-3">
+                              <div class="form-group">
+                                  <label for="phone">Телефон</label>
+                                  <input type="text" class="form-control" id="phone">
+                              </div>
+                          </div>
+                          <div class="col-sm-3">
+                              <div class="form-group">
+                                  <label for="email_account">Skype</label>
+                                  <input type="text" class="form-control" id="email_account">
+                              </div>
+                          </div>
+                          <div class="col-sm-6">
+                              <div class="form-group">
+                                  <label for="phone">Email</label>
+                                  <input type="text" class="form-control" id="phone">
+                              </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-6 col-md-6">
+                              <div class="form-group">
+                                  <label for="state">Образование</label>
+                                  <select class="form-control" id="state"></select>
+                              </div>
+                          </div>
+                          <div class="col-sm-6">
+                              <div class="form-group">
+                                  <label for="phone">Деятельность</label>
+                                  <input type="text" class="form-control" id="phone">
+                              </div>
+                          </div>
 
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="phone">Telephone</label>
-                                    <input type="text" class="form-control" id="phone">
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="email_account">Email</label>
-                                    <input type="text" class="form-control" id="email_account">
-                                </div>
-                            </div>
+                        </div>
+                        <div class="row">
+
+                          <div class="col-sm-12">
+                              <div class="form-group">
+                                  <label for="phone">Навыки</label>
+                                    <textarea id="text"  class="form-control" name="text" placeholder="" ></textarea>
+                              </div>
+                          </div>
+
+                        </div>
+                        <div class="row">
+
+                          <div class="col-sm-12">
+                              <div class="form-group">
+                                  <label for="phone">О себе</label>
+                                    <textarea id="text"  class="form-control" name="text" placeholder="" ></textarea>
+                              </div>
+                          </div>
+
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-6 col-md-6">
+                              <div class="form-group">
+                                  <label for="state">Категории</label>
+                                  <select class="form-control" id="state"></select>
+                              </div>
+                          </div>
+                          <div class="col-sm-6 col-md-6">
+                              <div class="form-group">
+                                  <label for="country">Подкатегории</label>
+                                  <select class="form-control" id="country"></select>
+                              </div>
+                          </div>
+                        </div>
                             <div class="col-sm-12 text-center">
                                 <button type="submit" class="btn btn-template-main"><i class="fa fa-save"></i> Save changes</button>
 
                             </div>
+                          </div>
+
+
+
+
+                            <div class="col-md-9 clearfix" id="customer-account">
+
+
+
+                                <div class="box">
+
+                                    <div class="heading">
+                                        <h3 class="text-uppercase">Изменить пароль</h3>
+                                    </div>
+
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="password_old">Старый пароль</label>
+                                                    <input type="password" class="form-control" id="password_old">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="password_1">Новый пароль</label>
+                                                    <input type="password" class="form-control" id="password_1">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label for="password_2">Повторите новый пароль</label>
+                                                    <input type="password" class="form-control" id="password_2">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.row -->
+
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-template-main"><i class="fa fa-save"></i> Созранить</button>
+                                        </div>
+                                    </form>
+
+                                </div>
+                                <!-- /.box -->
+
+                                </div>
 
                         </div>
 
@@ -264,56 +266,19 @@ _________________________________________________________ -->
 
                 </div>
 
-            </div>
-            <!-- /.col-md-9 -->
-
-            <!-- *** LEFT COLUMN END *** -->
-
-            <!-- *** RIGHT COLUMN ***
-_________________________________________________________ -->
-
-            <div class="col-md-3">
-                <!-- *** CUSTOMER MENU ***
-_________________________________________________________ -->
-                <div class="panel panel-default sidebar-menu">
-
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Customer section</h3>
-                    </div>
-
-                    <div class="panel-body">
-
-                        <ul class="nav nav-pills nav-stacked">
-                            <li class="active">
-                                <a href="customer-orders.html"><i class="fa fa-list"></i> My orders</a>
-                            </li>
-                            <li>
-                                <a href="customer-wishlist.html"><i class="fa fa-heart"></i> My wishlist</a>
-                            </li>
-                            <li>
-                                <a href="customer-account.html"><i class="fa fa-user"></i> My account</a>
-                            </li>
-                            <li>
-                                <a href="index.html"><i class="fa fa-sign-out"></i> Logout</a>
-                            </li>
-                        </ul>
-                    </div>
+                            </form>
 
                 </div>
-                <!-- /.col-md-3 -->
+                <!-- /.row -->
 
-                <!-- *** CUSTOMER MENU END *** -->
             </div>
-
-            <!-- *** RIGHT COLUMN END *** -->
-
+            <!-- /.container -->
         </div>
-        <!-- /.row -->
+        <!-- /#content -->
+      </div>
 
-    </div>
-    <!-- /.container -->
-</div>
-<!-- /#content -->
+
+
 
 
 

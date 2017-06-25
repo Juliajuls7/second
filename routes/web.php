@@ -91,8 +91,9 @@ Route::get('/users/edit/{id}', 'UserController@edit');
 Route::put('/users/edit/{id}', 'UserController@save');
 // удаление
 Route::delete('/users/{id}', 'UserController@destroy');
-
-
+Route::get('/users/{id}/services', 'UserController@showservices');
+Route::get('/users/{id}/works', 'UserController@showworks');
+Route::get('/users/{id}/articles', 'UserController@showarticles');
 
 
 //----------СТАТЬИ---------------------------------------------------

@@ -42,9 +42,9 @@ class UserController extends Controller
       // }
 
       return view ('users.show', [
-          
+
             'user' => $user,
-            'services'=> $user->services()->orderByDesc('created_at')->get(),
+
             'articles'=> $user->articles(),
             'questions'=> $user->questions(),
         ]);
@@ -88,4 +88,39 @@ class UserController extends Controller
        User::findOrFail($id)->delete();
         return redirect('/');
     }
+
+    public function showservices($id)
+    {
+      $user = User::findOrFail($id);
+
+      return view ('users.showservices', [
+
+            'user' => $user,
+            'services'=> $user->services()->orderByDesc('created_at')->paginate(8),
+
+        ]);
+    }
+    public function showworks($id)
+    {
+      $user = User::findOrFail($id);
+
+      return view ('users.showworks', [
+
+            'user' => $user,
+            'services'=>$user->doneservices()->orderByDesc('created_at')->paginate(8),
+
+        ]);
+    }
+    public function showarticles($id)
+    {
+      $user = User::findOrFail($id);
+
+      return view ('users.showarticles', [
+
+            'user' => $user,
+            'articles'=>$user->articles()->orderByDesc('created_at')->paginate(8),
+
+        ]);
+    }
+
 }
