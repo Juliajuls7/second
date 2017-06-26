@@ -53,7 +53,10 @@
                             <div class="col-sm-3 col-md-2 text-center-xs">
                                 <p>
                                     <img src="{{ $comment[0]->user->photo }}" class="img-responsive img-circle" alt="">
+
                                 </p>
+                                <h5>Рейтинг исполнителя <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                                {{$comment[0]->user->rating_ex}}</h5>
                             </div>
                             <div class="col-sm-9 col-md-10">
                                 <h5 class="text-uppercase"><a href="/users/{{ $comment[0]->user->id }}">{{ $comment[0]->user->name }} </a></h5>

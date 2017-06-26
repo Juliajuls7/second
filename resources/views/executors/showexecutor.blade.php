@@ -53,7 +53,7 @@
                       </div>
                       <!-- /.col-md-3 -->
             <div class="col-md-9" id="blog-listing-big">
-              
+
             <hr>
               @foreach ($users as $user)
                 <section class="post">
@@ -61,10 +61,10 @@
                       <p>
                          <img src="{{$user->photo}}" class="img-responsive img-circle" alt="">
                       </p>
-                      <p>
-                        Рейтинг: 100
-                         <!-- Рейтинг: {{$user->rating}} -->
-                      </p>
+
+                        <p>Рейтинг  <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                        {{$user->rating_ex}}</p>
+
                   </div>
                     <h3><a href="/users/{{$user->id}}">{{ $user->name }}</a></h3>
                     <div class="row">

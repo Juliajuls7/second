@@ -25,19 +25,12 @@
                         <section class="post">
                               <div class="row">
                                 <a type="button"  href="/questions/create" class="btn btn-lg btn-template-primary">Задать вопрос</a>
-                              
+
                               <hr>
                                 <div class="form-group">
                                          @foreach ($questions as $question)
 
-                                         <div class="col-sm-3 col-md-1 text-center-xs">
-                                             <p>
-                                                <img src="{{$question->user->photo}}" class="img-responsive img-circle" alt="">
-                                             </p>
-                                                <p class="author-category"> <a href="/users/{{ $question->user->id }}">{{ $question->user->name }}</a></p>
-                                         </div>
-
-                                         <div class="col-md-11">
+                                         <div class="col-md-12">
                                            <p class="date-comments">
                                                <a href="#"><i class="fa fa-calendar-o"></i> {{ $question->created_at->diffForHumans() }}</a>
                                                <a href="#"><i class="fa fa-comment-o"></i>{{ count($question->comments) }}  Comments</a>

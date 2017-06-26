@@ -10,9 +10,9 @@ class Review extends Model
      return $this->belongsTo('App\Service');
  }
  public function ser_executor(){
-    return $this->belongsTo('App\Service','review_executor','id');
+    return $this->belongsTo('App\Service','id','review_executor');
  }
  public function ser_author(){
-    return $this->belongsTo('App\Service','review_auth','id');
+    return $this->belongsTo('App\Service','id','review_author');
  }
 }

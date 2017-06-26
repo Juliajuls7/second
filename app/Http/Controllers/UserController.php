@@ -11,6 +11,7 @@ use App\Article;
 use App\Subcategory;
 use App\Category;
 use App\Rate;
+use App\Review;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -27,7 +28,7 @@ class UserController extends Controller
 
     public function showexecutor()
     {
-          return view('executors.showexecutor', ['users' => User::orderByDesc('created_at')->paginate(15)]);
+          return view('executors.showexecutor', ['users' => User::orderByDesc('rating_ex')->paginate(15)]);
     }
 
     public function show($id)
@@ -120,6 +121,38 @@ class UserController extends Controller
             'user' => $user,
             'articles'=>$user->articles()->orderByDesc('created_at')->paginate(8),
 
+        ]);
+    }
+    public function showreviews($id)
+    {
+      $user = User::findOrFail($id);
+      $reviews = collect([]);
+
+      foreach ($user->doneservices as $service) {
+        if ($service->review_author!=0) {
+          $reviews->push($service->review_au);
+        }
+      }
+
+      return view ('users.showreviews', [
+            'user' => $user,
+            'reviews'=>$reviews->sortByDesc('created_at')
+        ]);
+    }
+    public function showreviews2($id)
+    {
+      $user = User::findOrFail($id);
+      $reviews = collect([]);
+
+      foreach ($user->services as $service) {
+        if ($service->review_executor!=0) {
+          $reviews->push($service->review_ex);
+        }
+      }
+
+      return view ('users.showreviews2', [
+            'user' => $user,
+            'reviews'=>$reviews->sortByDesc('created_at')
         ]);
     }
 

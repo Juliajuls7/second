@@ -51,12 +51,11 @@ _________________________________________________________ -->
                           </div>
 
                           <div class="panel-body">
-
                             <ul class="nav nav-pills nav-stacked">
                               <li >
                                   <a href="/users/{{$user->id}}"><i class="fa fa-user"></i> Мой аккаунт</a>
                               </li>
-                              <li class="active" >
+                              <li >
                                   <a href="/users/{{$user->id}}/works"><i class="fa fa-list"></i> Мои работы</a>
                               </li>
                               <li >
@@ -65,7 +64,7 @@ _________________________________________________________ -->
                               <li>
                                   <a href="/users/{{$user->id}}/reviews"><i class="fa fa-thumbs-o-up"></i> Отзывы заказчиков</a>
                               </li>
-                              <li>
+                              <li class="active">
                                   <a href="/users/{{$user->id}}/reviews2"><i class="fa fa-thumbs-o-up"></i> Отзывы исполнителей</a>
                               </li>
                               <li >
@@ -77,6 +76,7 @@ _________________________________________________________ -->
                               <li>
                                     <a href="/users/edit/{{$user->id}}"><i class="fa fa-cog"></i>Настройки </a>
                               </li>
+
                             </ul>
                           </div>
                       </div>
@@ -99,61 +99,51 @@ _________________________________________________________ -->
                               <div class="row">
 
                               <hr>
-                                <div class="form-group">
-                                  @foreach ($services as $service)
-                                          <div class="col-sm-3 col-md-2 text-center-xs">
-                                              <p>
-                                                 <img src="{{$service->author->photo}}" class="img-responsive img-circle" alt="">
-                                              </p>
-                                          </div>
+                              <div class="form-group">
+                                @foreach ($reviews as $review)
 
-                                         <div class="col-md-10">
-                                           <a href="#">{{ $service->subcategory->category->name }}</a> > <a href="#">{{ $service->subcategory->name }}</a>
-                                           <p class="date-comments">
-                                               <a href="#"><i class="fa fa-calendar-o"></i> {{ $service->created_at->diffForHumans() }}</a>
-                                               <a href="#"><i class="fa fa-comment-o"></i>{{ count($service->comments) }}  Comments</a>
+                                        <div class="col-sm-3 col-md-2 text-center-xs">
+
+                                            <p >
+                                               <img src="{{$review->ser_executor->executor->photo}}" class="img-responsive img-circle" alt="">
+                                            </p>
+                                            <p class="text-center">
+                                              <a href="/users/{{$review->ser_executor->executor->id}}">
+                                                {{$review->ser_executor->executor->name}}</a></p>
+                                        </div>
+
+                                      <div class="col-md-10">
+                                        <div class="row">
+                                            <span class="form-group">
+                                              Отзыв о задаче <a href="/services/{{$review->ser_executor->id}}"> "{{$review->ser_executor->head}}"</a>
+                                              <span class="clearfix">
+                                                  <span class="date-comments">
+                                                      <a href="#"><i class="fa fa-calendar-o"></i>{{$review->created_at->diffForHumans()}} </a>
+                                                 </span>
+                                              </span>
+                                            </span>
+
+                                        </div>
+
+                                        <div class="row">
+
+                                          <p class="intro">
+
+                                             <h4>{{$review->text}}</h4>
                                                <br>
-                                               @if( $service->remote == 1)
-                                               <p class="date-comments">
-                                                  <a href="#">
-                                                    <b>
-                                                      <u> Удаленная работа </u>
-                                                    </b>
-                                                    </a>
-                                               </p>
-                                               @endif
+                                             <p>Цена: <b> {{$review->key1}}</b> из 5</p>
+                                             <p>Оплата: <b>{{$review->key2}} </b>из 5</p>
+                                             <p>Четкость объяснения задачи: <b> {{$review->key3}} </b>из 5</p>
                                           </p>
-                                             <h2><a href="/service/{{ $service->id }}">{{ $service->head }}</a></h2>
 
-                                             <div class="clearfix">
-                                               <p class="author-category">Заказчик <a href="/users/{{ $service->author->id }}">{{ $service->author->name }}</a>
-                                               </p>
-                                               <p class="date-comments">Окончание
-                                                 <a href="#">{{ $service->t_finish}}</a>
-                                               </p>
-                                               <p class="date-comments">Начало
-                                                 <a href="#">{{ $service->t_start }}</a>
-                                               </p>
-                                               <br>
+                                        </div>
 
-                                            <br>
+                                          <hr>
+                                      </div>
+        <hr>
+                                       @endforeach
+                                </div>
 
-                                             </div>
-
-                                              <p class="intro">
-                                                {!! $service->text !!}
-                                              </p>
-
-
-                                         </div>
-
-
-                                        <hr>
-
-                                         @endforeach
-
-                                  </div>
-                                  <!-- ***  END form-group *** -->
 
                                 </div>
 
@@ -186,7 +176,7 @@ _________________________________________________________ -->
 
                     <li><a href="/">На главную</a>
                     </li>
-                    <li>Аккаунт</li>
+                    <li></li>
                 </ul>
             </div>
         </div>
@@ -195,7 +185,6 @@ _________________________________________________________ -->
 <div id="content" class="clearfix">
     <div class="container">
         <div class="row">
-
 
           <div class="col-md-4">
 
@@ -228,7 +217,7 @@ _________________________________________________________ -->
                       <li >
                           <a href="/users/{{$user->id}}"><i class="fa fa-user"></i>Личные данные</a>
                       </li>
-                      <li class="active" >
+                      <li >
                           <a href="/users/{{$user->id}}/works"><i class="fa fa-list"></i> Работы</a>
                       </li>
                       <li >
@@ -236,8 +225,8 @@ _________________________________________________________ -->
                       </li>
                       <li >
                           <a href="/users/{{$user->id}}/reviews"><i class="fa fa-thumbs-o-up"></i> Отзывы заказчиков</a>
-                      </li>
-                      <li>
+                      </li >
+                      <li class="active">
                           <a href="/users/{{$user->id}}/reviews2"><i class="fa fa-thumbs-o-up"></i> Отзывы исполнителей</a>
                       </li>
                       <li  >
@@ -252,6 +241,7 @@ _________________________________________________________ -->
               </div>
 
           </div>
+
           <div class="col-md-8 clearfix" id="customer-account">
             <div class="">
                 <div class="heading">
@@ -262,74 +252,64 @@ _________________________________________________________ -->
                     <section class="post">
                           <div class="row">
 
-                          <hr>
+
                             <div class="form-group">
-                              @foreach ($services as $service)
+                              @foreach ($reviews as $review)
+
                                       <div class="col-sm-3 col-md-2 text-center-xs">
-                                          <p>
-                                             <img src="{{$service->author->photo}}" class="img-responsive img-circle" alt="">
+                                          <p >
+                                             <img src="{{$review->ser_executor->executor->photo}}" class="img-responsive img-circle" alt="">
+                                          </p>
+                                          <p class="text-center">
+                                            <a href="/users/  {{$review->ser_executor->executor->id}}">
+                                              {{$review->ser_executor->executor->name}}
+
+                                            </a>
                                           </p>
                                       </div>
 
-                                     <div class="col-md-10">
-                                       <a href="#">{{ $service->subcategory->category->name }}</a> > <a href="#">{{ $service->subcategory->name }}</a>
-                                       <p class="date-comments">
-                                           <a href="#"><i class="fa fa-calendar-o"></i> {{ $service->created_at->diffForHumans() }}</a>
-                                           <a href="#"><i class="fa fa-comment-o"></i>{{ count($service->comments) }}  Comments</a>
-                                           <br>
-                                           @if( $service->remote == 1)
-                                           <p class="date-comments">
-                                              <a href="#">
-                                                <b>
-                                                  <u> Удаленная работа </u>
-                                                </b>
-                                                </a>
-                                           </p>
-                                           @endif
-                                      </p>
-                                         <h2><a href="/service/{{ $service->id }}">{{ $service->head }}</a></h2>
+                                    <div class="col-md-10">
+                                      <div class="row">
+                                          <span class="form-group">
+                                            Отзыв о задаче <a href="/services/{{$review->ser_executor->id}}"> "{{$review->ser_executor->head}}"</a>
+                                            <span class="clearfix">
+                                                <span class="date-comments">
+                                                    <a href="#"><i class="fa fa-calendar-o"></i>{{$review->created_at->diffForHumans()}} </a>
+                                               </span>
+                                            </span>
+                                          </span>
 
-                                         <div class="clearfix">
-                                           <p class="author-category">Заказчик <a href="/users/{{ $service->author->id }}">{{ $service->author->name }}</a>
-                                           </p>
-                                           <p class="date-comments">Окончание
-                                             <a href="#">{{ $service->t_finish}}</a>
-                                           </p>
-                                           <p class="date-comments">Начало
-                                             <a href="#">{{ $service->t_start }}</a>
-                                           </p>
-                                           <br>
+                                      </div>
 
-                                        <br>
+                                      <div class="row">
 
-                                         </div>
+                                        <p class="intro">
 
-                                          <p class="intro">
-                                            {!! $service->text !!}
-                                          </p>
+                                           <h4>{{$review->text}}</h4>
+                                             <br>
+                                           <p>Качество: <b> {{$review->key1}}</b> из 5</p>
+                                           <p>Цена: <b>{{$review->key2}} </b>из 5</p>
+                                           <p>Вежливость: <b> {{$review->key3}} </b>из 5</p>
+                                        </p>
+                                      </div>
 
-
-                                     </div>
-
-
-                                    <hr>
-
+                                        <hr>
+                                    </div>
+<hr>
                                      @endforeach
-
                               </div>
-                              <!-- ***  END form-group *** -->
 
                             </div>
 
                           </section>
-                          <!-- ***  END form-group *** -->
 
                         </div>
-                                      <!-- /.col-md-9 -->
-
 
                 </div>
               </div>
+      </div>
+      <!-- /.row -->
+
         </div>
         <!-- /.row -->
 

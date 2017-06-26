@@ -82,73 +82,99 @@ _________________________________________________________ -->
                             </ul>
                           </div>
                       </div>
-
+                      <!-- /.col-md-3 -->
+                                    <!-- *** CUSTOMER MENU END *** -->
                   </div>
 
+                                <!-- *** RIGHT COLUMN END *** -->
+              <!-- *** LEFT COLUMN ***
+ _________________________________________________________ -->
 
-                              <div class="col-md-8" id="blog-listing-big">
-                                @foreach ($articles as $article)
-                                  <section class="post">
+              <div class="col-md-8 clearfix" id="customer-account">
+                <div class="">
+                    <div class="heading">
 
-                                    <div class="col-sm-3 col-md-2 text-center-xs">
-                                        <p>
-                                           <img src="{{$article->user->photo}}" class="img-responsive img-circle" alt="">
-                                        </p>
-                                    </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12" id="blog-listing-medium">
+                        <section class="post">
+                              <div class="row">
 
-                                      <h2><a href="/articles/{{ $article->id }}">{{ $article->head }}</a></h2>
-                                      <div class="row">
-                                        <div class="clearfix">
-                                              <p class="author-category">Автор <a href="/users/{{ $article->user->id }}">{{ $article->user->name }}</a>
+                              <hr>
+                                <div class="form-group">
+                                  @foreach ($services as $service)
+                                          <div class="col-sm-3 col-md-2 text-center-xs">
+                                              <p>
+                                                 <img src="{{$service->author->photo}}" class="img-responsive img-circle" alt="">
+                                              </p>
+                                          </div>
+
+                                         <div class="col-md-10">
+                                           <a href="#">{{ $service->subcategory->category->name }}</a> > <a href="#">{{ $service->subcategory->name }}</a>
+                                           <p class="date-comments">
+                                               <a href="#"><i class="fa fa-calendar-o"></i> {{ $service->created_at->diffForHumans() }}</a>
+                                               <a href="#"><i class="fa fa-comment-o"></i>{{ count($service->comments) }}  Comments</a>
+                                               <br>
+                                               @if( $service->remote == 1)
+                                               <p class="date-comments">
+                                                  <a href="#">
+                                                    <b>
+                                                      <u> Удаленная работа </u>
+                                                    </b>
+                                                    </a>
+                                               </p>
+                                               @endif
+                                          </p>
+                                             <h2><a href="/service/{{ $service->id }}">{{ $service->head }}</a></h2>
+
+                                             <div class="clearfix">
+                                               <p class="author-category">Заказчик <a href="/users/{{ $service->author->id }}">{{ $service->author->name }}</a>
+                                               </p>
+                                               <p class="date-comments">Окончание
+                                                 <a href="#">{{ $service->t_finish}}</a>
+                                               </p>
+                                               <p class="date-comments">Начало
+                                                 <a href="#">{{ $service->t_start }}</a>
+                                               </p>
+                                               <br>
+
+                                            <br>
+
+                                             </div>
+
+                                              <p class="intro">
+                                                {!! $service->text !!}
                                               </p>
 
-                                            <a href="#">{{ $article->subcategory->category->name}}</a>
-                                              >
-                                              <a href="#">{{ $article->subcategory->name }}</a>
-                                            <p class="date-comments">
 
-                                                <a href="#"><i class="fa fa-calendar-o"></i> {{ $article->created_at->diffForHumans() }}</a>
-                                                <a href="#"><i class="fa fa-comment-o"></i>{{ count($article->comments) }}  Comments</a>
-
-                                           </p>
-                                        </div>
-                                      </div>
-                                      <p class="intro">{!! $article->text !!}</p>
-                                      <p class="read-more">
-                                          <a href="/articles/{{ $article->id }}" class="btn btn-template-main">Продолжить чтение</a>
-                                          @if (Role::check($article))
-                                          <a href="/articles/edit/{{$article->id}}" class="btn btn-template-main">Редактировать</a>
-                                          <a class="btn btn-template-main" href="/articles/{{ $article->id }}"
-                                                onclick="event.preventDefault();
-                                             document.getElementById('destroy-form{{ $article->id }}').submit();">
-                                               Удалить
-                                           </a>
-                                           @endif
-                                     </p>
-                                    <form id="destroy-form{{ $article->id }}" action="/articles/{{ $article->id }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
-                                    </form>
-                                     <hr>
-                                  </section>
-                                  @endforeach
-                              </div>
-                              <div class="text-center" >
-                              {{ $articles->links() }}
-                              </div>
+                                         </div>
 
 
+                                        <hr>
 
-                          </div>
+                                         @endforeach
 
-                      </div>
+                                  </div>
+                                  <!-- ***  END form-group *** -->
 
+                                </div>
+
+                              </section>
+                              <!-- ***  END form-group *** -->
+
+                            </div>
+                                          <!-- /.col-md-9 -->
+
+
+                    </div>
                   </div>
+          </div>
+          <!-- /.row -->
 
       </div>
-
+      <!-- /.container -->
   </div>
-
+  <!-- /#content -->
 </div>
   @else
   <div id="heading-breadcrumbs">
@@ -162,7 +188,7 @@ _________________________________________________________ -->
 
                     <li><a href="/">На главную</a>
                     </li>
-                    <li>Аккаунт</li>
+                    <li></li>
                 </ul>
             </div>
         </div>
@@ -171,6 +197,7 @@ _________________________________________________________ -->
 <div id="content" class="clearfix">
     <div class="container">
         <div class="row">
+
           <div class="col-md-4">
               <!-- *** CUSTOMER MENU ***
     _________________________________________________________ -->
@@ -214,10 +241,10 @@ _________________________________________________________ -->
                       <li>
                           <a href="/users/{{$user->id}}/reviews2"><i class="fa fa-thumbs-o-up"></i> Отзывы исполнителей</a>
                       </li>
-                      <li >
+                      <li class="active" >
                           <a href="/users/{{$user->id}}/questions"><i class="fa fa-question-circle"></i>Вопросы и Ответы</a>
                       </li>
-                      <li class="active">
+                      <li >
                           <a href="/users/{{$user->id}}/articles"><i class="fa fa-file-text-o"></i>Статьи</a>
                       </li>
 
@@ -228,60 +255,18 @@ _________________________________________________________ -->
 
           </div>
 
-                                        <div class="col-md-8" id="blog-listing-big">
-                                          @foreach ($articles as $article)
-                                            <section class="post">
 
-                                              <div class="col-sm-3 col-md-2 text-center-xs">
-                                                  <p>
-                                                     <img src="{{$article->user->photo}}" class="img-responsive img-circle" alt="">
-                                                  </p>
-                                              </div>
+                <!-- *** CUSTOMER MENU END *** -->
+            </div>
 
-                                                <h2><a href="/articles/{{ $article->id }}">{{ $article->head }}</a></h2>
-                                                <div class="row">
-                                                  <div class="clearfix">
-                                                        <p class="author-category">Автор <a href="/users/{{ $article->user->id }}">{{ $article->user->name }}</a>
-                                                        </p>
+            <!-- *** RIGHT COLUMN END *** -->
 
-                                                      <a href="#">{{ $article->subcategory->category->name}}</a>
-                                                        >
-                                                        <a href="#">{{ $article->subcategory->name }}</a>
-                                                      <p class="date-comments">
+        </div>
+        <!-- /.row -->
 
-                                                          <a href="#"><i class="fa fa-calendar-o"></i> {{ $article->created_at->diffForHumans() }}</a>
-                                                          <a href="#"><i class="fa fa-comment-o"></i>{{ count($article->comments) }}  Comments</a>
-
-                                                     </p>
-                                                  </div>
-                                                </div>
-                                                <p class="intro">{!! $article->text !!}</p>
-                                                <p class="read-more">
-                                                    <a href="/articles/{{ $article->id }}" class="btn btn-template-main">Продолжить чтение</a>
-                                                    @if (Role::check($article))
-                                                    <a href="/articles/edit/{{$article->id}}" class="btn btn-template-main">Редактировать</a>
-                                                    <a class="btn btn-template-main" href="/articles/{{ $article->id }}"
-                                                          onclick="event.preventDefault();
-                                                       document.getElementById('destroy-form{{ $article->id }}').submit();">
-                                                         Удалить
-                                                     </a>
-                                                     @endif
-                                               </p>
-                                              <form id="destroy-form{{ $article->id }}" action="/articles/{{ $article->id }}" method="POST" style="display: none;">
-                                              {{ csrf_field() }}
-                                              {{ method_field('DELETE') }}
-                                              </form>
-                                               <hr>
-                                            </section>
-                                            @endforeach
-                                        </div>
-                                        <div class="text-center" >
-                                        {{ $articles->links() }}
-                                        </div>
     </div>
     <!-- /.container -->
-</div>
-<!-- /#content -->
+
 
   @endif
 

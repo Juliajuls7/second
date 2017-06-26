@@ -80,8 +80,9 @@ Route::delete('/users/{id}', 'UserController@destroy');
 Route::get('/users/{id}/services', 'UserController@showservices');
 Route::get('/users/{id}/works', 'UserController@showworks');
 Route::get('/users/{id}/articles', 'UserController@showarticles');
-
-
+Route::get('/users/{id}/reviews', 'UserController@showreviews');
+Route::get('/users/{id}/reviews2', 'UserController@showreviews2');
+Route::get('/users/{id}/questions', 'UserController@showquestions');
 //----------СТАТЬИ---------------------------------------------------
 // добавление
 Route::get('/articles/create', 'ArticleController@create');
@@ -123,3 +124,4 @@ Route::delete('/services/{service}', 'ServiceController@destroy');
 Route::post('/services/{service}/comment', 'CommentServiceController@store'); // добавить новый комментарий к заданию
 //----------отзывы К ЗАДАЧЕ---------------------------------------
 Route::post('/services/{service}/review_author', 'ReviewController@store'); // добавить новый отзыв к заданию
+Route::post('/services/{service}/review_executor', 'ReviewController@store2'); // добавить новый отзыв к заданию

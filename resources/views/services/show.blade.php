@@ -24,7 +24,7 @@
             <div class="row">
 
                 <div class="col-md-9" id="blog-post">
-                    <p class="text-muted text-uppercase mb-small text-right">Автор <a href="/users/{{ $service->author->id }}">{{ $service->author->name }}</a> | {{ $service->created_at->diffForHumans() }}</p>
+                    <p class="text-muted text-uppercase mb-small text-right">Заказчик <a href="/users/{{ $service->author->id }}">{{ $service->author->name }}</a> | {{ $service->created_at->diffForHumans() }}</p>
                     <p class="text-muted text-uppercase mb-small text-right"> <a href="#">{{ $service->subcategory->category->name}}</a> > <a href="#">{{ $service->subcategory->name }}</a></p>
 
                         <div id="post-content">

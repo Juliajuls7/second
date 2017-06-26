@@ -75,11 +75,11 @@
                                       <li><a href="#">Дате</a></li>
                                       <li><a href="#">Рейтингу исполнителя</a></li>
 
-
-
                                     </ul>
-                              </div>
+                                  </div>
                               <hr>
+
+
 
                               <div class="form-group">
                                 @foreach ($services as $service)
@@ -90,6 +90,7 @@
                                             <span>Рейтинг заказчика: <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
                                               {{$service->author->rating}}
                                             </span>
+
                                         </div>
 
                                        <div class="col-md-10">
@@ -97,17 +98,28 @@
                                         <span class="price-icon pull-right">   {{ $service->price }} руб.</span>
                                          </h2>
                                          <a href="#">{{ $service->subcategory->category->name }}</a> > <a href="#">{{ $service->subcategory->name }}</a>
-                                         <div class="clearfix text-right" >
+                                         <span class="clearfix text-left">
+                                           Заказчик <a href="/users/{{$service->author->id}}">
+                                             {{ $service->author->name }}</a>
+                                         </span>
+                                         <span class="clearfix text-right">
+
                                            <p class="">Начало
                                              <a href="#">{{ $service->t_start }}</a>
                                            </p>
                                            <p class="">Окончание
                                              <a href="#">{{ $service->t_finish}}</a>
                                            </p>
-                                         </div>
+                                         </span>
                                          <p class="date-comments">
                                              <a href="#"><i class="fa fa-calendar-o"></i> {{ $service->created_at->diffForHumans() }}</a>
-                                             <a href="#"><i class="fa fa-comment-o"></i>{{ count($service->comments) }}  Предложений</a>
+                                             @if(count($service->comments)  == 1)
+                                             <a href="#"><i class="fa fa-comment-o"></i>{{ count($service->comments) }}  Предложение</a>
+                                             @elseif( count($service->comments)  == 2 || count($service->comments)  == 3 || count($service->comments)  == 4)
+                                             <a href="#"><i class="fa fa-comment-o"></i>{{ count($service->comments) }}  Предложения</a>
+                                              @else
+                                            <a href="#"><i class="fa fa-comment-o"></i>{{ count($service->comments) }}  Предложений</a>
+                                            @endif
                                          </p>
 
                                          @if( $service->remote == 1)
@@ -118,7 +130,11 @@
                                               </b>
                                               </a>
                                          </p>
+
                                          @endif
+                                         <p class="clearfix text-left">
+
+                                         </p>
                                              @if (Role::admin())
                                            <span class="read-more"><a href="/services/edit/{{$service->id}}" class="btn btn-template-main">Редактировать</a>
                                            </span>
