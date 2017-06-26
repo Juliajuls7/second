@@ -25,7 +25,7 @@
             <div class="box">
                 <p class="lead">Еще не зарегестрированы?</p>
                 <p>Присоединяйтесь к нам!</p>
-                <p class="text-muted">Если у вас возникнут вопросы, <a href="contact.html"> обращайтесь к нам</a>, наш сервис работает для вас 24/7.</p>
+                
                 <hr>
                 <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
                     {{ csrf_field() }}

@@ -64,7 +64,7 @@ _________________________________________________________ -->
                                 </li>
 
                                 <li >
-                                    <a href="/users/{{$user->id}}/articles"><i class="fa fa-file-text-o"></i> Статьи</a>
+                                    <a href="/users/{{$user->id}}/articles"><i class="fa fa-file-text-o"></i>Статьи</a>
                                 </li>
                                 <li >
                                     <a href="#"><i class="fa fa-question-circle"></i>Вопросы и Ответы</a>
@@ -76,10 +76,7 @@ _________________________________________________________ -->
                                   <li>
                                       <a href="index.html"><i class="fa fa-bell"></i>Уведомления </a>
                                   </li>
-                                  <li>
-                                      <a href="/users/edit/{{$user->id}}"><i class="fa fa-list"></i>
-                                        Заполнить профиль </a>
-                                  </li>
+
                                   <li>
                                       <a href="/users/edit/{{$user->id}}"><i class="fa fa-cog"></i>Настройки </a>
                                   </li>
@@ -88,103 +85,96 @@ _________________________________________________________ -->
                               </ul>
                           </div>
                       </div>
-                      <!-- /.col-md-3 -->
-                                    <!-- *** CUSTOMER MENU END *** -->
+
                   </div>
 
-                                <!-- *** RIGHT COLUMN END *** -->
-              <!-- *** LEFT COLUMN ***
- _________________________________________________________ -->
 
-              <div class="col-md-8 clearfix" id="customer-account">
+                               <div class="col-md-8 clearfix" id="customer-account">
 
 
-                      <form>
-                          <div class="row">
-                              <div class="col-md-9">
-                                  <div class="form-group">
-                                    <p>Город:
-                                      <span>
-                                        @if($user->city_id==0)
-                                          Не указан,
-                                        @else
-                                        {{$user->city->name}},
-                                        @endif
-                                      </span>
-                                          <span>День рождения:
-                                      @if($user->DOB=='1900-01-01')
-                                        Не указан
-                                      @else
-                                      {{ \Carbon\Carbon::parse($user->DOB)->format('d.m.Y') }}
-                                      </span>
-                                    </p>
-                                      @endif
-                                    <h5>Пол:
-                                      @if($user->sex==0)
-                                        Не указан
-                                      @elseif($user->sex==1)
-                                        Мужской
-                                      @else
-                                        Женский
-                                      @endif
-                                    </h5>
+                                       <form>
+                                           <div class="row">
+                                               <div class="col-md-9">
+                                                   <div class="form-group">
+                                                     <p>Город:
+                                                       <span>
+                                                         @if($user->city_id==0)
+                                                           Не указан,
+                                                         @else
+                                                         {{$user->city->name}},
+                                                         @endif
+                                                       </span>
+                                                           <span>День рождения:
+                                                       @if($user->DOB=='1900-01-01')
+                                                         Не указан
+                                                       @else
+                                                       {{ \Carbon\Carbon::parse($user->DOB)->format('d.m.Y') }}
+                                                       </span>
+                                                     </p>
+                                                       @endif
+                                                     <h5>Пол:
+                                                       @if($user->sex==0)
+                                                         Не указан
+                                                       @elseif($user->sex==1)
+                                                         Мужской
+                                                       @else
+                                                         Женский
+                                                       @endif
+                                                     </h5>
 
-                                     <h5>Телефон:
-                                       @if($user->phone==0)
-                                         Не указан
-                                       @else
-                                         <a href="#">{{$user->phone}}</a>
-                                       @endif
-                                      </h5>
-                                      <h5>Skype:
-                                        @if($user->skype==0)
-                                          Не указан
-                                        @else
-                                          <a href="#">{{$user->skype}}</a>
-                                        @endif
-                                       </h5>
-                                       <h5>Образование:
-                                         @if($user->education->id==0)
-                                           Не указано
-                                         @else
-                                           <a href="#">{{$user->education->name}}</a>
-                                         @endif
-                                       </h5>
-                                       <h5>Деятельность:
-                                         @if($user->activities=='')
-                                           Не указана
-                                         @else
-                                           <a href="#">{{$user->activities}}</a>
-                                         @endif
-                                       </h5>
-                                       <h5>Навыки:
-                                         @if($user->skills=='')
-                                           Не указаны
-                                         @else
-                                           <a href="#">{{$user->skills}}</a>
-                                         @endif
-                                       </h5>
-                                       <h5>О себе:
-                                         @if($user->about_myself=='')
-                                           Не указано
-                                         @else
-                                           <a href="#">{{$user->about_myself}}</a>
-                                         @endif
-                                       </h5>
-                                  </div>
-                              </div>
-                          </div>
-                          <!-- /.row -->
-                          <!-- /.row -->
-                      </form>
+                                                      <h5>Телефон:
+                                                        @if($user->phone==0)
+                                                          Не указан
+                                                        @else
+                                                          <a href="#">{{$user->phone}}</a>
+                                                        @endif
+                                                       </h5>
+                                                       <h5>Skype:
+                                                         @if($user->skype==0)
+                                                           Не указан
+                                                         @else
+                                                           <a href="#">{{$user->skype}}</a>
+                                                         @endif
+                                                        </h5>
+                                                        <h5>Образование:
+                                                          @if($user->education_id==0)
+                                                            Не указано
+                                                          @else
+                                                            <a href="#">{{$user->education->name}}</a>
+                                                          @endif
+                                                        </h5>
+                                                        <h5>Деятельность:
+                                                          @if($user->activities=='')
+                                                            Не указана
+                                                          @else
+                                                            <a href="#">{{$user->activities}}</a>
+                                                          @endif
+                                                        </h5>
+                                                        <h5>Навыки:
+                                                          @if($user->skills=='')
+                                                            Не указаны
+                                                          @else
+                                                            <a href="#">{{$user->skills}}</a>
+                                                          @endif
+                                                        </h5>
+                                                        <h5>О себе:
+                                                          @if($user->about_myself=='')
+                                                            Не указано
+                                                          @else
+                                                            <a href="#">{{$user->about_myself}}</a>
+                                                          @endif
+                                                        </h5>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                           <!-- /.row -->
+                                           <!-- /.row -->
+                                       </form>
 
-          </div>
-          <!-- /.row -->
-
-      </div>
-      <!-- /.container -->
+                           </div>
+                           <!-- /.row -->
   </div>
-  <!-- /#content -->
+
 </div>
   @else
   <div id="heading-breadcrumbs">

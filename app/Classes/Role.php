@@ -16,9 +16,6 @@ class Role {
     }
   }
 
-
-
-  // является ли текущий пользователь администратором
   public function admin()
   {
     return $this->role=='admin';

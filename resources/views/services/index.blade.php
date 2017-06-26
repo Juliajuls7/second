@@ -54,32 +54,7 @@
 
                           <!-- @includeIf('questions.partials.categories') -->
 
-                            <div class="panel sidebar-menu">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Tags</h3>
-                                </div>
 
-                                <div class="panel-body">
-                                    <ul class="tag-cloud">
-                                        <li><a href="#"><i class="fa fa-tags"></i> html5</a>
-                                        </li>
-                                        <li><a href="#"><i class="fa fa-tags"></i> css3</a>
-                                        </li>
-                                        <li><a href="#"><i class="fa fa-tags"></i> jquery</a>
-                                        </li>
-                                        <li><a href="#"><i class="fa fa-tags"></i> ajax</a>
-                                        </li>
-                                        <li><a href="#"><i class="fa fa-tags"></i> php</a>
-                                        </li>
-                                        <li><a href="#"><i class="fa fa-tags"></i> responsive</a>
-                                        </li>
-                                        <li><a href="#"><i class="fa fa-tags"></i> visio</a>
-                                        </li>
-                                        <li><a href="#"><i class="fa fa-tags"></i> bootstrap</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
 
                             <!-- *** MENUS AND FILTERS END *** -->
 
@@ -112,6 +87,9 @@
                                             <p>
                                                <img src="{{$service->author->photo}}" class="img-responsive img-circle" alt="">
                                             </p>
+                                            <span>Рейтинг заказчика: <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                                              {{$service->author->rating}}
+                                            </span>
                                         </div>
 
                                        <div class="col-md-10">

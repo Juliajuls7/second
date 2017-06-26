@@ -8,9 +8,7 @@ use Illuminate\Support\Facades\App;
 class RoleServiceProvider extends ServiceProvider
 {
 
-    public function boot()
-    {
-        //
+    public function boot(){
     }
 
     public function register()

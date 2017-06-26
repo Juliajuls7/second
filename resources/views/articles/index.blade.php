@@ -35,6 +35,8 @@ _________________________________________________________ -->
                   <div class="col-sm-3 col-md-2 text-center-xs">
                       <p>
                          <img src="{{$article->user->photo}}" class="img-responsive img-circle" alt="">
+                         <p>Рейтинг: <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                           {{$article->user->rating_ex}} <span></span></p>
                       </p>
                   </div>
 
@@ -50,7 +52,7 @@ _________________________________________________________ -->
                           <p class="date-comments">
 
                               <a href="#"><i class="fa fa-calendar-o"></i> {{ $article->created_at->diffForHumans() }}</a>
-                              <a href="#"><i class="fa fa-comment-o"></i>{{ count($article->comments) }}  Comments</a>
+                              <a href="#"><i class="fa fa-comment-o"></i>{{ count($article->comments) }}  Комментариев</a>
 
                          </p>
                       </div>
@@ -79,21 +81,14 @@ _________________________________________________________ -->
             {{ $articles->links() }}
             </div>
 
-            <!-- /.col-md-9 -->
-
-            <!-- *** LEFT COLUMN END *** -->
-
-            <!-- *** RIGHT COLUMN ***
-_________________________________________________________ -->
 
             <div class="col-md-3">
 
-                <!-- *** MENUS AND WIDGETS ***
-_________________________________________________________ -->
+
                 <div class="panel panel-default sidebar-menu">
 
                     <div class="panel-heading">
-                        <h3 class="panel-title">Text widget</h3>
+                        <h3 class="panel-title"></h3>
                     </div>
 
                     <div class="panel-body text-widget">
@@ -103,25 +98,7 @@ _________________________________________________________ -->
                     </div>
                 </div>
 
-                <div class="panel panel-default sidebar-menu">
-
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Search</h3>
-                    </div>
-
-                    <div class="panel-body">
-                        <form role="search">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search">
-                                <span class="input-group-btn">
-
-<button type="submit" class="btn btn-template-main"><i class="fa fa-search"></i></button>
-
-</span>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+        
 
               @includeIf('questions.partials.categories')
 
