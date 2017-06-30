@@ -10,9 +10,7 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-    public function __construct() {
-        $this->middleware('auth');
-    }
+
 
     public function index()
     {
@@ -43,11 +41,15 @@ class ArticleController extends Controller
     {
         $article = Article::findOrFail($id);
         $likeOn = 0;
-
+    if (Auth::check()) {
         if ($article->rates->where('user_id', Auth::user()->id)->count()>0) {
             $likeOn = 1;
         }
-
+            } else return  view ('articles.show', [
+              'article' => $article,
+              'comments' => $article->comments,
+              'likeOn' => $likeOn,
+            ]);
         return view ('articles.show', [
           'article' => $article,
           'comments' => $article->comments,

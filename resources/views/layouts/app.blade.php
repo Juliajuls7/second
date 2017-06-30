@@ -48,11 +48,7 @@ _________________________________________________________ -->
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-5 contact">
-                            @if (Auth::user())
-                          <a href="#" data-animate-hover="pulse">
-                            <i class="fa fa-envelope"></i>
-                            <span class="hidden-xs text-uppercase">Уведомления</span></a>
-                            @endif
+
                         </div>
                         <div class="col-xs-7">
                             <div class="social">
@@ -113,9 +109,8 @@ _________________________________________________________ -->
                                     <a href="/" class="home">На главную</a>
 
                                 </li>
-                                <li class="menu {{{ (Request::is('questions') ? 'active' : '') }}}">
-                                    <a href="/questions" class="question" >Вопросы</a>
-
+                                <li class="menu {{{ (Request::is('services') ? 'active' : '') }}}">
+                                    <a href="/services" class="services">Задания</a>
                                 </li>
                                 @if (Role::admin())
                                 <li class="menu {{{ (Request::is('categories') ? 'active' : '') }}}">
@@ -128,9 +123,11 @@ _________________________________________________________ -->
                                     <a href="/users" class="cities">Пользователи</a>
                                 </li>
                                 @endif
-                                <li class="menu {{{ (Request::is('services') ? 'active' : '') }}}">
-                                    <a href="/services" class="services">Задания</a>
+                                <li class="menu {{{ (Request::is('questions') ? 'active' : '') }}}">
+                                    <a href="/questions" class="question" >Вопросы</a>
+
                                 </li>
+
                                 <!-- <li class="menu">
                                     <a href="#" class="services">Услуги</a>
                                 </li> -->
@@ -251,8 +248,6 @@ _________________________________________________________ -->
 
                     <hr>
 
-
-
                     <hr class="hidden-md hidden-lg hidden-sm">
 
                 </div>
@@ -318,7 +313,7 @@ _________________________________________________________ -->
 
                 <div class="col-md-3 col-sm-6">
 
-                    
+
 
                     <div class="photostream">
 

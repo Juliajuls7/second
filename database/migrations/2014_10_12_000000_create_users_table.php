@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('sex')->default(0);
             $table->date('DOB')->default('1900-01-01');
-            $table->integer('city_id')->unsigned()->default(0);
+            $table->integer('city_id')->unsigned()->default(1);
             $table->string('phone')->default('');
             $table->string('skype')->default('');
             $table->integer('rating')->default(0);

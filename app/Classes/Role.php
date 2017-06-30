@@ -37,15 +37,20 @@ class Role {
   }
 
   public function check($self)
-  {
+  {  if (Auth::check()) {
     return $self->user->id == Auth::user()->id;
+      } else return 0;
   }
   public function check_service($self)
   {
+    if (Auth::check()) {
     return $self->author->id == Auth::user()->id;
+  } else return 0;
   }
   public function check_account($self)
   {
+      if (Auth::check()) {
     return $self->id == Auth::user()->id;
+      } else return 0;
   }
 }

@@ -85,7 +85,7 @@ Route::get('/users/{id}/reviews2', 'UserController@showreviews2');
 Route::get('/users/{id}/questions', 'UserController@showquestions');
 //----------СТАТЬИ---------------------------------------------------
 // добавление
-Route::get('/articles/create', 'ArticleController@create');
+Route::get('/articles/create', 'ArticleController@create')->middleware('auth');
 Route::post('/articles', 'ArticleController@store');
 //// просмотр
 Route::get('/articles', 'ArticleController@index');
@@ -103,14 +103,14 @@ Route::put('/articles/{article}', 'ArticleController@setlike');
 
 //----------ЗАДАЧИ---------------------------------------------------
 // добавление
-Route::get('/services/create', 'ServiceController@create');
+Route::get('/services/create', 'ServiceController@create')->middleware('auth');
 Route::post('/services', 'ServiceController@store');
 //// просмотр
 Route::get('/services', 'ServiceController@index');
 Route::get('/services/{id}', 'ServiceController@show'); //показать 1
 // редактирование
-Route::get('/services/edit/{service}', 'ServiceController@edit');
-Route::put('/services/edit/{service}', 'ServiceController@save');
+Route::get('/services/edit/{service}', 'ServiceController@edit')->middleware('auth');;
+Route::put('/services/edit/{service}', 'ServiceController@save')->middleware('auth');;
 // установление исполнителя
 Route::post('/services/executor/{service}/{user}', 'ServiceController@setexecutor');
 // завершение задачи

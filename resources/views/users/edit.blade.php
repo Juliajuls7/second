@@ -106,6 +106,7 @@
                               <div class="form-group">
                                   <label for="region">Регион</label>
                                   <select class="form-control" id="region" name="region">
+                                  
                                       @foreach($regions as $region)
                                          <option value="{{$region->id}}"
                                            @if($user->city->region->id == $region->id)
